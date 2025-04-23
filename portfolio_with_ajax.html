@@ -1,76 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adesanya Adebusayo Olamilekan - Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          animation: {
-            'gradient': 'gradient 8s ease infinite',
-            'float': 'float 3s ease-in-out infinite',
-            'slide-up': 'slideUp 0.5s ease-out'
-          },
-          keyframes: {
-            gradient: {
-              '0%, 100%': {
-                'background-size': '200% 200%',
-                'background-position': 'left center'
-              },
-              '50%': {
-                'background-size': '200% 200%',
-                'background-position': 'right center'
-              }
-            },
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-10px)' }
-            },
-            slideUp: {
-              '0%': { transform: 'translateY(20px)', opacity: '0' },
-              '100%': { transform: 'translateY(0)', opacity: '1' }
-            }
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    .dark-mode {
-      background-color: #111827;
-      color: #f3f4f6;
-    }
-    .light-mode {
-      background-color: #f0f9ff;
-      color: #1a202c;
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    }
-    .gradient-text {
-      background: linear-gradient(45deg, #4f46e5, #06b6d4);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: gradient 3s ease infinite;
-    }
-    .section-transition {
-      transition: all 0.5s ease-in-out;
-    }
-    .section-transition:hover {
-      transform: translateY(-5px);
-    }
-  </style>
-</head>
+<header class="py-16 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-500 to-teal-500 animate-gradient opacity-90"></div>
+  <div class="relative z-10 max-w-6xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+      <!-- Professional Profile Image -->
+      <div class="relative">
+        <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-2xl transform hover:scale-105 transition-transform duration-300">
+          <img 
+            src="images/professional-photo.jpg" 
+            alt="Adesanya Adebusayo Olamilekan" 
+            class="w-full h-full object-cover"
+            loading="eager"
+          >
+        </div>
+        <div class="absolute inset-0 rounded-full bg-gradient-to-b from-transparent to-black/20 pointer-events-none"></div>
+      </div>
+      
+      <!-- Text Content -->
+      <div class="text-center md:text-left max-w-2xl">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white animate-float">
+          Adesanya Adebusayo Olamilekan
+        </h1>
+        <p class="text-xl text-white/90 mb-6">
+          Lagos, Nigeria | 
+          <a href="tel:+2349058911194" class="hover:underline hover:text-white transition-colors duration-300">
+            +2349058911194
+          </a> | 
+          <a href="mailto:olaadesanya19@gmail.com" class="hover:underline hover:text-white transition-colors duration-300">
+            olaadesanya19@gmail.com
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
 <body id="body" class="light-mode transition-all duration-500">
   <!-- Dark Mode Toggle with improved styling -->
   <div class="fixed top-4 right-4 z-50">
