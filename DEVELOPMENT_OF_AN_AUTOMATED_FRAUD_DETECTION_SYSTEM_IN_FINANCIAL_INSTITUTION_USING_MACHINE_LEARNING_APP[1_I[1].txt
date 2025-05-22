@@ -1,0 +1,1290 @@
+DESIGN AND IMPLEMENTATION OF AN AUTOMATED FRAUD DETECTION SYSTEM IN FINANCIAL INSTITUTION USING MACHINE LEARNING APPROACH
+
+
+BY
+GOD’SWILL EKO AKPAN
+IP/23/ND/CS/0022
+
+
+
+BEING A PROJECT SUBMITTED TO THE DEPARTMENT OF COMPUTER SCIENCE, INSPIRE POLYTECHNIC, EGBEDA, LAGOS
+
+IN PARTIAL FULFILLMENT OF THE REQUIREMENTS FOR THE AWARD OF NATIONAL DIPLOMA (ND) IN COMPUTER SCIENCE
+
+
+
+MAY 2025
+DECLARATION
+I, GOD’SWILL EKO AKPAN, do hereby declare that this project is solely my work and creation. The work contained in this project has not been submitted in candidature for any degree and is not being submitted for any other degree contemporarily. References of all works of other authors have been duly acknowledged.
+
+    GOD’SWILL EKO AKPAN		Signature:______________________
+							Date: __________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CERTIFICATION
+This is to certify that this report “Design and Implementation of an Automated Fraud Detection System in Financial Institution Using Machine Learning Approach” was carried out by GOD’SWILL EKO AKPAN with matric number IP/23/ND/CS/0022 of the Department of Computer Science, Inspire Polytechnic, Egbeda, under my supervision
+
+
+…………………………………….					………………….....                                            
+          Mr. Paramole, I.A 						           	 Date   
+          Project Supervisor                                                                                                           
+
+
+
+………………………………………				………………….....
+             Dr. Oloyede, A.O					                         Date
+           HOD, Computer Science						                                
+
+
+
+………………………………………..				………………….....    
+        Dr. Oloyede, A.O 						              Date
+         Director o Studies					                                                                                                          
+
+
+
+
+
+
+
+
+
+DEDICATION
+This work is Dedicated to my Dad and Almighty God, who gave  me the Strength and whose Grace made me complete  this work. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACKNOWLEDGEMENT
+I want to first of all say a big thank you to God Almighty for  the Love, Protection, Provisions and Guidance through the period of my studies. I would also like to express my sincere gratitude to all these individuals for mentoring and supporting me through all the way up here.
+My Parents Mr and Mrs Eko and for their constant encouragement, Support and patience have   been the pillars of my success.
+My lecturers Mr Samuel, Mrs Ada, Mr Jelili, Mr Seun, Mr Habeeb and my amiable supervisor and indefatigable Supervisor Mr  Paramole Ibrahim. Not failing to mention, Mr Akinboye Akintunde Timothy(Sir Tee) and Mr Habeeb for providing me with invaluable insight and direction.
+My Programme HOD Dr Oloyede for fostering an environment for learning and creativity within the school.
+My Project supervisor, Mr Paramole Ibrahim for providing an enabling environment and atmosphere for successful completion of this project work.
+I want to also specially thank Sir Tee Mr Akinboye Akintunde Timothy for showing me this citadel of learning and making it possible to acquire knowledge and scale through the hurdles encountered during the program.
+I am also grateful to my Sister(Gift) and friends (Ayinde Saheed, Destiny, and Fawaz) who contributed ideas and perspective that enriched this project.
+Thank you  to everyone for Shaping this project and enhancing my learning experience. May the Almighty God bless you all.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ABSTRACT
+Financial fraud, considered as deceptive tactics for gaining financial benefits, has recently become a widespread menace in companies and organizations. Conventional techniques such as manual verifications and inspections are imprecise, costly, and time consuming for identifying such fraudulent activities. Payments related fraud such as credit card fraud is the most popular fraud type and recent research has shown that machine learning techniques can be applied successfully to detect fraudulent transactions in large amounts of payments data. Such techniques have the ability to detect fraudulent transactions that human auditors may not be able to catch and also do this on a real time basis. With the advent of artificial intelligence, machine-learning-based approaches can be used intelligently to detect fraudulent transactions by analyzing a large number of financial data. Therefore, this research work is aimed at developing a machine learning (ML)-based fraud detection system for financial institution. In this project, Random Forest algorithm which is a popular machine learning algorithm is applied for fraud detection using a publicly available simulated payment transactions data. The approach adopted includes dimensionality reduction, feature engineering, data preparation, and the application of machine learning models built into a real-time monitoring system. Results are assessed using performance measures and contrasted with the performance of current systems. Results of the research show that Random Forest machine learning algorithm demonstrates high performance when applied successfully to detect fraudulent transactions in large amounts of payments data. It was also discovered that for a well separated data set, tree-based algorithms like Random Forest work much better than Logistic Regression.
+Keywords: financial fraud; fraudulent transactions; fraud detection; artificial intelligence; machine learning; credit card; transactions data; real time monitoring, random forest
+TABLE OF CONTENTS
+
+CONTENTS                                                                                		PAGE
+Title                                                                                                 	 		i
+Declaration                                                                                    	  		ii
+Certification                                                                                   			iii
+Dedication                                                                                       			iv
+Acknowledgement                                                                         			v
+Abstract                                                                                           			vi
+Table of Contents                                                                           			vii
+List of Figures										xi
+
+CHAPTER ONE: INTRODUCTION						1
+1.1Background to the Study								1
+1.2 Statement of the Problem								3 
+1.3 Aim & Objectives of the Study							3 
+1.4 Significance of the Study								4
+1.5 Scope of the Study 								5
+1.6 Definition of Terms								5
+
+CHAPTER TWO: LITERATURE REVIEW					7
+2.1 Overview of Financial Fraud          						7
+2.2 Categories of Financial Transaction Fraud					8
+    2.2.1 Credit Card Fraud							8
+    2.2.2 Financial Statement Fraud						9
+    2.2.3 Insurance Fraud								9
+    2.2.4 Financial Cyber Fraud							10
+    2.2.5 Other Financial Fraud Types						11
+2.3 Traditional Fraud Detection Methods						12
+2.4 Machine Learning in Fraud Detection						13
+2.5 Machine Learning (ML) Based Techniques for Financial Fraud Detection	15
+	2.5.1	Support Vector Machine (SVM)					16
+	2.5.2	Fuzzy-Logic Based Method						17
+	2.5.3	Hidden Markov Model (HMM)					18
+	2.5.4	Artificial Neural Network (ANN)					19
+    2.5.5	KNN Algorithm							20
+    2.5.6	Bayesian Method (BM)						21
+    2.5.7	Decision Tree (DT)							22
+    2.5.8	Genetic Algorithm (GA)						23
+    2.5.9	Ensemble Methods							23
+    2.5.10	Clustering Based Methods						24
+    2.5.11	Logistic Regression							25
+2.6 Performance Evaluation Metrics Used for Financial Fraud Detection Using	25
+Machine Learning Methods		
+2.7 Feature Extraction									27
+2.8 Dimensional Reduction								27
+2.9 Related Works									28
+2.9.1 Supervised Learning Approaches					            28
+    2.9.2 Unsupervised Learning Approaches					30
+    2.9.3 Hybrid Approaches							31
+    2.9.4 Deep Learning Approaches						32
+            2.10	         Research Gaps							33
+
+CHAPTER THREE: ANALYSIS AND DESIGN					34
+3.1 Research Approach								34
+3.2 Description of System Architecture						34
+	3.2.1	Data Collection							35
+	3.2.2	Data Preprocessing							35
+    3.2.3	Model Selection and Training						35
+    3.2.4	Model Evaluation and Tuning					35
+    3.2.5	Real-Time Deployment						36
+    3.2.6	Action and Notification						36
+    3.2.7	Continuous Learning and Improvement				36
+3.3 Data Analysis									37
+3.4 Preprocessing Steps								37
+3.5 Exploratory Data Analysis							38
+3.6 Feature Engineering and Dimensionality Reduction				38
+3.7 Solution Deployment								39
+
+CHAPTER FOUR: RESULTS AND IMPLEMENTATION			40
+4.1 Research Approach								40
+4.2 Choice of Programming Language						40
+4.2.1 Front-End (Html, CSS, Javascript)					            41
+4.2.2 Python Programming Language					            41
+4.3 API Development									42
+4.4 Scalability and Effectiveness							42
+4.5 Monitoring and Logging Systems							42
+4.6 Security Consideration								43
+4.7 Versioning and Updates								43
+4.8 A/B Testing and Evaluation							43
+4.9 Continuous Improvement								43
+4.10 System Requirements								43
+	4.10.1 Hardware Requirements						43
+	4.10.2 Software Requirements						44
+4.11 Simulation Results								45
+4.12 Results Discussion								49
+
+CHAPTER FIVE: SUMMARY AND CONCLUSION 				52
+5.1 Summary										52
+5.2 Conclusion									53
+5.3 Contribution to Academic Knowledge						53	
+
+
+REFERENCES 										54
+APPENDIX (SOURCE CODE)								57
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LIST OF FIGURES
+Fig. 3.1: System Architecture									34
+Fig. 4.1: Sign up page										45
+Fig. 4.2: Create transaction pin page								45
+Fig. 4.3: Enroll fingerprint page								46
+Fig. 4.4: Login page										46
+Fig. 4.5: User dashboard									47
+Fig. 4.6: Transfer page									47
+Fig. 4.7: Authenticating transfer with fingerprint						48
+Fig. 4.8 Dashboard with transaction history							48
+Fig. 4.9a: Random Forest - Train Confusion Matrix						49
+Fig. 4.9b: Random Forest - Test Confusion Matrix						50
+Fig. 4.11: ROC curve of Random Forest Model						51
+CHAPTER ONE
+INTRODUCTION
+1.1	Background to the Study
+Digital payments of various forms are rapidly increasing across the world. Payments companies are experiencing rapid growth in their transactions volume. For example, PayPal processed approximately $578 billion in total payments in 2018. Along with this transformation, there is also a rapid increase in financial fraud that happens in these payment systems. Financial fraud is the act of gaining financial benefits by using illegal and fraudulent methods (Hilal, et al., 2021). Financial fraud can be committed in different areas, such as insurance, banking, taxation, and corporate sectors (Ashtiani, et al., 2021). In today's rapidly evolving financial sector, with the diversification and increasing digitization of transactions, fraud in financial transactions has become an increasingly serious problem. Such fraud not only poses a threat to individual consumers, but also poses significant risks to businesses and the financial system as a whole. Against this background, finding and implementing effective fraud detection and prevention measures has become particularly important (Vyas, 2023). Although traditional fraud detection methods have played an important role in the past decades, the limitations of these methods have gradually emerged with the continuous evolution of fraudulent methods and the explosive growth of data volume. Therefore, it has become imperative to seek more efficient and intelligent technological solutions. Machine learning, as an important branch in the field of artificial intelligence, is considered to be an effective tool to address the challenges of financial transaction fraud due to its powerful data processing and pattern recognition capabilities.
+The purpose of this research work is to explore the application of machine learning in financial transaction fraud detection and prevention, and to reveal how machine learning can change the present and future in the field of financial security by analyzing its technical principles, practical cases and challenges. In the context of financial transaction fraud, machine learning technology provides a method that can learn and identify complex fraud patterns from big data, which is important for improving detection efficiency and accuracy (Vanini et al., 2023). Through automated data analysis, machine learning can reveal hidden patterns of fraudulent behavior, making it difficult for even the most subtle anomalies to escape its "eyes". In addition, machine learning's ability to learn and adapt itself means that it can be optimized over time to cope with changing fraud strategies.
+However, while machine learning shows great potential for financial transaction fraud detection and prevention; its implementation faces a number of challenges, including data quality, model interpretability, and integration with existing systems. These challenges require financial institutions to invest not only the appropriate technological resources, but also legal and ethical considerations to ensure the effectiveness and adaptability of the solutions (Eryu, 2024).
+The necessity for a more effective and efficient strategy to counteract changing fraud strategies is what motivates the use of machine learning algorithms and real-time monitoring systems. In developing a robust fraud detection system for financial institutions, large volumes of transactional data can be automatically mined for patterns and abnormalities using machine learning algorithms, leading to more precise and adaptable fraud detection. Financial institutions can examine past transactional data to find trends linked to fraudulent actions by utilizing machine learning techniques like supervised learning, unsupervised learning, and deep learning. Additionally, by continuously monitoring transactions in real-time and sending out notifications for suspected fraud, the integration of real-time monitoring systems improves fraud detection. With timely action made possible by this proactive strategy, potential losses and damages are reduced (Oladimeji, 2023). The goal of this research work is to provide a comprehensive perspective that offers practical insights and recommendations for financial institutions, technology developers, and policy makers by analyzing in detail the application of machine learning in financial transaction fraud detection and prevention, including its success stories, challenges, and future directions (Alsuwailem, et al., 2023).
+ 
+1.2	Statement of the Problem
+Despite several efforts to reduce financial fraudulent activities, its persistence affects the economy and society adversely, as large amounts of money are lost to fraud every day (Ryman-Tubb, et al., 2018). Several fraud detection approaches were introduced many years ago. Most traditional methods are manual, and this is not only time consuming, costly, and imprecise but also impractical (Al-Hashedi, et al., 2021). More studies are conducted to reduce losses resulting from fraudulent activities, but they are not efficient (Ngai, et al., 2021). With the advancement of the artificial intelligence (AI) approach, machine learning and data mining have been utilized to detect fraudulent activities in the financial sector (Chaquet-ulldemolins, 2022).
+
+1.3	Aim and Objectives of the Study
+The aim of this work is to develop a fraud detection system for financial institutions using machine learning approach. The objectives of the research are to: 
+i.perform a critical review of existing fraud detection systems for financial institutions to identify gaps; 
+ii.design a machine learning based model for a financial fraud detection system;
+iii.implement the designed model using publicly available sample of large volumes of transactional data that can be automatically mined for patterns and abnormalities using machine learning algorithms, leading to more precise and adaptable fraud detection;
+iv.evaluate the performance of the developed system against existing models using performance measures such as Confusion Matrix and Area Under Curve (AUC).
+
+ 1.4	Significance of the Study
+In contrast to traditional fraud detection systems, machine learning, with its powerful data processing capability, complex pattern recognition ability, and self-learning and adaptation, is considered a powerful tool against financial transaction fraud. The application of machine learning techniques in financial fraud detection and prevention has helped financial institutions improve detection efficiency and accuracy. Below are some salient significances of the use machine learning algorithms for fraud detection systems:
+i.Machine learning algorithms are able to process and analyze much larger datasets than traditional methods and discover subtle and complex indicators that may indicate fraudulent behavior. This ability makes machine learning particularly well-suited to identifying fraud that is difficult to detect through manually set rules.
+ii.Machine learning, with its efficient data processing capabilities and ability to learn pattern recognition, provides a more dynamic and adaptable approach to detecting and preventing financial fraud.
+iii.In addition, a key advantage of machine learning algorithms is their adaptive nature. Over time, fraud tactics change and evolve, and machine learning models can adapt to these changes through continuous learning.
+
+ 1.5	Scope of the Study
+The research work covers the following areas:
+i.Exploratory analysis where dataset are analyzed in detail in order to identify possible predictors of fraud.
+ii.Through various visualization techniques, the separation between fraud and non-fraud transactions is observed.
+iii.To solve the fraud detection problem, supervised machine learning techniques are used for experimentation
+iv.Additionally, under-sampling is done to address the class imbalance in the dataset.
+v.The model was developed with cross-validation to avoid over-fitting and obtain consist of performance.
+
+1.6	Definition of Terms
+i.Financial Fraud: Financial fraud refers to the intentional deception or misrepresentation of financial information or transactions for personal or organizational gain.
+ii.Fraudulent Transactions: Fraudulent transactions refer to unauthorized, deceptive, or illegal financial transactions that are intended to deceive or manipulate individuals, businesses, or financial institutions for personal or financial gain.
+iii.Fraud Detection: Fraud detection refers to the processes, techniques, and tools used to identify, prevent, and investigate fraudulent activities, transactions, or behavior.		
+iv.Artificial Intelligence: Artificial Intelligence (AI) refers to the simulation of human intelligence in machines, enabling them to perform tasks that typically require human-like intelligence
+v.Machine Learning: Machine Learning (ML) is a subset of Artificial Intelligence (AI) that enables machines to automatically learn from data, improve their performance, and make predictions or decisions without being explicitly programmed.
+
+vi.Credit Card: A credit card is a type of loan card that allows users to borrow money from the card issuer to make purchases, pay bills, or get cash advances
+vii.Transactions Data: Transactions data refers to the detailed information related to individual transactions,
+viii.Real Time Monitoring: Real-time monitoring refers to the continuous and instantaneous observation, tracking, and analysis of data, events, or systems as they occur.
+
+
+
+
+
+
+
+
+ 
+CHAPTER TWO
+LITERATURE REVIEW
+2.1	Overview of Financial Fraud
+Financial fraud is the act of gaining financial benefits by using illegal and fraudulent methods. Financial fraud has been a big concern for many organizations across industries and in different countries since it brings huge devastations to business. Billions of dollars are lost yearly due to financial fraud; Bank of America, for example, agrees to pay $16.5 billion for resolving financial fraud case (Fox News, 2024). Also, IRS (2021) indicates that Mr. Walker, the founder of Bixby Energy Systems, deceived more than 1,800 investors and committed multi-million dollar fraud. His fraudulent actions involve providing false statements of a) his subordinates’ salaries and commissions; b) the operational capacity of the firm’s core products, and c) an initial public stock offering (IRS, 2021). Hence, the numbers still indicate this is a growing problem, which needs more attention from professionals and academicians. 
+Financial fraud detection tools have been brought to scenic in order to address this problem and to provide reliable solutions to business. Financial fraud is normally discovered through outlier detection process (Jayakumar, 2023) enabled by data mining techniques, which also identify valuable information by revealing hidden trends, relationships, patterns found in a large database (Hassani, et al., 2020). Data mining, defined as “a process that uses statistical, mathematical, artificial intelligence, and machine learning techniques to extract and identify useful information and subsequently gain knowledge from a large database.” There are numerous techniques for detecting different types of financial fraud through its diverse methods, such as, logistic regression, decision tree, Support Vector Machine (SVM), Neural Network (NN) and Naïve Bayes. Some of these techniques outperform the others in specific financial contexts. 
+2.2	Categories of Financial Transaction Fraud
+Fraud in financial transactions is a serious offence that exploits the financial system to carry out illegal activities aimed at defrauding individuals, businesses or institutions. It not only causes financial loss to victims, but also undermines the integrity and stability of financial markets. With advances in technology and the globalization of financial markets, financial transaction fraud has become increasingly diverse, covering everything from traditional scams to sophisticated online fraudulent activities (Alwadain, 2023).
+Fraudulent activities vary depending on industry sectors (Vyas, 2023). Fraudulent activities in the financial sector can be broadly categorized into credit card, mortgage, financial statement, and health care fraud. This can be further explained in the following subsections.
+2.2.1	Credit Card Fraud
+Credits are typically used to refer to electronic financial transactions made without the use of physical cash. A credit card that is extensively used for online transactions is a small piece made up of thin plastic material with credit services and customer details (Randhawa, et al., 2018). Fraudsters use credit cards to make unlawful transactions that result in massive losses to banks and card holders (De Sá, et al., 2018). Moreover, the invention of counterfeit cards has aided fraudsters in performing illicit transactions more easily. In general, it is regarded as illegitimate to use the card without the proper owners’ authorization. By obtaining access to a certain account illegitimately, any transaction that is carried out is considered as fraudulent. Credit card fraudulent activities can be divided into two aspects, namely, offline and online fraud. In offline fraudulent activity, the fraudsters conduct their illicit transactions with stolen credit cards such as genuine card holders, while online fraudsters conduct their activities in online transactions through Internet Online fraud (Srivastavam, et al., 2020).
+2.2.2	Financial Statement Fraud
+Fraud in financial statements involves forging financial reports to claim that a company is more profitable than usual (Albashrawi, 2020), avoid the payment of taxes, increasing stock prices, or obtaining a bank loan (Robinson, 2018). It can also be regarded as the confidential records generated by organizations that contain their financial records that comprise their expenses, profits made, income loans, etc. These statements also comprise some write-ups made by management for discussing business performances and predicted future tendencies. Different financial records provide the financial reality of the organization, which indicates how successful the organization is and assists in checking if the organization is bankable (Craja, et al., 2020). In addition, financial statement fraudsters deceive the users of financial statements by correcting misstatements to make the organizations appear beneficial. The main purpose of the financial fraudulent statements is to enhance share prices, minimize tax liabilities, attract more investors as much as possible, and access personal bank loans among others (West, et al., 2020).
+2.2.3	Insurance Fraud
+Insurance fraud can be defined as the act of misusing an insurance policy for gaining illegitimate benefits from an insurance business (Peng, et al., 2018). Usually, insurance is made to protect the organization’s transactions or individual’s transactions against any financial risks (Robinson, et al., 2018). The main sectors of target by fraudulent insurance claims include healthcare and automobile insurance companies; although home and crop insurance fraudulent also occur (Hilal, et al., 2021), however, there is a paucity of the literature on both. It has been estimated recently that the total cost of insurance fraud in the United States is over a billion USD yearly and it is finally passed on to consumers in the form of higher insurance premiums (Fayyomi, et al., 2021). In order to cover the relevant costs of theft or accidental damages to a car, an agreement between the insurance provider and the insured person or organization is typically involved in automobile insurance claims. Individual fraudsters are capable of committing fraudulent claims, and one method of committing fraud is through deception during the claims process. Evidence of organized groups working together to conduct insurance fraud also exists. Typically, these groups stage or fake incidents; in other cases, an accident may not have even occurred. Instead, the vehicles were brought to the scene (Wang, et al., 2018). Nevertheless, the majority of fraud cases are opportunistic frauds in a way that they are not planned; rather, an individual seizes the opportunity presented by such an accident by exaggerating the claimed statements or damages. Another popular insurance fraud is in the health sector. Healthcare has grown to be a serious issue in contemporary society that is entangled with social, political, and economic concerns. There is a significant financial expense associated with meeting the public demand for high-quality medical services and the technology required to provide them. Additionally, many low-income people and families rely on government-sponsored healthcare insurance programs for support in order to pay for the steadily rising costs with respect to prescription medications and medical services (Anbarasi, et al., 2019).
+2.2.4	Financial Cyber Fraud
+The term financial cyber fraud is a new term capturing the umbrella of crime committed over cyberspace for the sole purpose of illegal economic gain (Wang, et al., 2018). Financial cybercrime perpetrators are difficult to identify. They purposely mask their activities to blend their actions with the normal behavior of any other customer or user of a website or financial service; however, when grouped together, the activity is more obvious in terms of its abnormality. As technical skills and advancements in technology are increasingly available to criminals; their tactics for committing criminal offenses become more difficult to combat. This symbiosis of financial crime and cybersecurity is leading financial institutions to use their in-house developed methods to protect their assets using tools such as real-time analytics and interdiction to prevent financial loss (Mirtaheri, et al., 2021). However, as models are showing signs of an inability to prevent and address these attacks, new methods must be developed and deployed across organizations to prevent further loss to their business, customer data, and their own reputation. The new methods deployed in the research community and industry includes machine learning and deep learning models (Wang, et al., 2019).
+2.2.5	Other Financial Fraud Types
+Apart from the above types of fraudulent activities committed in the financial sectors, other frauds are met in the financial domain, which includes commodities and securities fraud, mortgage fraud, corporate fraud, and money laundering (Ngai, et al., 2021). Securities and commodities fraud is a dishonest practice that occurs when a person invests in a company based on given fake information. A mortgage is a material misstatement made by a debtor at any stage of the application procedure when an underwriter relies on those facts to obtain a loan or credit. It intentionally targets documents associated with a mortgage by modifying information during the mortgage loan application processes (Al-Hashedi, et al., 2021). Another popular fraud is corporate fraud, which involves the falsification of financial documents by insiders to cover up any fraud or criminal activity (Robinson, et al., 2018). Money laundering is another type of financial fraud in which fraudsters try to change the source of illegal money by convincing criminals to turn their dirty money into legitimate money. Money laundering has a major influence on society because it is the primary method in which other crimes, such as funding terrorism and trade-in weapons, are accomplished. Another popular financial crime is crypto currency fraud (Monamo, et al., 2020). This type of fraud systematically provides fake investments to naïve users in order to defraud them. The main idea of this is to entice innocent individuals with the promise of significant gains from their investments (Craja, et al., 2020).
+2.3	Traditional Fraud Detection Methods
+In the financial sector, traditional fraud detection methods have been the cornerstone of protecting consumers and businesses from fraudulent behavior. These methods rely on a range of rules, pattern recognition and statistical techniques to identify possible fraud. Although these methods have shown limitations in some areas over time, they continue to play an important role in the development and advancement of the financial security sector. Traditional fraud detection methods are mainly based on setting a series of rules or thresholds that are used to monitor transaction behavior for anomalies. For example, if an account has a large number of international transactions in a short period of time, or if the transaction amounts are outside the usual range, these rules trigger an alert indicating that the transactions may be fraudulent (Valavan, et al., 2023). The advantage of this approach is that it is intuitive and simple to implement. Banks and financial institutions can set rules based on past experience and known fraud patterns as a way to protect against future fraud. However, this rule-based approach has some limitations. Firstly, it relies on people's a priori knowledge of fraudulent behavior, which means that new types of fraudulent tactics may not be instantly recognized and blocked. Second, too much reliance on static rules may lead to a large number of false positives, as not all unusual transactions are fraudulent. For example, a consumer may increase the frequency or amount of purchases during the holiday season, and this normal spending behavior may be incorrectly flagged as fraudulent (Chethana, et al., 2023). Finally, a fraudster may be able to devise strategies to avoid detection by knowing these rules. In addition to rule-based approaches, traditional fraud detection includes a variety of statistical and pattern recognition techniques. These methods identify anomalous behavior by analyzing historical patterns in transaction data. For example, unusual activity can be detected by comparing an individual's current transactional behavior with their historical behavior, or by analyzing patterns of behavior within a group. This approach allows financial institutions to identify potential fraudulent behavior at a more granular level, rather than relying solely on pre-defined rules (Patel, et al., 2023). However, these traditional statistical methods face their own challenges. They typically require large amounts of historical data to build effective detection models, and the accuracy of the models can be compromised when data volumes are large or data characteristics change rapidly. Additionally, these methods can run into efficiency issues when dealing with large-scale data, as they are typically not as effective as modern machine learning algorithms at learning from and adapting to the data. Despite these challenges, traditional fraud detection methods remain an important tool for financial institutions to prevent fraud. They provide the foundation for modern, more advanced machine learning and artificial intelligence techniques, and these new technologies are increasingly being introduced into the fraud detection space to improve the accuracy and efficiency of detection. At the same time, financial institutions are looking to combine traditional methods with these new technologies to capitalize on their respective strengths and form more robust and flexible fraud prevention systems. Overall, while traditional fraud detection methods have limitations in responding to complex and evolving fraud strategies, they have historically proven their value. Through continuous improvement and integration with new technologies, they can still play a key role in future financial security strategy.
+
+2.4	Machine Learning in Fraud Detection
+In today's increasingly complex financial environment, machine learning has emerged as a key technology for improving and enhancing fraud detection capabilities. With the explosion of data volumes and the constant evolution of fraud tactics, traditional fraud detection methods are beginning to look overwhelmed. Machine learning, with its efficient data processing capabilities and ability to learn pattern recognition, provides a more dynamic and adaptable approach to detecting and preventing financial fraud. The application of machine learning in fraud detection relies heavily on its ability to learn and recognize complex patterns from large amounts of data. Machine learning algorithms are able to process and analyze much larger datasets than traditional methods and discover subtle and complex indicators that may indicate fraudulent behavior. This ability makes machine learning particularly well-suited to identifying fraud that is difficult to detect through manually set rules. For example, by analyzing historical transaction data, machine learning models can learn the difference between normal and fraudulent transactions. This learning process covers everything from simple statistical analysis to complex pattern recognition, including multiple dimensions such as transaction frequency, amount, and location. Once the model has been trained, it can monitor transaction activity in real time, quickly identifying abnormal behavior that does not match the learned patterns, thus detecting potential fraud in a timely manner (Yi, et al., 2023). In addition, a key advantage of machine learning algorithms is their adaptive nature. Over time, fraud tactics change and evolve, and machine learning models can adapt to these changes through continuous learning. This means that, unlike traditional approaches that rely on fixed rules or patterns, machine learning ensures that fraud detection systems remain up-to-date and effectively respond to emerging fraud tactics. Among machine learning algorithms, there are several types that are particularly well suited for fraud detection. For example, decision tree and random forest algorithms can be used in classification problems to help differentiate between normal and fraudulent transactions, while Support Vector Machines (SVMs) and neural networks are widely used for their powerful pattern recognition capabilities. In recent years, deep learning, a machine learning technique based on artificial neural networks, has received particular attention for its superior performance in processing complex data patterns. Deep learning algorithms are able to automatically extract and learn features from data, making them excellent at detecting complex and granular fraud. While the application of machine learning in fraud detection offers significant benefits, there are some challenges. Data quality and quantity are demanding, as the performance of algorithms depends heavily on the representativeness and accuracy of the training data. In addition, model interpretability is a challenge, especially for complex models such as deep learning networks, whose decision-making process may be opaque, which somewhat limits their application in certain highly regulated financial environments. In summary, machine learning provides a powerful and flexible approach to effectively improve the accuracy and efficiency of fraud detection by learning and analyzing patterns in large amounts of data. As technology continues to advance and algorithms are further optimized, it is expected that machine learning will play an even more critical role in the future of financial fraud prevention and control. However, challenges in terms of data, computation and model transparency need to be addressed to realize its full potential.
+
+2.5	Machine Learning (ML) Based Techniques for Financial Fraud Detection
+Machine learning (ML) is referred to as analytic techniques that find specified patterns without the manual guidance of an expert (Faraji, et al., 2022). Financial fraud detection has been widely studied using ML methods by many researchers (Carta, et al., 2019). This includes SVM, ANN, HMM, KNN, Decision Tree, etc. A detail explanation of the ML techniques used for detecting financial fraudulent activities is provided in the following sub-section.
+
+
+2.5.1	Support Vector Machine (SVM)
+SVM is a supervised ML method that seeks a maximum margin hyper plane for classifying input training data into two categories. SVM is capable of classifying new data points based on a labeled training set for each class. Based on the reviewed literature, several researchers investigated SVM techniques for fraud detection (Jeragh, et al., 2018). For example, Rajak and Mathai (2019) introduced a hybrid technique based on SVM and the fusion Danger theory for the fraudulent detection approach. Based on the experimental results, the authors showed that this study outperformed the existing approaches in terms of time complexity and F-measure. Francis, et al. (2019) used the SVM technique to propose fraud detection by investigating automated medical bill architecture. This research method aims provide a quick response for detecting medical fraud in real time. Experimental results showed that the model performed better compared to the previous approaches. Xu and Liu (2020) applied optimized SVM to detect fraudulent activities in an online credit card. In this approach, the authors examined the model performance using commercial banks’ business datasets. The results demonstrated that the SVM outperformed other compared models, thereby confirming its viability.
+Mareeswari and Gunasekaran (2021) presented an approach for detecting fraudulent behaviors in credit cards based on SVM techniques. The authors combine a hybrid SVM and spike detections to address the limitations of existing methods. It is proven that the result of the proposed approach outperformed existing methods. Gyamfi and Abdulai (2019) developed an SVM-based supervised learning approach to distinguish between illegal and legal customer behaviors in credit card transactions. To increase the accuracy detection rate, the authors combined SVM, logic, and linear regression methods. A study by Sundarkumar et al. (2019), which utilized a one-class SVM-based under-sampling technique, was presented to enhance fraud detection in insurance industries. A study by Jeragh, et al. in 2018 presented a fraudulent detection method for credit card transactions by integrating OSVM with a deep learning approach. The method was assessed using real-world datasets, and the results showed promising results.
+2.5.2	Fuzzy-Logic-Based Method
+Fuzzy logic (FL) is an effective conceptual framework for addressing the issue of representing the data in a context of uncertainty and ambiguity. It is a logic that shows that methods of thinking are not accurate but estimated (Malini, et al., 2019). The Fuzzy combinations offer effective concepts for handling complex modeling in a new and better way. Several methods based on the FL have been used for fraud detection. To detect anomalous behaviors in credit card transactions, the FUZZY hybrid model, based on the fuzzy and Fogg behavioral models, was introduced by Harati Nik, et al. in 2020. A system based on fuzzy logic was employed to track the historical activities of the merchant, and the Fogg behavioral method was employed to characterize the customer’s behavior along two different but related dimensions: the ability to commit fraud and motivation. Another fuzzy-based method was proposed by Behera, et al., in 2019 to detect fraud in credit cards by categorizing the fraud transactions and non-fraud transactions with decreased false positives. The method used fuzzy c-means clustering and the ANN model. The model was evaluated on synthetic data and the results showed that the combination of clustering techniques and learning mechanisms helps in reducing false positives. 
+A study by Harati Nik, et al. in 2020 provides a fuzzy logic-based fraud-detection method in the banking system. This work was able to improve detection accuracy in classifying fraudulent and non-fraudulent activities in banking transactions. The authors defined some rules for fuzzy logic based on the experience of the experts to improve detection accuracy. This approach was improved by Vasek, et al., in 2018 by constructing fuzzy rules using fuzzy logic for the improved detection of fraud transactions. Pradeep et al. (2019) introduced rule-based technique using a firefly algorithm and the threshold-accepting method to differentiate between fraudulent and non-fraudulent transactions based on their financial activities. Hajek (2019) designed a fuzzy-rule-based approach for detecting financial fraud by integrating a rule-based approach with genetic feature selections. The approach was capable in achieving good performances by using the feature selection method to remove irrelevant attributes and performing a fuzzy unordered rule induction.
+2.5.3	Hidden Markov Model (HMM)	
+The HMM is a dual embedded random method often used to perform more complex random processes better than the traditional Markov model. Based on the reviewed literature, several methods have employed the HMM technique for financial fraud detection. Khan et al. (2019) used an HMM-based method for detecting the card owners’ behaviors through the observed incoming transaction. The author used a clustering approach to differentiate between fraudulent and non-fraudulent patterns using data conglomeration of regions of the parameter. Uchhana et al. (2021) introduced a hybrid method by integrating HMM and Genetic algorithms (GA) for identifying credit card fraudulent transactions. The approach employed the HMM to preserve previous transaction logs and GA to compute the threshold value for clustering incoming transactions into several clusters. The authors showed that the method used is more effective for credit card fraud detection. A similar approach was proposed by Mhamane, et al. (2019) to achieve internet banking fraud detection by disclosing the right users and monitoring their illicit behaviors.
+A method proposed by Bhusari, et al. (2018) utilized HMM to address the limitation of existing fraud-detection methods when the transaction is accomplished in credit card operations. The findings of the study suggested that HMM is capable of improving fraud detection and as well minimizing false-positive rates. Wang et al. (2018) conducted a simulation experiment using HMM and K-means methods for improving bank fraud detection. The result demonstrated the ability of the model to effectively discover fraud in bank transactions. A similar approach proposed by Iyer, et al. (2018) used an HMM-based technique, which improves the efficiency and accuracy of credit card fraud detection. To determine the clusters’ closest centroids and integrate them into a single group, the authors also employed the clustering technique based on the K-means method.
+2.5.4	Artificial Neural Network (ANN)
+ANN is an information-processing technique inspired by biological neural network behavior. ANN is very powerful when there is the availability of a large volume of data (Dang, et al., 2021). Several ANN-based methods have been proposed for fraudulent detection in the financial sector. Using an ANN-based method, Sri vastava et al. (2020) investigated credit card fraud detection on the trader’s side. The proposed method connects the merchant with payment gateways. The payment gateway serves as a medium between the merchant, who owns the customer’s credit card information, and the fraud-detection model. To identify credit card fraud, Ghobadi and Rohani (2018) developed a hybrid model based on a Cost Sensitive Neural Network. The findings demonstrated that the suggested model increased the detection rate and reduced false negative costs. Randhawa et al. (2018) proposed research for discovering fraud in credit cards transaction based on ML methods. The study used several ML algorithms, including ANN models.
+A study based on NN was introduced in (Sahin, et al., 2019) for the fraudulent transactions detection in credit cards to improve the security and accuracy of automatic credit card transactions. Ravisankar et al. (2019) introduced financial fraud detection using a multilayer feed forward neural network (MLFF). An ANN technique based on deep reinforcement learning (DRL) was used by Bouchti, et al. (2020) for detecting fraud in the banking sector. The authors discussed several interesting facts about DRL, which show that it performs competitively when compared to other approaches.
+2.5.5	KNN Algorithm
+The K-nearest neighbors (KNN) algorithm is a convenient, straightforward supervised ML technique that is powerful in addressing both regression and classification processes (Behera, et al., 2019). The class label is usually determined by the KNN model using a small set of the nearest samples. The KNN model is a type of non-parametric model that is used for both classification and regression tasks and that can locate similar neighborhoods that are closest to a given sample point in a dataset and create a new sample point based on the distance between two samples of data (Malini, et al., 2019). Although it worked well on many datasets, the performance of this technique is likely compromised by unbalanced datasets. The Euclidean distance is one of the most well-known techniques for calculating distance.
+However, some recent approaches have been introduced for financial fraud detection. For example, Malini and Pushpa (2019) proposed a credit card detection approach by using two different methods: the KNN model and the outlier detection model. The experimental results showed that the KNN model is more effective for fraudulent detection in credit cards. Awoyemi et al. (2019) used the KNN algorithm to investigate credit card transactions for detecting fraudulent behaviors. The authors used a credit card dataset proposed by European cardholders. The finding demonstrated that the K-Nearest Neighbor performed better than other existing techniques. Badriyah et al. (2020) introduced a KNN-based approach for fraud detection in auto insurance. The approach comprises three methods, namely, distance-based, density-based, and interquartile range in car insurance data. The proposed work considers the impact of feature selection methods on accuracy scores. Similar methods have been introduced by Case, et al., (2018) to discover the anomaly fraudulent transaction by integrating the KNN technique and Chi-Square Automatic Interaction Detection (CHAID) to enhance the performance of fraudulent transactions.
+2.5.6	Bayesian Method (BM)
+The Bayesian Model (BM) is a particular type of graphical model that takes into account both independent and conditional relationships between various variables (Deng, et al., 2019). A directed graph’s nodes and edges are used by the BN. The Bayesian model is a particular type of graphical model that takes into account both independent and conditional relationships between various variables (Glancy, et al., 2021). A directed graph’s nodes and edges are used by the BN. This model is very powerful in searching anonymous probability computations. There are two main types of Bayesian methods, namely, the Bayesian belief network and Naive Bayes (NB). NB is an ML model that is based on the Bayes theorem and is used to predict membership probabilities per class (Deng, et al., 2019). It predicts a given data point label based on the probability that belongs to a particular category. Some researchers utilized the NB model for financial fraud detection. For example, (Deng, et al., 2019) utilized the NB model to produce a fraud detection approach in a financial transaction. The experiment was performed in a dataset that contains both normal and abnormal financial statements. The results showed the effectiveness of the proposed model in fraud detection. Richter and Herland (2019) utilized the NB algorithm to address fraudulent transactions in the health sector based on medical procedure records. The research is aimed to classify the supplier’s behavior with respect to whether it is anomalous or not. To better perform fraud detection, Hajek and Henriques (2019) proposed a method for intelligently detecting fraudulent financial documents by gathering specific features from financial reports. In the experiment, the authors took into account several linguistic and financial management discussion variables related to financial information. The result showed that the proposed model outperformed other existing ML methods. Some studies also used Bayesian networks to predict fraudulent financial transactions.
+2.5.7	Decision Tree (DT)
+A Decision Tree (DT) is an ML technique that is used for creating decision support tools in the trees of inner nodes, which represent binary options over the features (HaratiNik, et al., 2020). For many years, there have been several methods based on the decision trees that are used to detect financial frauds. Devi and Kavitha (2020) developed a DT base method to classify credit card transactions as normal or suspicious data. The method was evaluated with different accuracy metrics. The results indicated that DT performed better than the existing approaches with a high degree of accuracy. A study was conducted by Mishra, et al. (2018) for auto fraud detection by using an ML technique. The authors compared three different methods including NB, DT, and RF methods, and the result proved that DT outperformed other methods.
+Kho and Vea (2019) investigated the transaction behavior of credit cardholders to differentiate between normal and abnormal transactions. The authors applied different ML algorithms such as Random Tree (RT) and NB. The methods were evaluated on two synthetic datasets. The results of the evaluation show that RT performed better compared to other methods. Another similar approach to detect fraud in the auto insurance sector was introduced by Subudhi, et al. (2018) by utilizing an adaptive oversampling method. The method was able to delete the imbalance classes from the insurance datasets.
+
+2.5.8	Genetic Algorithm (GA)
+The Genetic Algorithm (GA) draws inspiration from natural evolution (Ravisankar, et al., 2019). It uses a set of suggestions that are often represented as binary strings called chromosomes to search for the best solutions. Genetic programming belongs to the area of evolutionary algorithms that widens the use of genetic methods to support the exploration of computer programs’ space. Many approaches used GA in the literature. For example, Gupta and Gill (2019) employed GA for financial fraud detection in companies. Benchaji et al. (2018) present a new technique for fraud detection in credit card transactions to address the issue of the conventional methods in detecting minority class objects in the imbalanced datasets using the K-means and GA techniques. The authors first employed the K-means method to group and classify the minority instances; then, they applied the GA method in each group to create new instances in order to obtain a new training dataset. In addition, the GA algorithm was also utilized by Özçelik et al. (2020) to provide a solution to these problems of detecting fraudulent credit card transactions. The study was applied to a real-life application project using transactional data from the real world.
+2.5.9	Ensemble Methods
+The ensemble method is a meta-algorithm that combined manifold intelligent techniques into one predictive technique. The main goal of ensemble methods is to address the weakness of the individual models relative to stronger models. Every ensemble technique follows a different purpose; for example, boosting manages to decrease bias, bagging tries to decrease variance and stacking attempts to enhance predictions. Several ensemble techniques were used in several studies. Based on the reviewed articles, random forest (RF) is the most commonly used ensemble technique in the literature (Hajek, et al., 2019). In particular, it outputs the median prediction for regression tasks and the mode of the classes of the single trees in classification problems. A recent study showed that RF performed better than other compared methods (Yao, et al., 2018).
+Bagging, which is also called Bootstrap Aggregating (BA), generates several samples from the training instances with replacements. Based on the reviewed papers, several research studies applied bagging techniques for financial fraud detection (Hajek, et al., 2019). By changing the distribution of the training dataset based on the accuracy of the predecessor, boosting aims to train weak learners serially. One of the popular boosting techniques is AdaBoost, (Randhawa, et al., 2018). AdaboostMI is a multi-instance Adaboost that was used to repetitively execute different distributions of SVM throughout the training dataset and then combined the classifiers into a separate hybrid classifier. Stacking is another ensemble ML method that aggregates different classification or regression models (Ashtiani, et al., 2021). Unlike bagging, which uses samples of the training data, stacking uses the entire dataset and uses models that are typically different from one another.
+2.5.10	Clustering Based Methods
+Clustering is an unsupervised learning method that involves grouping identical instances into the same sets (Malini, et al., 2019). Glancy and Yadav (2019) used text-mining hierarchical clustering to design a financial transaction fraud-detection model. Glancy and Yadav (2019) proposed an approach for financial fraud detection using the text dimension reduction method and document clustering. The authors used the SVDs technique to achieve text dimension reduction. The dual GHSOM technique is created to detect the non-fraud-central spatial hypothesis. The model is capable of detecting the topological patterns of fraudulent financial transactions. Deng and Mei (2019) integrated K-means clustering and SOM to design a clustering-based fraud-detection method. To address the uncertain clustering borders of nodes, which is one of the shortcomings of the SOM, this model additionally applied K-means clustering.
+2.5.11	Logistic Regression
+Logistic regression (LR) techniques are mainly applied in binary and multi-class classification problems (Ravisankar, et al., 2019). It operates by performing regression on a set of variables. It is typically a useful technique for describing patterns and clarifying connections between numerous dependent binary variables. In line with a review article by Abbasi et al. (2020), the logistic regression method is one of the most used machine learning (ML) techniques for detecting financial misstatement models. Based on that review work, the majority of the studies used LR techniques for financial fraud detection. An appropriate technique for identifying characteristics related to fraudulent transaction detection using LR was proposed by Peng and You. (2018) after reviewing published data. The authors compared the predictive ability of the suggested method against other detecting methods. 
+
+2.6	Performance Evaluation Metrics Used for Financial Fraud Detection Using Machine Learning Methods
+To evaluate the performance of a model, the evaluation metric is very important in financial fraud detection. However, there are no specific evaluation measures that are strictly used for evaluating ML techniques for fraud detection (Peng, et al., 2018). In recent times, several performance evaluation metrics have been employed by different researchers that include accuracy, precision, recall, F1 measure, false-negative rate (FNR), the area under the curve (AUC), specificity, etc.
+The model’s accuracy measures how many of the model’s overall predictions were accurate, whereas precision measures how accurate the model’s positive predictions were (HaratiNik, et al., 2020). The percentage of positive cases that the classifier properly detects is known as the recall of a classifier, also known as sensitivity (Kho, et al., 2019). The classifier’s specificity is measured as a ratio of correctly classified negative samples to all negative samples. While it makes sense to increase both recall and precision, the two metrics have an inverse relationship. Lower recall may arise by forcing a higher precision, and vice versa (Awoyemi, et al., 2019). This is referred to as the recall/precision trade-off. The F-score, which is the harmonic mean of the precision and recall, is a better metric to maximize instead (Patil, et al., 2018). It is possible to track the performance change in terms of the trade-off between certain measures such as recall and precision by tweaking the decision threshold value for a classifier. This process of evaluating all confusion matrices that can result from changing the decision threshold is known as parametric evaluation.
+Another metric is the Receiver Operating Characteristic (ROC) curve and the precision– recall curve (Ravisankar, et al., 2018). The area under the ROC curve (AUC) can be used to compare classifiers, with perfect classifiers possessing an AUC equal to 1 and purely random classifiers having an AUC equal to 0.5. Different distance measures, such as the mean squared error (MSE), Euclidean distance, Manhattan distance, and others, are used by clustering algorithms to quantify the similarity or dissimilarity of samples or observations. These algorithms group similar data points based on relevant features. 
+
+
+
+2.7	Feature Extraction
+Feature extraction is the process of building new features out of already existing ones to collect more data. The following are some methods frequently employed for feature extraction in financial transaction data:
+i.Aggregation: The summarization of transaction data over predetermined time periods (e.g., daily, weekly) in order to extract characteristics like the total number of transactions, the average frequency of transactions, or the maximum amount of transactions.
+ii.Time-Based Features: Extraction of temporal data, such as the day of the week, the hour of the day, or the amount of time since the last transaction, using transaction timestamps.
+iii.Statistical Features: Calculating statistical measures of transaction amounts or other pertinent variables, such as mean, standard deviation, and skewness.
+iv.Text mining: The process of extracting terms or patterns from text-based fields, such as transaction descriptions, that may be indicators of fraud.
+
+2.8	Dimensional Reduction
+Methods for reducing the number of characteristics in a dataset while keeping the most crucial data are known as dimensionality reduction techniques. This aids in combating computational complexity and the "curse of dimensionality." Techniques for dimensionality reduction that are frequently employed include:
+i.Using principal component analysis (PCA), the original characteristics are converted into a fresh collection of uncorrelated variables (principal components), which account for most of the variance in the data.
+ii.The supervised dimensionality reduction technique linear discriminant analysis (LDA) maximizes the separation between several classes while minimizing within-class variation.
+iii.t-Distributed Stochastic Neighbor Embedding, or t-SNE a non-linear technique, frequently used for visualization, that maintains the data's local structure while lowering its dimensionality.
+iv.Feature aggregation is the process of taking averages, sums, or other aggregations to combine several related features into a single feature.
+
+2.9	Related Works
+In recent years, there has been a lot of study on applying machine learning algorithms to detect fraud in financial transactions. Various strategies and algorithms have been examined in several researches to increase the precision and effectiveness of fraud detection systems. This section reviews earlier studies and research articles in the field, addressing the benefits and drawbacks of various strategies while identifying the gaps in the body of knowledge that the current study seeks to fill.
+2.9.1	Supervised Learning Approaches
+A fraud detection system based on logistic regression was proposed by Buczak & Guven (2020). The study proved that logistic regression is useful for spotting fraudulent transactions. A popular classification approach called logistic regression predicts the association between input features and the likelihood that a transaction is fraudulent. It is a desirable option for fraud detection systems because of its readability and simplicity.
+Another well-liked supervised learning strategy for fraud detection is decision trees. To categorize occurrences as fraudulent or authentic, decision tree algorithms, such the C4.5 algorithm, build a tree-like model that divides the dataset depending on feature values. Because they can manage non-linear correlations between features and the target variable, decision trees have the advantage of being ideal for identifying intricate fraud patterns.
+The ability of Support Vector Machines (SVMs) to handle high-dimensional data and nonlinear relationships has led to their use in fraud detection as well. SVMs look for an ideal hyperplane that can distinguish between fraudulent and legal transactions with the greatest margin. at dealing with unbalanced datasets, SVMs have shown to perform well at classifying fraudulent transactions.
+Although these supervised learning algorithms are easy to use and interpret, they could have trouble spotting fraud. The complexity of fraud patterns is one of the biggest problems. The techniques used by fraudsters are constantly changing, creating complex and dynamic fraud patterns that these algorithms would find challenging to successfully detect.
+The unbalanced character of fraud datasets—where the proportion of legal transactions is noticeably higher than that of fraudulent transactions—presents another difficulty. The model may be biased toward the majority class (legal transactions) because of unbalanced datasets, which will lead to decreased performance in identifying the minority class (fraudulent transactions).
+Techniques such using the Synthetic Minority Over-sampling Technique (SMOTE), which oversamples the minority class, or under-sampling the majority class have been suggested as solutions to the problem of unbalanced data. These methods seek to improve the identification of fraudulent transactions while balancing the distribution of classes.
+2.9.2	Unsupervised Learning Approaches
+For spotting fraud in numerous domains, unsupervised learning techniques like clustering and anomaly detection have been investigated. The goal of these strategies, which do not require labeled data, is to find patterns and anomalies in the data that may point to fraudulent activity.
+Clustering algorithms were used in a study by Ranshous et al. (2021) to identify fraud. To find clusters of connected fraudulent transactions, the authors used clustering techniques, which made it possible to spot trends and similarities in fraudulent behavior. This method is especially beneficial for identifying innovative or previously unidentified fraud patterns that may not be picked up by predetermined rules or labeled data.
+Unsupervised learning techniques have the advantage of being able to adapt to new fraud methods without relying on labels that have been predetermined. They can find irregularities and patterns in the data that may be signs of fraud. Unsupervised learning techniques face considerable difficulties due to their increased false positive rate when compared to supervised methods. Unsupervised models have a high rate of false positives because they can classify genuine transactions as anomalies or find clusters that include both valid and fraudulent transactions.
+Another drawback is the challenge of identifying specific fraud incidents. While unsupervised learning techniques offer a more comprehensive perspective of fraud tendencies, they could fall short in terms of the level of detail needed to pinpoint fraudulent transactions or the participants. To recognize and authenticate specific fraud cases, more research and analysis are frequently required.
+Hybrid methods that blend supervised and unsupervised techniques have been developed to solve the issues of false positives and the difficulty in identifying specific fraud instances.
+2.9.3	Hybrid Approaches
+In fraud detection research, hybrid systems that blend supervised and unsupervised techniques have gained popularity. These solutions try to take use of the advantages of both tactics while addressing the weaknesses of each, such as high false positive rates or the inability to manage intricate fraud patterns.
+A hybrid fraud detection system with integrated clustering and classification algorithms was proposed by Bhattacharyya et al. (2018). The classification technique was used to separate between fraudulent and valid transactions inside each cluster once the clustering algorithm had identified groups of similar transactions. When compared to employing either strategy alone, our hybrid model showed enhanced fraud detection performance.
+The benefit of hybrid techniques is their capacity for both supervised learning to capture well-known fraud patterns and unsupervised learning to detect new fraud patterns. Hybrid models seek to increase fraud detection accuracy while lowering false positives by incorporating the best features of both approaches.
+However, using hybrid models in practical settings is not without its difficulties. When compared to individual approaches, these models are typically more intricate and computationally intensive. Large-scale implementation may be more difficult because to the need for additional resources and knowledge for the integration and coordination of multiple algorithms.
+2.9.4	Deep Learning Approaches
+Due to their effectiveness in extracting complicated patterns from vast amounts of data, deep learning models, particularly neural networks, have drawn a lot of interest in the field of fraud detection. In a thorough review of data mining-based fraud detection research, Phua et al. (2020) emphasized the efficiency of neural networks in identifying credit card fraud.
+Deep learning methods neural networks have demonstrated exceptional performance in detecting credit card fraud. Even complex fraud patterns that are difficult for people or conventional machine learning algorithms to recognize can be detected by these models, which can automatically learn key attributes and capture them. Deep neural networks may successfully extract high-level representations of the input data by using numerous layers of interconnected nodes (neurons), enabling precise fraud detection.
+However, there are a few things to consider when using deep learning models for fraud detection. First off, for deep learning models to operate at their best, a lot of labelled training data is frequently necessary. In the area of fraud detection, gathering an extensive and precisely annotated dataset might be difficult because fraudulent instances are frequently rarer than valid ones. To lessen the problem of imbalanced datasets, sophisticated sampling techniques and data augmentation approaches might be used.
+Second, training and optimizing deep learning models can be computationally taxing and may call for a lot of processing power. Large datasets and complex neural architectures may require the utilization of specialized hardware or distributed computing resources in order to train models effectively.
+Despite these difficulties, convolutional neural networks and recurrent neural networks are examples of deep learning approaches that have advanced and continue to help fraud detection systems become more effective. The goal of ongoing research is to improve the effectiveness of deep learning models for fraud detection. This includes developing lightweight architectures, model compression methods, transfer learning, and transfer learning methods.
+2.10	Research Gaps
+The current study tries to fill various gaps in the literature despite the advancements made in machine learning-based fraud detection. These gaps include the following:
+i.Limited attention paid to real-time fraud detection: While real-time fraud detection calls for prompt identification and prevention during live transactions, many existing research concentrate on offline analysis of past data.
+ii.Insufficient attention to temporal aspects: Although they frequently go unnoticed, time-dependent characteristics and temporal dependencies in financial transactions are vital for spotting fraud.
+iii.Lack of consideration for interpretability and explainability: To win the trust of stakeholders and meet regulatory obligations, it is crucial to offer explanations and interpretability as machine learning models get increasingly complicated.
+iv.Inadequate analysis of unbalanced datasets: In fraud detection, where there are far fewer cases of fraud than there are of valid transactions, unbalanced datasets are typical. Further research is required to determine how well current approaches perform on data that is unbalanced.
+CHAPTER THREE
+METHODOLOGY
+3.1	Research Approach
+Logistic Regression, Decision Tress and Random Forest and Support Vector Machine (SVM) were machine learning algorithms used to establish the best possible result, and the associated algorithm as well as the applicable hyperparameters. Logistic Regression was used for binary classification tasks and provided interpretable results. Decision trees algorithm was used to capture non-linear relationships and was effective in handling categorical features. Random Forest was used to combine multiple decision trees to improve accuracy and handle complex fraud patterns. The Support Vector Machines algorithm was used to handle high-dimensional data and was effective in separating classes with a clear margin. The framework of the automated fraud detection system is shown in figure 3.1
+
+3.2	Description of the System Architecture
+
+Fig. 3.1: System Architecture
+3.2.1	Data Collection
+Financial institutions collect vast amounts of transaction data from various sources, including customer purchases, locations, transaction times, amounts, and other metadata. Other data might include customer profiles, past transaction history, and known fraudulent transaction patterns. This data is stored securely and updated in real-time, giving the institution a broad dataset to analyze
+3.2.2	Data Preprocessing: Data preprocessing involves the following activities:
+I.Cleaning: Irrelevant or duplicated data is removed to avoid inaccuracies.
+II.Normalization: Transaction amounts, for example, are scaled to a consistent format.
+III.Feature Engineering: Additional features might be created to give the model more contexts, like "average transaction amount" or "typical transaction location."
+3.2.3	Model Selection and Training: Model Selection and Training involves the following activities:
+I.Algorithm Choice: Financial institutions often use supervised learning for fraud detection, where past fraudulent transactions are labeled as "fraud" or "non-fraud."
+II.Training the Model: The model learns from labeled historical data, analyzing patterns that differentiate fraud from non-fraud. For instance, the model learns that high-frequency transactions in unusual locations may be indicative of fraud. Over time, it becomes better at identifying subtle patterns that are difficult for humans to spot.
+3.2.4	Model Evaluation and Tuning: Model Evaluation and Tuning involves the following activities:
+I.Evaluation: The model is tested on a set of unseen data to see how accurately it can detect fraudulent transactions.
+II.Metrics: Performance is assessed using metrics like accuracy, precision, recall, and the model’s ability to minimize false positives (mistakenly flagging legitimate transactions).
+III.Tuning: Model parameters are fine-tuned to optimize performance and reduce the chances of incorrectly flagging legitimate transactions
+3.2.5	Real-Time Deployment: The trained fraud detection model is deployed into the bank’s real-time transaction monitoring system. When a customer makes a transaction, the model quickly analyzes it and assigns a "fraud score" based on the likelihood that the transaction is fraudulent
+3.2.6	Action and Notification: If the fraud score exceeds a certain threshold, the bank can take immediate action, such as temporarily blocking the transaction, sending a notification to the customer to verify the transaction or flagging the account for further review by a fraud investigation team. For lower scores, the transaction proceeds normally without disruption
+3.2.7	Continuous Learning and Improvement: Model Evaluation and Tuning involves the following activities:
+I.Feedback Loop: Customer responses (e.g., confirming or denying the flagged transaction) are fed back into the system, helping the model improve over time.
+II.Model Retraining: Periodically, the model is retrained with new data, which may include recent fraud patterns, allowing it to adapt to emerging types of fraud and improve its accuracy
+
+
+3.3	Data Analysis 
+The dataset used for the research is a synthetic dataset generated for the purpose of this study. It contains information about financial transactions, including transaction IDs, customer IDs, transaction amounts, transaction timestamps, regions, states, customer categories, and account balances. The dataset consists of 10000 records and includes characteristics such as geographical information, customer profiles, and transaction details.
+3.4	Preprocessing Steps
+Before applying machine learning algorithms for fraud detection, several preprocessing steps were employed to clean and transform the data. These steps are as follows:
+I.Handling missing values: Identify and handle any missing values in the dataset, either by imputing them or removing the corresponding records.
+II.Data normalization: Scale numerical features such as transaction amounts and account balances to a common range to ensure they have a similar impact during model training.
+III.Encoding categorical variables: Convert categorical variables like regions, states, and customer categories into numerical representations using techniques like onehot encoding or label encoding.
+IV.Feature selection: Identify and select the most relevant features that contribute significantly to fraud detection, considering their impact and reducing computational complexity.
+
+
+
+3.5	Exploratory Data Analysis 
+Data visualization can be a valuable step to gain insights into the dataset and understand its characteristics. Visualization techniques applied were:
+I.Histograms: Plotting histograms can provide an overview of the distribution of numerical features such as transaction amounts and account balances.
+II.Bar plots: Visualizing categorical variables like regions, states, and customer categories using bar plots can help understand their frequency distribution.
+III.Scatter plots: Plotting transaction amounts against account balances can reveal potential patterns or outliers.
+IV.Heatmaps: Using a heatmap, correlations between different features can be explored, which can help identify relationships and potential predictors of fraud.
+By visualizing the data, it becomes easier to identify any anomalies, outliers, or patterns that may require further investigation or preprocessing before training the machine learning models.
+
+3.6	Feature Engineering and Dimensionality Reduction 
+The specific properties of the financial transaction data and the goals of fraud detection should be aligned with the chosen feature engineering approaches and dimensionality reduction techniques. The following methods were adopted:
+I.Feature Selection: By focusing on the most crucial elements that helped with fraud detection, we scanned through the data to identify noise. This lessened the possibility of overfitting while also enhancing the model's accuracy and interpretability.
+II.Feature Extraction: Transaction data frequently contains important information that may not be readily captured by the raw features. This is known as feature extraction. Meaningful representations and identify significant fraud-related patterns or trends were created.
+III.Dimensionality reduction: Datasets related to financial transactions may be highly dimensional, which increases computing complexity and raises the possibility of overfitting. Methods for dimensionality reduction reduced the number of features while retaining the most important data, which helped to solve these problems. 
+The trade-off between model performance and interpretability were considered while choosing certain strategies. Higher predicted accuracy may be obtained using more sophisticated approaches like deep learning or ensemble methods, but they may also be more difficult to comprehend. To balance model complexity, interpretability, and computing efficiency, one must consider both the resources at hand as well as the needs of the fraud detection system.
+
+3.7	Solution Deployment 
+Deploying the machine learning models for fraud detection in a production setting comes next after they have been trained and assessed. Model Serialization was applied for algorithm deployment. A format was created to make it simple to load and use the trained machine learning models during deployment by serializing them. Pickle files, joblib files, or serialized representations particular to the machine learning framework of choice are examples of common formats. The final machine learning model was deployed to a local device on which simulates the on-premise scenario.
+CHAPTER FOUR
+RESULTS AND IMPLEMENTATION
+4.1	Research Approach
+The fraud detection model was implemented and deployed using the following deployment options considering the infrastructure and needs:
+I.On-Premises Deployment: Setting up the models on the organization's own local servers or infrastructure.
+II.Cloud Deployment: Hosting the models on cloud infrastructure like AWS, Azure, or Google Cloud.
+III.Containerization: Packing the models into containers for scalability and simple deployment (like Docker).
+IV.Serverless Deployment: This method involves deploying the models as functions using serverless platforms (such as AWS Lambda and Google Cloud Functions). 
+
+4.2	Choice of Programming Language
+The fraud detection system was developed front-end technologies and Python, and the analysis was documented in a Jupyter notebook. Standard python libraries were used to conduct different analyses. Sklearn was used for machine learning tasks. Seaborn was used to generate charts and visualizations. Pandas library was used for reading and transforming the data
+
+
+4.2.1 Front-End (Html, CSS, Javascript)
+The login screen, user dashboard, transaction history and other functional elements as defined by HTML act as building blocks for a web page through which content and layout are structured, providing a semantic foundation for the application. The backend of this project utilizes PHP with the Codeigniter 3 Framework due to its object-oriented nature, which allows for cleaner and more organized code through the use of classes. For the frontend, HTML5, CSS3, JavaScript, and jQuery were employed to create a user-friendly interface. MYSQL was chosen as the database management system for its reliability and widespread use. Visual Studio Code serves as the Integrated Development Environment (IDE) for coding and testing purposes.
+CSS styles the UI elements, bringing visual appeal and ensuring a consistent user experience across different devices (phones, tablets, desktops). Responsive design techniques are needed to accommodate various screen sizes and resolutions.
+JavaScript handles user interactions with the application’s interface. This includes handling button clicks, form submissions, and any real-time updates within the UI. Importantly, JavaScript plays a vital role in validating user input on the front-end to prevent basic errors before data reaches the back-end.
+
+4.2.2	Python Programming Language
+Python is a versatile and widely-used programming language known for its simplicity, readability, and extensive libraries. Python supports a wide range of applications, including web development and data analysis. Its versatility makes it an ideal choice for implementing various components of the fraud detection system, such as the backend logic, user interface, and integration with machine learning frameworks. Python has a rich ecosystem of libraries and frameworks.
+
+4.3	API Development 
+To expose the deployed models, a microservice or an API endpoint was created. This made it possible for other programs or systems to communicate with fraud detection models and make predictions. Transaction data are accepted as input by the API, which should then output estimated fraud probability or binary labels.
+ 
+4.4	Scalability and Effectiveness
+The system was developed to allow increasing transaction volumes in real-time. To increase performance and scalability, strategies like load balancing, caching, and parallel processing are suggested. 
+4.5	Monitoring and Logging Systems 
+Implementing monitoring and logging systems to keep tabs on the operation and behaviour of the deployed models entails logging all input information, forecasts, and runtime faults or exceptions. Continuous improvement is made possible via monitoring, which helps find any drift in model performance over time.
+
+
+4.6	Security Consideration
+Applying the proper security precautions to safeguard the deployed models and the data they analyse. Access controls, encryption of sensitive data, and frequent security audits may all be necessary for this. 
+4.7	Versioning and Updates
+Versioning mechanism for the deployed models was created to keep track of changes and simplify future updates. To adapt to changing fraud tendencies, automated pipelines are suggested for model updates and retraining. 
+4.8	A/B Testing and Evaluation
+A/B testing was performed to compare the performance of the deployed models against a baseline or alternative approaches. Continuous evaluation of the effectiveness of the deployed models using relevant metrics including precision, recall, and F1-score was carried out.
+4.9	Continuous Improvement
+Feedback loops were incorporated to collect labelled data on detected fraud cases and use it to improve the models. This iterative process helps enhanced the accuracy and effectiveness of the fraud detection system over time.
+
+4.10	System Requirements
+4.10.1 Hardware Requirements
+  The hardware requirements include: 
+i.Processor: Pentium (iv), 2.6 GHz or above
+ii.Hard Disk Drive: 4 GB or above
+iii.Monitor: LCD or CRT as softcopy display
+iv.Keyboard: standard keyboard (PS/2)
+v.Mouse: Better optical
+vi.RAM: 4 GB and above recommended
+
+  4.10.2	Software Requirements
+i.Apache version: apache 2.0.58
+ii.Python 3.1.4
+iii.MySQL version 5.0.22
+iv.Operating System: Windows, Mac OS or Linux
+v.Web Browser: Latest version of a known browser (Chrome, Firefox)
+vi.XAMPP (for local testing)
+
+
+
+
+
+
+
+
+
+
+4.11	Simulation Results
+
+Fig. 4.1: Sign up page
+              
+Fig. 4.2: Create transaction pin page
+
+Fig. 4.3: Enroll fingerprint page
+
+
+Fig. 4.4: Login page
+
+Fig. 4.5: User dashboard
+
+Fig. 4.6: Transfer page
+
+
+Fig. 4.7: Authenticating transfer with fingerprint
+
+Fig. 4.8 Dashboard with transaction history
+
+
+
+4.12	Results Discussion
+We analyzed the financial transactions data and developed a machine learning model to detect fraud. The analysis included data cleaning, exploratory analysis and predictive modeling. In the data cleaning, we checked for missing values, converted data types and summarized the variables in the data. In an exploratory analysis, we looked at the class imbalance, and deep-dived into each of the variables, in particular transaction type, transaction amount, balance and time step. We identified derived variables that can help with fraud detection. We also plotted various graphs to better visualize the data and come up with insights. In predictive modeling, we experimented with Logistic Regression and Random Forest algorithms. We observed that Random Forest performs best for this application with almost 100% precision and recall scores. We tried to improve the logistic regression results by undersampling, but the results were the same because of a lot of the data is excluded. We ensured that there is no overfitting in the models through cross-validation. We can conclude that fraud detection in financial transactions is successful in this labeled dataset, and the best algorithm for this purpose is Random Forest.
+
+Fig. 4.9a: Random Forest - Train Confusion Matrix
+
+
+Fig. 4.9b: Random Forest - Test Confusion Matrix
+
+
+Fig. 4.10: Random Forest Model Forest Importance
+
+
+Fig. 4.11: ROC curve of Random Forest Model
+
+
+
+
+
+
+
+
+
+
+
+CHAPTER FIVE
+SUMMARY AND CONCLUSION
+5.1	Summary
+Financial Fraud can be committed in different financial aspects such as insurance, banking, taxation, and corporate sectors. Recently, financial fraud has become increasingly worrisome among companies and industries. Despite several efforts to eradicate financial fraud, its persistence adversely affects the economy and society as very large amounts of money are lost to fraud every day. With the advent of artificial intelligence, machine-learning-based approaches can be used intelligently to detect fraudulent transactions by analyzing a large number of financial data. In this work, we presented a study that systematically reviewed and synthesized the existing literature on ML-based fraud detection. We successfully developed a framework for detecting fraudulent transactions in financial data. This framework will help understand the nuances of fraud detection such as the creation of derived variables that may help separate the classes, addressing class imbalance and choosing the right machine learning algorithm. We experimented with two machine learning algorithms – Logistic Regression and Random Forest. The Random Forest algorithm gave far better results than Logistic Regression indicating tree-based algorithms work well for transactions data with welldifferentiated classes. This also emphasizes the usefulness of conducting rigorous exploratory analysis to understand the data in detail before developing machine learning models. Through this exploratory analysis, we derived a few features that differentiated the classes better than the raw data. 
+
+
+5.2	Conclusion
+This study examined two machine learning algorithms – Logistic Regression and Random Forest to deal with this pressing issue as it pertained to financial transaction fraud detection and prevention. In order to identify fraudulent activity, the study looked at the usage of supervised learning algorithms, unsupervised learning algorithms, and hybrid approaches. In addition, the capacity to recognize intricate fraud patterns was tested for deep learning models, notably neural networks. The study also stressed the significance of incorporating machine learning models into real-time monitoring to create a reliable fraud detection system.
+
+5.3 Contributions to Academic Knowledge
+The research's conclusions showed that each machine learning model had advantages and disadvantages. While demonstrating interpretability and ease of use, supervised learning methods such as logistic regression and decision trees struggled with complicated fraud patterns and unbalanced datasets. Clustering and anomaly detection are two unsupervised learning approaches that excel at spotting novel or undiscovered fraud trends but have a high rate of false positives and are unable to identify specific fraud instances. Although hybrid approaches sought to integrate the best features of both supervised and unsupervised techniques, their complexity and processing requirements made large-scale deployment difficult. By extracting complex patterns from enormous volumes of data, Random Forest showed promise in the detection of fraud. For efficient training, they needed a lot of labeled data and processing power.
+
+
+REFERENCES
+[1] Abbasi, A., Albrecht, C., Vance, A. & Hansen, J. (2020). Metafraud: A meta-learning framework for detecting financial fraud. Mis Q. 2020, 36, 1293–1327. 
+[2] Alsuwailem, A., Salem, E. & Saudagar, A. (2023). Performance of Different Machine Learning Algorithms in Detecting Financial Fraud. Computational Economics, 62(4), 1631-1667.
+[3] Albashrawi, M. (2020). Detecting Financial Fraud Using Data Mining Techniques: A Decade Review from 2022 to 2015. J. Data Sci. 2020, 14, 553–570. 
+[4] Al-Hashedi, K. & Magalingam, P. (2021). Financial fraud detection applying data mining techniques: A comprehensive review from 2009 to 2019. Comput. Sci. Rev. 2021, 40, 100402. 
+[5] Alwadain, A., Ali, R. & Muneer, A. (2023). Estimating Financial Fraud through Transaction-Level Features and Machine Learning. Mathematics, 11(5), 1184.
+[6] Anbarasi, M. & Dhivya, S. (2019). Fraud detection using outlier predictor in health insurance data. In Proceedings of the 2019 International Conference on Information Communication and Embedded Systems (ICICES), Chennai, India, 23–24 February 2017; pp. 1–6.
+[7] Ashtiani, M. & Raahemi, B. (2021). Intelligent Fraud Detection in Financial Statements Using Machine Learning and Data Mining: A Systematic Literature Review. IEEE Access 2021, 10, 72504–72525. [CrossRef]
+[8] Awoyemi, J., Adetunmbi, A. & Oluwadare, S. (2019) Credit card fraud detection using machine learning techniques: A comparative analysis. In Proceedings of the 2019 international conference on computing networking and informatics (ICCNI), Ota, Nigeria, 29–31 October 2019; pp. 1–9. [CrossRef]
+[9] Bauder, R., Khoshgoftaar, T., Richter, A. & Herland, M. (2019) Predicting Medical Provider Specialties to Detect Anomalous Insurance Claims. In Proceedings of the 2019 IEEE 28th International Conference on Tools with Artificial Intelligence (ICTAI), San Jose, CA, USA, 6–8 November 2019; pp. 784–790.
+[10] Behera, T. & Panigrahi, S. (2019) Credit Card Fraud Detection: A Hybrid Approach Using Fuzzy Clustering & Neural Network. In Proceedings of the 2019 Second International Conference on Advances in Computing and Communication Engineering, Dehradun, India, 1–2 May 2019; pp. 494–499.
+[11] Benchaji, I., Douzi, S. & ElOuahidi, B. (2018). Using Genetic Algorithm to Improve Classification of Imbalanced Datasets for Credit Card Fraud Detection. In Proceedings of the International Conference on Advanced Information Technology, Services and Systems, Mohammedia, Morocco, 17–18 October 2018; pp. 1–5. [CrossRef]
+[12] Bhattacharyya, D., Kalaimannan, E., & Verma, A. (2018). Anomalous Pattern Detection in Enterprise Data Using Hybrid Classification and Clustering Techniques. Procedia Computer Science, 132, 1066-1075. DOI: 10.1016/j.procs.2018.05.110.
+[13] Bhusari, V. & Patil, S. (2018). Study of Hidden Markov Model in credit card fraudulent detection. In Proceedings of the 2018 World Conference on Futuristic Trends in Research and Innovation for Social Welfare (Startup Conclave), Coimbatore, India, 29 February–1 March 2018; pp. 1–4.
+[14] Bouchti, E., Chakroun, A., Abbar, H. & Okar, C. (2020). Fraud detection in banking using deep reinforcement learning. In Proceedings of the 2020 Seventh International Conference on Innovative Computing Technology (INTECH), Luton, UK, 16–18 August 2020; pp. 58–63
+[15] Buczak, A. L., & Guven, E. (2020). A Survey of Data Mining and Machine Learning Methods for Cyber Security Intrusion Detection. IEEE Communications Surveys & Tutorials, 18(2), 1153-1176. DOI: 10.1109/COMST.2015.2494502
+[16] Carta, S., Fenu, G., Recupero, D. (2019). Saia, R. Fraud detection for E-commerce transactions by employing a prudential Multiple Consensus model. J. Inf. Secur. Appl. 2019, 46, 13–22. [CrossRef]
+[17] Case, B. (2018). Recognizing Debit Card Fraud Transaction Using CHAID and K-Nearest Neighbor: Indonesian Bank case. In Proceedings of the 2018 11th International Conference on Knowledge, Information and Creativity Support Systems (KICSS), Yogyakarta, Indonesia, 10–12 November 2018.
+[18] Chaquet-ulldemolins, J., Moral-rubio, S. & Muñoz-romero, S. (2022) On the Black-Box Challenge for Fraud Detection Using Machine Learning (II): Nonlinear Analysis through Interpretable Autoencoders. Appl. Sci. 2022, 12, 3856. [CrossRef]
+[19] Chethana, C., & Pareek, P. K. (2023). Analysis of Credit Card Fraud Data Using Various Machine Learning Methods. Big Data, Cloud Computing and IoT: Tools and Applications.
+[20] Craja, P., Kim, A. & Lessmann, S. (2020) Deep learning for detecting financial statement fraud. Decis. Support Syst. 2020, 139, 113421. [CrossRef]
+
+APPENDIX
+(SOURCE CODE)
+Registration
+<?php
+ session_start();
+if (isset($_SESSION["user"])){
+    header("Location: login.php");
+} 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <script src="../Banking-Wallet/sweetalert2/jquery-3.7.1.js"></script>
+    <script src="../Banking-Wallet/sweetalert2/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+   
+</head>
+<body>
+<?php
+
+if(isset($_POST['submit'])){
+    $fullName = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $passwordRepeat = $_POST['repeat_password'];
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+    if(empty($fullName) OR empty($email) OR empty($password) OR empty($passwordRepeat)){
+      ?>
+
+      <script>
+
+          Swal.fire({
+            title: "Empty Fields...",
+            text: "All fields are required!",
+            icon: "error",
+            button: 'error',
+            confirmButtonText: 'OK'
+})
+
+      </script>
+
+      <?php
+    };
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+      ?>
+
+        <script>
+
+        Swal.fire({
+          title: "Invalid Email...",
+          text: "Provide a valid email address!",
+          icon: "error",
+          button: 'error',
+          confirmButtonText: 'OK'
+        })
+
+        </script>
+
+      <?php
+    }; 
+    if (strlen($password)< 8){
+
+      ?>
+       <script>
+
+          Swal.fire({
+            title: "Weak Password...",
+            text: "Password must be at least 8 characters long!",
+            icon: "error",
+            button: 'error',
+            confirmButtonText: 'OK'
+          })
+
+          </script>
+
+      <?php
+    }
+    if ($password != $passwordRepeat){
+      ?>
+      <script>
+
+         Swal.fire({
+           title: "Incorrect Password...",
+           text: "Password must match!",
+           icon: "error",
+           button: 'error',
+           confirmButtonText: 'OK'
+         })
+
+         </script>
+
+     <?php
+    }
+    require_once "database.php";
+    $sql = "SELECT * FROM users WHERE email = '$email'";
+    $result = mysqli_query($conn, $sql);
+    $rowCount = mysqli_num_rows($result);
+    if($rowCount>0){
+      ?>
+      <script>
+
+         Swal.fire({
+           title: "Email already Exist",
+           text: "Login instead!",
+           icon: "error",
+           button: 'error',
+           confirmButtonText: 'OK'
+         })
+
+         </script>
+
+     <?php
+    }
+
+    else{
+    
+      $sql = "INSERT INTO users (full_name, email, password) VALUES (?, ?, ?)";
+      $stmt = mysqli_stmt_init($conn);
+      $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
+      if ($prepareStmt){
+        mysqli_stmt_bind_param($stmt, "sss", $fullName, $email, $passwordHash);
+        mysqli_stmt_execute($stmt);
+
+        ?>
+ <script>
+
+Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Sign Up Successful",
+  showConfirmButton: false,
+  timer: 1500
+});
+      
+        
+
+</script>
+        <?php
+
+header("Location: create-pin.php");
+      }else{
+        die ("someggtyujkfyjfyujvh");
+      }
+    }
+} 
+
+?>
+<div id="logo"> 
+        <h1><i> POCKET VAULT </i></h1>
+      </div> 
+      <section class="stark-login">
+        
+        <form action="registration.php" method="post">  
+          <div id="fade-box">
+            <input type="text" name="username" id="username" placeholder="Full Name">
+              <input type="email" name="email" placeholder="Email">
+              <input type="password" name="password" placeholder="Password">
+              <input type="password" name="repeat_password" placeholder="Repeat Password">
+
+              <div id="buttons">
+                <button name="submit" type="submit" value="SignUp">Sign Up </button> 
+                <div class="login-content"><a href="login.php" class="login">Log in instead</a></div>
+                
+                <!-- <button type="submit" href="login.php">Log In Instead </button> --> 
+              </div>
+                
+                
+              </div>
+            </form>
+            <div class="hexagons">
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <br>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <br>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span> 
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  
+                  <br>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <br>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                    </div>      
+                  </section> 
+                  
+                  <div id="circle1">
+                    <div id="inner-cirlce1">
+                      <h2> </h2>
+                    </div>
+                  </div>
+                  
+                  
+                  
+                  <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                   <?php
+                 // include('includes/script.php')
+                  ?> 
+    <!-- <div class="container">
+        <form action="registration.php" method="post">
+            <div class="form-group">
+                <input type="text" name="fullname" placeholder="Full Name">
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input type="text" name="repeat_password" placeholder="Repeat Password">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" name="submit">
+            </div>
+            
+        </form>
+    </div> -->
+</body>
+</html>
+
+logout.php
+<?php 
+session_start();
+session_destroy();
+header("Location: login.php");
+?>
+
+login.php
+<?php
+ session_start();
+if (isset($_SESSION["user"])){
+    header("Location: index.php");
+} 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <script src="../Banking-Wallet/sweetalert2/jquery-3.7.1.js"></script>
+    <script src="../Banking-Wallet/sweetalert2/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <?php
+
+    if(isset($_POST["login"])){
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        require_once "database.php";
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $result = mysqli_query($conn, $sql);
+        $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($user){
+            if (password_verify($password, $user["password"])){
+                session_start();
+                $_SESSION["user"] = "yes";
+                header("Location: index.php");
+                
+            }else{
+                ?>
+      <script>
+
+          Swal.fire({
+            title: "Error!",
+            text: "Invalid email or incorrect password!",
+            icon: "error",
+            button: 'error',
+            confirmButtonText: 'OK'
+})
+
+      </script>
+
+      <?php
+                
+            }
+        }else{
+            ?>
+
+      <script>
+
+          Swal.fire({
+            title: "Error!",
+            text: "Invalid email or incorrect password!",
+            icon: "error",
+            button: 'error',
+            confirmButtonText: 'OK'
+})
+
+      </script>
+
+      <?php
+        }
+    }
+    ?>
+
+<div id="logo"> 
+        <h1><i> POCKET VAULT </i></h1>
+      </div> 
+      <section class="stark-login">
+        
+        <form action="login.php" method="post"> 
+          <div id="fade-box">
+            <input type="text" name="email" id="email" placeholder="Email">
+              <input type="password" name="password" placeholder="Password">
+                
+              <div id="buttons"> 
+              <button name="login" type="submit" value="login">Log In</button>
+              
+
+             <!--  <button>Sign Up Instead</button> -->
+              <div class="signup-content"><a href="registration.php" class="signup">Sign Up instead</a></div>
+             
+             
+              
+                
+              </div> 
+                 
+              </div>
+            </form>
+            <div class="hexagons">
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <br>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <br>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span> 
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  <span>&#x2B22;</span>
+                  
+                  <br>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <span>&#x2B22;</span>
+                    <br>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                      <span>&#x2B22;</span>
+                    </div>      
+                  </section> 
+                  
+                  <div id="circle1">
+                    <div id="inner-cirlce1">
+                      <h2> </h2>
+                    </div>
+                  </div>
+                  
+                  
+                  
+                  <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                                
+</body>
+</html>
+
+index.php
+<?php
+ session_start();
+if (!isset($_SESSION["user"])){
+    header("Location: login.php");
+} 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">  -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://kit.fontawesome.com/d392d081a4.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <section class="stark-login">
+        <div class="inner-container">
+            <div class="top-bar">
+                <div class="col logo"><h1><i>POCKET VAULT</i></h1></div>
+                <div class="col welcome-user">Welcome User</div>
+            </div>
+
+            <div class="account-balance">
+                <p class="account-balance-statement">account balance</p>
+                <div id="balance"><span>&#8358;</span> 0.00</div>
+
+                 
+            </div>
+            <div class="activities">
+
+                <div class="working-activities">
+
+                    <div class="deposit">
+                        <button class="open-deposit"><i class="fa-solid fa-money-bill"></i><br>Deposit</button>
+                           
+                    </div>
+
+
+
+
+
+                    <div class="deposit">
+                        <button class="open-transfer"><i class="fa-solid fa-money-bill-transfer"></i><br>Transfer</button>
+                        <!-- <div class="transfer-content">
+                            <span class="close-transfer">&times;</span>
+                            <div class="pop-up-details">
+                                <form id="transferForm">
+                                    <label for="transferAmount">Transfer Amount:</label>
+                                    <input type="number" id="transferAmount" min="0" required>
+                                    <label for="recipient">Recipient Account:</label>
+                                    <input type="text" id="recipient" required>
+                                    <label for="transferPin">PIN:</label>
+                                    <input type="password" id="transferPin" required>
+                                    <button type="submit">Transfer</button>
+                                  </form>
+                        </div> -->
+                    </div>
+
+                    <div class="deposit">
+                       <button class="open-pay-bill"><i class="fa-solid fa-money-bill"></i><br>Pay Bills</button>
+                        <!-- <div class="pay-bill-content">
+                            <span class="close-pay-bill">&times;</span>
+                            <div class="pop-up-details">
+                                form id="withdrawForm">
+                                <label for="withdrawAmount">Pay Bills:</label>
+                                <input type="number" id="withdrawAmount" min="0" required>
+                                <label for="withdrawPin">PIN:</label>
+                                <input type="password" id="withdrawPin" required>
+                                <button type="submit">Pay Bills</button>
+                              </form>
+                        </div>-->
+                    </div> 
+                </div>
+
+
+                <div class="working-activities">
+                    
+                    <div class="deposit nonworking">
+                        <button><i class="fa-solid fa-money-bill"></i><br>Loan</button></a>
+                    </div>
+                    <div class="deposit nonworking">
+                        <button><i class="fa-solid fa-chart-simple"></i><br>FX Transfer</a></a>
+                    </div>
+                    <div class="deposit nonworking">
+                        <div class="logout-content">
+                        <a href="logout.php" class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i><br>logout</a>
+                        </div>
+                        <!-- <button type="button" href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i><br>Log Out</button></a> -->
+                    </div>
+                    
+                </div>
+    
+            </div>
+
+
+            <!-- pop-up-details -->
+
+<div class="deposit1-container" id="deposit1">
+            <div class="deposit-content">
+                <span class="close-deposit">&times;</span>
+                <div class="pop-up-details">
+                    <h1 class="heading">DEPOSIT</h1>
+                    <form id="depositForm">
+                        <label for="depositAmount"><br></label>
+                        <input type="number" id="depositAmount" min="0" placeholder="Enter Amount" required><br>
+                        <button type="submit">Deposit</button>
+                      </form>
+            </div>
+        </div>
+        </div>
+
+<div class="deposit2-container" id="deposit2">
+
+    <div class="transfer-content">
+        <span class="close-transfer">&times;</span>
+        <div class="pop-up-details">
+            <h1 class="heading">TRANSFER</h1>
+            <form id="transferForm">
+                <label for="transferAmount"></label>
+                <input type="number" id="transferAmount" min="0" placeholder="Transfer Amount" required>
+                <label for="recipient"></label>
+                <input type="text" id="recipient" placeholder="Recipient Account" required>
+                <label for="transferPin"></label>
+                <input type="password" id="transferPin" placeholder="PIN" required>
+                <button type="button" class="open-finger">Authenticate Fingerprint</button>
+                <button type="submit">Transfer</button>
+              </form>
+    </div>
+</div>
+</div>
+
+<div class="deposit3-container" id="deposit3">
+    <div class="pay-bill-content">
+        <span class="close-pay-bill">&times;</span>
+        <div class="pop-up-details">
+            <h1 class="heading">PAY BILLS</h1>
+            <form id="withdrawForm">
+            <label for="withdrawAmount"></label>
+            <input type="number" id="withdrawAmount" min="0" placeholder="Enter amount for Electricity" required>
+            <label for="withdrawPin"></label>
+            <input type="password" id="withdrawPin" placeholder="PIN" required>
+            <button type="submit">Pay Bills</button>
+          </form>
+    </div>
+</div>
+</div>
+
+//fingerprint
+<div class="container">
+<div class="center" id="finger-container">
+    
+    <svg class="fingerprint" xmlns="http://www.w3.org/2000/svg" viewBox="-1.5 -1.5 136.63 136.56" width="136.63" height="136.56">
+        <path class="original" d="M74.79 8.76C34.79 5.41 8.15 33.6 8.2 67.06c.02 9.4 4.71 18.2-3.08 26.3M95.66 6.84C64.75-6.62 35.16-.37 12.83 27.07m92.5-14.8c18.89 14.55 28.33 31.7 28.3 55.56M7.33 36.48C-.21 51.34-1.78 65.35 1.96 82.91m15.46-24.84c11.03-56.46 92.3-55.76 99.67 4.91M49 29.02c16.4-7.37 31.33-5.39 44.7 5.88m-9.5-23.96c34.23 11.28 46.91 41.4 41.55 86.97M19.31 114.08c5.28-4.5 10.26-10.33 12.77-17.5m-5.93 22.53c15.22-12.49 18.45-31.24 16.52-44.59-5.3-27.22 16.68-33.82 26.82-32.75m-60.06 59c13.42-12.83 7.13-24.08 7.23-32.41m-2.3 39.33C42.6 79.8 7.64 65.8 40.34 34.52m.44 93.96a60.94 60.94 0 0 0 14.6-22.67M33.32 124.1c13.22-12.7 20.85-31.39 17.7-50.9m18.23 60.37c7.88-12.08 13-25.79 15.32-41.2m.55-9.96c2.77-42.91-32.4-36.83-34.59-18.61m63.56 50.8c3.44-14.48 5.28-28.43 4.18-41.01m-27.51 55.7c3.05-6.22 6.01-13.64 7.48-20.15m3.93 14.49c11.26-26.47 9.82-68.08-1.45-81.57m-51.14 89.23c15.1-16.79 21.81-39.44 17.4-64.39m-8.1 66.06c21.14-28.19 18.43-54.84 16.26-66.68-2.17-11.83-16.63-9.3-16.27 1.18.37 10.48 2.53 14.1-.36 27.83m21.1 37.03c20.46-36.82 16.97-79.29-.42-87.57m20.9 55.5c15.34-83.72-60.42-79.88-66.48-38.07-1.34 12.78 2.22 14.56.76 25.71" fill="none" stroke-width="3" stroke="#ddd" stroke-linecap="round" stroke-miterlimit="3"/>
+        <linearGradient id="a" x1="49.4%" y1="-3.33%" x2="49.87%" y2="102.85%">
+          <stop offset="0%" stop-color="#b279f7"/>
+          <stop offset="90%" stop-color="#4b52db"/>
+        </linearGradient>
+        <path class="clone" d="M74.79 8.76C34.79 5.41 8.15 33.6 8.2 67.06c.02 9.4 4.71 18.2-3.08 26.3M95.66 6.84C64.75-6.62 35.16-.37 12.83 27.07m92.5-14.8c18.89 14.55 28.33 31.7 28.3 55.56M7.33 36.48C-.21 51.34-1.78 65.35 1.96 82.91m15.46-24.84c11.03-56.46 92.3-55.76 99.67 4.91M49 29.02c16.4-7.37 31.33-5.39 44.7 5.88m-9.5-23.96c34.23 11.28 46.91 41.4 41.55 86.97M19.31 114.08c5.28-4.5 10.26-10.33 12.77-17.5m-5.93 22.53c15.22-12.49 18.45-31.24 16.52-44.59-5.3-27.22 16.68-33.82 26.82-32.75m-60.06 59c13.42-12.83 7.13-24.08 7.23-32.41m-2.3 39.33C42.6 79.8 7.64 65.8 40.34 34.52m.44 93.96a60.94 60.94 0 0 0 14.6-22.67M33.32 124.1c13.22-12.7 20.85-31.39 17.7-50.9m18.23 60.37c7.88-12.08 13-25.79 15.32-41.2m.55-9.96c2.77-42.91-32.4-36.83-34.59-18.61m63.56 50.8c3.44-14.48 5.28-28.43 4.18-41.01m-27.51 55.7c3.05-6.22 6.01-13.64 7.48-20.15m3.93 14.49c11.26-26.47 9.82-68.08-1.45-81.57m-51.14 89.23c15.1-16.79 21.81-39.44 17.4-64.39m-8.1 66.06c21.14-28.19 18.43-54.84 16.26-66.68-2.17-11.83-16.63-9.3-16.27 1.18.37 10.48 2.53 14.1-.36 27.83m21.1 37.03c20.46-36.82 16.97-79.29-.42-87.57m20.9 55.5c15.34-83.72-60.42-79.88-66.48-38.07-1.34 12.78 2.22 14.56.76 25.71" fill="none" stroke-width="3" stroke="url(#a)" stroke-linecap="round" stroke-miterlimit="3" stroke-dasharray="178" stroke-dashoffset="178"/>
+    </svg>
+    <svg class="icon-success" viewBox="0 0 76 76">
+        <circle cx="38" cy="38" r="36" fill="#66bb6a"></circle>
+        <path fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="56" stroke-dashoffset="56" d="M17.7,40.9l10.9,10.9l28.7-28.7"></path>
+    </svg>
+
+    <div class="scan">Click and hold to scan your finger</div>
+    <div class="scan-success">Enrolled Sucessfully</div>
+
+ </div> 
+ </div>
+        
+            
+
+            <h2>TRANSACTION HISTORY</h2>
+            <ul id="transactionList"></ul>
+
+
+
+
+
+
+        </div>
+       <script src="js/script.js"></script>
+     
+        </section>
+        
+</body>
+</html>
+database.php
+<?php
+
+$hostName = "localhost";
+$dbUser = "root";
+$dbPassword = "";
+$dbName = "login_register";
+
+$conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
+
+if (!$conn) {
+    die("something went wrong");
+}
+
+
+
+
+
