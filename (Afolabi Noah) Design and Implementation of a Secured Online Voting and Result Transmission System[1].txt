@@ -1,0 +1,1310 @@
+
+DESIGN AND IMPLEMENTATION OF A SECURED ONLINE VOTING AND RESULT TRANSMISSION SYSTEM 
+
+BY
+
+AFOLABI NOAH 
+     IP/23/ND/CS/0017
+
+BEING A PROJECT SUBMITTED TO THE DEPARTMENT OF COMPUTER SCIENCE, INSPIRE POLYTECHNIC, EGBEDA, LAGOS
+
+
+IN PARTIAL FULFILLMENT OF THE REQUIREMENTS FOR THE AWARD OF NATIONAL DIPLOMA (ND) IN COMPUTER SCIENCE
+
+
+
+MAY, 2025
+
+
+CERTIFICATION
+
+This is to certify that this report, “Design and Implementation of a Secured Online Voting and Result Transmission System” was carried out by Afolabi Noah with matric number IP/23/ND/CS/0017 in the department of Computer Science under my supervision.
+
+
+
+…………………………………….					………………….....                                            
+          Mr. Paramole, I.A							 Date   
+            Project Supervisor                                                                                                           
+
+
+
+………………………………………				………………….....
+              Dr. Oloyede, A.O				                                      Date
+         	HOD, Computer Science						
+
+
+
+………………………………………..				………………….....    
+          Dr. Oloyede, A.O					              	Date
+          Director of Studies
+
+
+
+
+
+
+
+
+
+DEDICATION
+Dedicated this project to Almighty GOD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACKNOWLEDGEMENT
+
+My sincere appreciation goes to Almighty God for his unending mercy upon me throughout the duration of my course of study. An earnest appreciation to my supervisor and wonderful family and friends who worked so hard to see that I attain perfection with this project work. 
+May God bless you all.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TABLE OF CONTENTS
+TITLE PAGE										i
+CERTIFICATION									ii
+DEDICATION									iii
+ACKNOWLEDGEMENT								iv
+TABLE OF CONTENT								v
+ABSTRACT										ix
+
+CHAPTER ONE: INTRODUCTION						
+1.1	Background of the Study							1
+1.2     Statement of the Problem							3
+1.3	Aim and Objectives of Study							3
+1.4	Significance of the Study							4
+1.5	Scope of the Study								5
+1.6	Definition of Terms								5
+							
+CHAPTER TWO: LITERATURE REVIEW					
+2.1	Electronic Voting Systems							7
+2.2	Types of Voting Systems							8
+2.3	Registration of Voting             						8
+2.4	Exhibition of the voter registers						8
+	2.4.1 Vote Counting and Publication of Results				8
+2.5	Existing System          							8
+2.6	Manual voting association problems						10
+2.7	Online Voting									11
+ 2.8	Goals of OVIS					                                                12
+2.9	Function of OVIS                     						13
+2.10     Decomposition of the System							14
+    2.10.1 	Registration								14
+    2.10.2 	Candidate								14
+    2.10.3	 Checking								15
+    2.10.4	Data Manipulation							15
+    2.10.5	Accessibility								15
+    2.10.6	Casting								15
+    2.10.7	Counting								15
+    2.10.8	View Report								15
+2.11	Voting in Nigeria								16
+2.12	Biometrics		 							18
+	2.12.1 Biometrics Authentication						19
+	2.12.2	Computerized Biometric Systems					19
+	2.12.3	Fingerprint Recognition						19
+	2.12.4 Iris Recognition							20
+	2.12.5 Facial Recognition							22
+2.13 	Feature Extraction Algorithms						23
+	2.13.1	Local Binary Pattern (LBP)						23
+	2.13.2	Gabor Wavelet Transform						25
+	2.13.3	Feature Extraction in Subspaces					25
+2.14	Hybrid Approaches								26
+2.15 	Related Works									26
+
+CHAPTER THREE: METHODOLOGY		   
+3.1	Research Approach								28
+3.2	Image Acquisition	 							29
+3.3	Pre-processing of the Images	 						29
+    3.3.1	Image Generation		 					29
+    3.3.2	Image Enhancement 							31
+    3.3.3	Frequency Domain							31
+3.4 	Matching of Images								32
+	3.4.1	Minimum Distance Classifier						32
+3.5	 Registration Module								33
+3.6	Ballot Design Module								33
+3.7	Database Administrator Module						34
+3.8	Voting Module								34
+3.9	Live Result Module								34
+3.10	Analysis of the Proposed System						34
+3.11	Flowchart									35						
+CHAPTER FOUR:  RESULTS AND IMPLEMENTATION				
+4.1	Implementation								36
+4.2	Choice of Programming Language						36
+4.3	Hardware Requirement							37
+4.4	Software Requirement							37
+    4.4.1	Microsoft SQL Server							38
+    4.4.2	Microsoft Visual Studio.Net						38
+4.5       Testing										38
+4.6	Simulation Results								39
+4.7	Documentation								50
+4.8	Security Consideration							50
+
+CHAPTER FIVE: 	SUMMARY AND CONCLUSION			
+5.1	Summary									52
+5.2	Conclusion									52
+5.3	Contributions to Academic Knowledge 					52
+
+
+REFERENCES									54
+APPENDIX 										56
+									
+
+
+
+
+
+
+
+LIST OF FIGURES
+Fig. 3.1: The Framework of Online Voting and Result Transmission System	28
+Fig. 3.2: Flowchart to identify image 						29
+
+Fig. 3.3: Generation of an Image							30
+
+Fig. 3.4: A 3* 3 neighborhood about a point (x,y) in an image 			31
+Fig. 3.5: The flowchart of the proposed system					35
+Fig 4.1: Screen Splash (Title Page)							39
+
+Fig. 4.2: Voters’ Login Page								40
+
+Fig. 4.3: Addmin Login Page							`	41
+
+Fig. 4.4: Add User Page								41
+
+Fig. 4.5: Biometrics (Fingerprint) Page						42
+
+Fig. 4.6: Biometrics (Fingerprint) Verification Page					42
+
+Fig. 4.7: User Registration Success Page						43
+
+Fig. 4.8: Home Page									43
+
+Fig. 4.9: Presidential Registration Page						44
+
+Fig. 4.10: Governorship Registration Page						44
+
+Fig. 4.11: Presidential Candidate List Page						45
+
+Fig. 4.12 Governorship Candidate List  Page						45
+
+Fig. 4.13: Candidates Record Update Page						47
+
+Fig. 4.14: Voters Record Update  Page						47
+
+Fig. 4.15: Voters Accreditation Page							47
+
+Fig. 4.16: Voting Success Page							48
+
+Fig. 4.17: Presidential Election Result						48
+
+Figure 4.20: Voting Result Analysis of the Top 3 Presidential Candidates		50
+LIST OF TABLES
+Table 4.1: Users’ Registration Table							49
+
+Table 4.2: Admin Table								49
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ABSTRACT
+In light of previous election-related difficulties, there is a great deal of interest in using electronic voting systems to oversee elections. Businesses have kept developing their systems despite the majority of computer professionals' cautions about the risks involved, citing improved dependability and security. Electronic systems have been embraced by many communities, and the number of systems in use is growing. Voting is one of the electoral processes that ensure democracy will always exist in every civic society. Elections are thought to be the essential components that make up democracy. In this research, the methodology adopted is a hybridised Local Binary Pattern and Gabor Wavelet Transform to create the LBP-GWT feature extraction technique, an improved feature extraction methodology for the fingerprint/facial recognition system. In adiition, Particle Swarm Optimisation (PSO), an efficient feature selection technique suitable for fingerprint and facial patterns (Shinde and Gunjal, 2021), was used to address the problem of dimensionality in the pool of features created by LBP-GWT and creates the optimal feature subset for detection. A Support Vector Machine was used for the final categorization (SVM). PSO is used to optimize the feature subset selection and classification parameters of the SVM classifier.
+PHP, MySQL, Java Query, CSS, and HTML were utilized to create this system. These factors combine to make the Graphic Interface user-friendly for people with little or no computer experience. The overall result shows a higher percentage of accuracy, efficiency and data security of 78%, 83% and 87% respectively when the proposed system is compared with the existing ones.
+
+
+
+
+CHAPTER ONE
+INTRODUCTION
+1.1	Background of the Study
+Voting is one electoral avenue that ensures the continuation of any civilization's democratic system. Elections are often recognized as the most significant pillar of democracy worldwide. Voting is the process through which the populace, or the general public, chooses their leaders and voices their preferences for forms of government. The electoral process needs to be sufficiently open and unambiguous in order for candidates and voters to accept the results of the vote, since the validity of the democratic process depends on its honesty. Not surprisingly, there have been many instances of election manipulation throughout history in an effort to influence the result (Jega, 2019).
+
+Because the rules of the game were not observed, political violence and unhealthy politicking became the norm in many parts of Nigeria, causing setbacks that resulted in the loss of lives and property. Those who want to impose their agenda on the electorate will do whatever it takes to gain control. This has continued to do a great deal of harm and has made the populace poorer despite the abundance of natural and human resources in the nation (Aranuwa & Oriola, 2019).
+
+On May 29, 2009, Nigeria celebrated ten years of democratic rule. Many Nigerians think that due of the flaws in our electoral system; there is no reason to celebrate. Numerous irregularities plague our political and electioneering processes, such as ballot stuffing and snatching, political assassinations, the employment of political thugs to intimidate opposition candidates, and a deficient Electoral Act. This is primarily because elections in Nigeria are handled manually, and the consequences of these procedures almost always lead to contentious election results (Yekini et al., 2020).
+
+Most wealthy nations with enviable democratic platforms have long since switched to electronic voting for elections, and since the results are seen as legitimate, fair, and free, there has been little to no criticism of the outcomes. In upcoming elections, the Nigerian Independent National Electoral Commission (INEC) has indicated interest in using electronic voting technology. Following a barrage of charges from multiple political parties accusing the electoral board of helping one party rig elections, especially the general elections in 2007 and 2011, this decision was made (Folorunso et al., 2020).
+
+Electronic voting must to be taken into consideration as a feasible option if the Independent Electoral Commission of Nigeria is prepared to organize certification elections in the future. Mozambique has been in the forefront of the effective adoption of electronic voting, often referred to as biometric voting, in a number of African nations (Okediran, et al., 2021). In order to address issues like ballot stuffing, ballot box snatching, voter impersonation, errors resulting from manual results collation, and multiple registration, Nigeria, the most dependable solution to electoral fraud and malpractice, must follow suit. Everyone will be happy if a real-time electronic voting system is implemented because fairness and equality are the hallmarks of true democracy. Voters will see that elections are transparent, and well-meaning politicians will be powerless to manipulate the results to their advantage, leading to the implementation of policies and programs that benefit the general public.
+
+1.2     Statement of the Problem
+Due to the large dimensions of the resultant features of such techniques, the majority of implementations of the currently in use fingerprint-based registration systems are based on Principal Component Analysis (PCA) and Linear Discriminant Analysis (LDA), which lack strong discrimination ability and are time-consuming for individual authentication (Dihong, Zhifeng, Dahua, Jianzhuang and Xiaoou, 2020). Because it lessens the curse of dimensionality and other undesirable aspects of high-dimensional spaces, dimensionality reduction is significant in many disciplines (Babatunde, Olabiyisi, Omidiora, and Ganiyu, 2018). Therefore, a hybridized Local Binary Pattern – Gabor Wavelet Transform (LBP-GWT) feature extraction technique that will solve the problems highlighted above will be developed in this research work.  
+
+1.3	Aim and Objectives of Study
+The aim of this work is to develop a hybridised Local Binary Pattern and Gabor Wavelet Transform (LBP-GWT) feature extraction model for a secured online voting and result transmission system in Nigeria. The objectives of the research are to: 
+(i)perform a critical review of the underline concepts of an electronic voting system and identify problems affecting them; 
+(ii)develop a hybridized LBP-GWT model for a secured online voting and result transmission system.
+(iii)Implement the developed system using data extracted or collected from a modelled election’
+(iv)Evaluate the performance of the developed LBP-GWT model against Principal Component Analysis (PCA) and Linear Discriminant Analysis (LDA) feature extraction technique using accuracy and processing time as evaluation metrics
+ 
+1.4	Significance of the Study
+Unwanted human error can be minimized or completely eliminated with electronic voting systems. Along with its dependability, electronic voting offers better scalability for large-scale elections and can accommodate multiple modalities. For voters who are otherwise geographically remote from election sites, electronic voting through email offers the potential to make voting easier. The potential for greater efficiency is one of the new system's major advantages. Voters can cast their ballots with electronic voting machines and have a reasonable expectation that they will be counted. Additional advantages of the system include: 
+(i) Speed: Compared to humans, it processes information far more quickly. 
+(ii) Repetition: The voting system can perform the same task repeatedly without growing weary or making mistakes.
+(iii) Accuracy: It can complete intricate tasks and adhere to exact directions without making mistakes. 
+(iv) Safety: Voting machines can operate in areas where it would be dangerous for people to do so. 
+(v) Adaptability: Voting machines can be configured to do a variety of jobs.
+
+
+
+
+
+
+1.5	Scope of the Study
+The scope of the project is to design a system that can:
+ (i) hold voter and candidate data in one place
+(ii) prevent unwanted users from accessing it. 
+(iii) upon registration, automatically generate a username and password 
+(iv) prevent a person from registering more than once
+(v) count votes automatically
+
+1.6	Definition of Terms
+i.Authentication: The process of verifying the identity of a user or system. In this project, biometric authentication is used to confirm the identity of voters through fingerprint or facial recognition.
+ii.Biometrics: Technologies that measure and analyze human body characteristics for identification. Common modalities include fingerprint, iris, and facial recognition.
+iii.Candidate: An individual contesting for a political position in an election. Candidates are registered into the voting system with unique identifiers.
+iv.Database: A structured collection of data stored electronically. It holds information on voters, candidates, votes cast, and results.
+v.Election: A formal process through which voters select individuals for public office or make decisions via voting.
+vi.Electronic Voting (E-voting): A voting method that uses electronic means to cast and count votes. It aims to improve speed, accuracy, and security compared to manual voting.
+vii.Feature Extraction: The process of identifying relevant attributes from raw biometric data (like fingerprints or facial images) to use in matching and classification.
+viii.Fingerprint Recognition: A biometric technique that uses the unique patterns of a person's fingerprints to identify or verify their identity.
+ix.Gabor Wavelet Transform (GWT): A mathematical technique used in image processing to extract texture features. It’s applied here for biometric pattern recognition.
+x.Local Binary Pattern (LBP): An efficient feature extraction method used for texture classification in image processing, robust to changes in illumination.
+xi.Online Voting System (OVIS): An internet-based platform designed to allow eligible users to vote securely and view election results in real time.
+xii.Particle Swarm Optimization (PSO): An optimization algorithm inspired by the social behavior of birds or fish, used here to select the most relevant biometric features.
+xiii.Principal Component Analysis (PCA): A statistical method used to reduce the dimensionality of data. It's less effective in high-dimensional biometric data environments compared to hybrid models.
+xiv.Result Transmission: The secure and automated transfer of election results from the voting platform to a centralized system for collation and display.
+xv.Support Vector Machine (SVM): A supervised machine learning algorithm used for classification tasks, including the final decision-making process in biometric voter verification.
+CHAPTER TWO
+LITERATURE REVIEW
+
+2.1	Electronic Voting Systems
+One fundamental aspect of democracy that transcends all social boundaries is the act of voting. Therefore, democracy promotes individual liberty within the bounds of the law, enabling people to act and express themselves in any way they deem fit. This gives individuals the freedom to freely voice their opinions on a range of topics in addition to selecting their leaders. In response to the 1948 Universal Declaration of Human Rights, which highlights the necessity of democratic elections; nations look for new and improved voting procedures that are appropriate for elections in the twenty-first century (AbdulRahim, Folorunso & Sharma, 2019). Voting, which was historically mostly done by hand, has changed throughout time as a result of information technology. There are disagreements regarding the continued use of automated and online voting (Ahonen & Pietikäinen, 2020).
+
+However, it is difficult to completely rule out the use of technology and electronic voting given the growing number of eligible voters and the usage of paper ballots (Atul, et al., 2019). Awad & Ernst (2021) stated that electronic voting is the next natural development in the use of online information-gathering and retrieval technologies for e-government. The project's objective is to develop an Online Voting System (OVIS) based on the voting processes now in use in Nigeria, which will be put into effect shortly.
+
+
+2.2	Types of Voting Systems
+Groups of individuals can make choices by casting votes. These decisions could be of a political, social, or open nature. Voting can also be used to select the most deserved candidate for a prize or to choose amongst difficult action plans. Thus, one way to characterize voting is as a way for a group of people to select among a range of options. The majority of voting systems employ the majority rule, also referred to as plurality voting. For instance, in an election, a candidate who obtains a plurality receives more votes than any other candidate, but they may not receive the majority of the total votes cast (Aranuwa & Oriola, 2019).
+
+2.3	Voters Registration
+This is the process that permits the entry of a qualified voter's name onto a voter registration list in order to enable the voter to use their right to vote on the scheduled polling day. Nigerian law stipulates that a person is eligible to vote if they are a citizen, a resident, and at least eighteen years old. The INEC uses a variety of supplies to register eligible voters, including scannable forms, pencils, photographs (or thumbprints) of eligible voters, and indelible ink.
+
+Until it moves to the Voter Register Exhibition stage, the Voter Register is considered provisional and will then be finalized. Several security procedures are put in place to guarantee the legitimacy of the registry. Here are a few of them:
+
+:
+(i) Barcodes on voter registration forms to make it simple to confirm their authenticity. Forged registration forms can be easily identified by the system that handles data processing on eligible voters. 
+(ii) The usage of erasable ink. Duplicate registration is avoided in this way. Those who have registered had their left thumbs stained with irreversible ink.
+(iii) A distinct voter registration number. No two voters have the same registration number; each voter has a distinct number. 
+
+2.4	Exhibition of the voter registers
+Following the completion of the registration procedure, each polling place displays the provisional voter register for the public to view and confirm that there are no anomalies. The accuracy of personal data is verified by the general public. The success of the election is largely dependent on how accurate the voter registration is.
+
+2.4.1Vote Counting and Publication of Results
+The ballots are manually counted, and the results are totaled from the bottom up. Accordingly, the counting process starts at the lowest possible level—the polling place—and proceeds from there to the constituency level and, ultimately, the national level. At the top, the total votes cast for each candidate are decided. 
+The final results are then made public by the INEC.
+
+2.5	 Existing System
+Currently, developing countries use entirely paper-based voting systems. This means that all voter information is gathered by hand and voting is conducted entirely on paper, which increases the possibility of errors and corruption. People who relocate and register to vote in a new area do so in two distinct locations. Because the authority's system for guaranteeing a single vote for a single person is out of date, people can even vote multiple times. To enable voters to cast another ballot, they only apply a difficult-to-remove black ink mark on their fingernails. Under this method, a deceased individual can even register to vote. If the authorities fail to remove a deceased person's details from the list upon registration due to error or corruption, the person is still listed as an active voter. In this system, it has even been observed that fraudulent voters have cast ballots under false pretenses.
+
+Therefore, it was past due to develop a novel solution that would lessen the likelihood of such errors and corruptions arising from such delicate national issues as elections. E-voting is being suggested as a countermeasure against corruption because of this. The computerized voter registration process is the most fascinating feature of this approach. There will be three age groups for which people will be enrolled in the population database: 0 to 17 years old, 17 to 18 years old, and 18 years and older. Based on their age, people will be automatically moved to various age-group databases. Lastly, they will be included to the voter database if they give their details and fingerprints to the election officials when they are 17 years old. After being added to the voter database, each individual will have the right to cast their own ballot. There won't be an option to vote on behalf of others because finger prints will be used to identify voters. Individuals who have passed away will no longer be included in the voter database; instead, they will be marked as deceased in the population database for that age group.
+A wide area network will be used in the design of the overall network system. Both an optical fiber network and a radio-linked network will exist. There will be three application servers and one client server. Since the client servers will be occupied with transmitting encrypted votes to one application server through another application server, there will be a radio link between each client server and the application servers. The third application server will send them back to the main database via a different application server.
+
+The third application server and the main database will be connected by an optical fiber link, as will the second and third application servers. The proposed electronic voting system has been divided into multiple sections. The function illustrates what the system does by outlining how it works. What information the system retrieves, what results it produces, and the methods it uses to modify information. Dividing the system into multiple subsystems is a better way to have more controlled software development. Additionally, this improves reuse capacity and facilitates maintenance. Every subsystem will have a well-defined interface with respect to the rest of the system.
+.
+2.6	Manual Voting
+Some of the problems that each election stage must address are listed below: 
+(i) Votes that are considered invalid: If the thumbprint is not positioned correctly, the vote is considered void. Additionally, a vote that is not valid can be the consequence of improperly folded voting paper. (The Independent Electoral Commission (INEC) has reported that, on average, 2 to 2.5 percent of ballots cast are declared invalid at every election.)
+(ii) Protracted voting process: The manual voting method requires several steps, which leads to lengthy lineups. This is because each voter needs to spend a considerable amount of time voting. 
+
+(iii) Delays in results publication: It has been stated that the INEC requires approximately three days to release the results of the presidential election.
+
+(iii) Astronomical election expenses: Election expenses increase when supplies are acquired to ensure both the validity of voter registration and the smooth operation of the electoral process as a whole. In a manual voting system, ballot boxes, paper, indelible ink, and other supplies are necessary despite their high cost. 
+
+2.7	Online voting
+Attempts could be focused on lessening, if not totally getting rid of, the issues related to manual elections. To make sure that time and other resources are used effectively, a number of approaches can be employed. Of these, online voting is the most appealing and efficient. Murali et al. (2016) created a potent electronic voting platform that surpasses both the current electronic voting systems and conventional paper ballot voting.
+
+(i)Computerizing the Voting System
+Utilizing computer technology for tasks like voter registration, voting, and vote counting is known as computerizing voting procedures. The long-term advantages of adopting electronic voting systems would include a considerable decrease in election expenses, despite the initial cost being high. Computerized voting systems would do away with the necessity for ballot boxes and paper ballots because the technology mimics them. Printing costs would be significantly reduced as a result of this. Permanent ink would be unnecessary if voting procedures were automated through the use of electronic voting devices. This would assist enforce the regulations required to determine whether or not a voter has previously cast a ballot.
+
+The results of an automated voting system are often tabulated immediately upon vote casting. This implies that the labor-intensive manual vote counting process would be eliminated. It may only take one button click to find out the outcome of an election. In the event of a run-off, there would be no need to purchase indelible ink or make a fresh set of ballots. The contestants would be reflected in a reprogrammed electronic system. Numerous electronic voting techniques have been developed thus far (Yekini et al., 2020).
+
+(ii)The Online Voting System - OVIS
+In order to expedite the election process, OVIS, a Direct Recording Electronic Voting System, offers a platform to all institutions that employ voting in decision-making. OVIS is resilient, safe, and trustworthy because it integrates several security requirements, including user authentication and access control, into its architectural design. OVIS offers user-friendly graphical interfaces and tools that make voting easy and enjoyable, in addition to security measures that include application design, installation, maintenance, and monitoring.
+
+
+2.8     Goals of OVIS
+OVIS's main goal is to employ information technology and contemporary computers to expedite the Nigerian INEC's election process. OVIS also seeks to: 
+(i) guarantee appropriate handling of voters' personal information; 
+(ii) lower election expenses; 
+(iii) avoid duplicate voting; (iv) guarantee that no votes are cast in error; (v) guarantee prompt, accurate, and efficient handling of votes cast during elections; and (vi) expedite the announcement of election results.
+
+2.9	Functions of OVIS
+An OVIS Database Manager (ODM) DBMS would be deployed in order to handle system data. Voter data retrieval, addition, updating, deletion, sorting, and exploration would be quick and easy using ODM. ODM would also keep track of other system-relevant data and the election results. The following features will enable online voter registration, balloting, and access to election results: An application with a Graphical User Interface (GUI) has been created to enable potential voters to register and cast their ballots online. Thanks to the application's capabilities, only election administrators would be able to examine election results when they were needed.
+
+1. Controls to avoid double voting
+The system has access control and user identification features to stop vote manipulation and double voting. Additionally, these features would help keep unauthorized users out of the system. This implies that the system will refuse access to voters who attempt to cast a second ballot and prompt them to do so.
+
+2. Controls to eliminate invalid votes:
+It is difficult for a voter to cast an invalid vote because of the system's design architecture; for instance, it is not permitted to vote for two candidates on the same electronic ballot paper. Consequently, the issue of erroneous votes would be resolved.
+
+3. Generation of reports:
+The technology would make it possible to create and publish a wide range of reports, from data on voter registration to election results.
+
+2.10	Decomposition of the System
+The electronic voting system will include a few subsystems, as previously mentioned, and they are as follows:
+
+2.10.1 	Registration
+In this instance, an automated registration system has been provided. In order to automate this system, two separate databases will be utilized. A voter database resides in one, and a population database resides in the other. Individuals will be entered into the population database under one of the two previously mentioned age groups, and they will be transferred between them according to their age. The voter database will only contain registered voters. When they become 17 years old, individuals must submit their information and fingerprints to the authorities in order to switch from the population database to this database. 
+
+2.10.2 	Candidate
+The candidate is an important step in this process. A candidate may run as an independent or as a representative of a political party. During the polling period, each candidate will have a sign on the touch pad where voters can leave their comments. 
+
+2.10.3	 Checking
+A hash function is created for every fingerprint that is collected during voter registration. The data for every voter will be subjected to this hash function. The hash function is used by the system to scan the packet in response to a vote and decide whether or not the voter's ID is blocked. If the vote is not blocked, it will be counted; if not, it will not.
+
+2.10.4	Data Manipulation
+All data needs to be updated or modified in order to guarantee appropriate database administration. The data is sent straight from organization 'Y' to the main database upon the birth of a child. When someone passes away, their information is also added from organization "X" to the population database, their status is updated to "death," and they are not transferred to another age group or the voter database. A person will stay in the population database but be deleted from the voter database if they are added to it.
+
+2.10.5	Accessibility
+The voter list and voter data are not entirely under the authority of the election commission. They have access to the data, but the voter's finger print will be needed for any alterations or revisions.
+
+2.10.6	Casting
+A voter's ID will be disabled after they cast a vote; they can still cast another vote, but it won't be counted. Consequently, each voter will only receive one vote. The voter will use a touch screen to cast their ballot after supplying identity via their fingerprint.
+
+2.10.7	Counting
+There will be a fair count of the votes. The votes that were saved for each constituency will be tallied after the voting session. Each constituency will choose only the votes, ID being disregarded. All it will do is select and total the votes for every symbol.
+
+2.10.8	View Report
+The number of votes each candidate received from each constituency will be disclosed in the report. The system will be able to publish the results for each candidate because the names of the candidates are kept in the primary database. After then, the system will display the results, including which sign prevailed and the total number of participants.
+
+2.11	Election in Nigeria
+Nigeria is a federation of 36 states with a federal capital territory, with 774 local governments, 8,800 registration areas, 111,119 voting units, senatorial districts, federal constituencies, and state constituencies, as well as a federal capital territory. The widespread consensus is that organizing free, fair, peaceful, and credible elections in a country the size of Nigeria, with its vast population, topography, and ethno-religious variety is a challenging task even under normal circumstances.
+The elective principle was brought to Nigerian political framework by high Clifford Constitution of 1922. As at then, there was no indigenous and distinct electoral commission. The first political party was created in the year 1923 named Nigerian National Democratic Party (NNDP) by Engineer Herbert Macaulay. In 1944, Engr. Herbert Macaulay founded the National Council of Nigerians and Cameroons (NCNC), the second political party. This led to the formation of other parties, including Action Group (AG) in 1951, Northern People Congress (NPC) in 1951, and Nigerian Youth Movement (NYM), which was formally founded in 1949. Additionally, this development led to the recognition of engineer Herbert Macaulay as the father of nationalism.
+Nonetheless, the first electoral commission was founded in Nigeria's political sphere between 1979 and 1983 and was known as the Federal Electoral Commission (FEDECO) during the second republic election. This body was subsequently renamed the National Electoral Commission (NEC) during the third republic election in 1993, and since 1999, it has been known as the Independent Electoral Commission (INEC). For the following grounds, the electoral commission is formally acknowledged as an autonomous entity:
+1. To execute a nationwide voter registration drive that is both efficient and successful in order to enable all eligible voters to register prior to the holding of any kind of election. 
+2.	To plan and carry out a fair and impartial election 
+3. To declare the winner; following an appropriate compilation of all the results. 
+
+In Nigeria, the conventional electioneering method requires eligible voters to register in advance, show up to the polls without difficulty, and line up to cast their ballots. This system is not only time-consuming and cumbersome, but it is also exhausting. In the past, it has caused several issues, including the loss of lives and property. 
+The voting process is highly susceptible to attack. During the most recent general elections, for example, it was alleged that neighborhood boys, or miscreants, were used at certain places to prevent voting because they would steal ballot boxes and administrators during the voting process. In fact, because the goal is to win at all costs, this has resulted in severe intimidation. Speaking at the THIS-DAY newspaper's "water front dialogue," Olisa Agbakoba (SAN) said, "Nigeria is like a limited liability company owned by 120 million shareholders." At the Annual General Meeting (AGM), the company's shareholders choose who works for the company. The elected employees divide up the tasks, and their terms of office are set with the option to be renewed based on performance at the following AGM. Nigeria's problem stems from the fact that elected officials have embezzled the voting process. They are unwilling to leave. In what way will the company's owners reclaim it? The aforementioned quotation sums up the current election predicament in Nigeria. Because politicians can now manipulate elections in any way thanks to the traditional electioneering procedure, the majority of Nigerians no longer have faith in the country's current political system.
+
+2.12	Biometrics   
+The Greek words bio, which means life, and metric, which means to measure, are the roots of the word biometrics. The measuring and statistical analysis of an individual's distinct physical and behavioral traits is known as biometrics. According to Ogunseye (2020), the technology is mostly used for access control and identification of people who are being watched. 
+Passwords and ID cards have historically been employed as means of limiting access to protected systems, however they are unreliable and readily cracked. According to Mary, Sukruthi, Venu and Mahendra (2016), biometric systems have been developed based on fingerprints, face traits, voice, hand geometry, handwriting, retina, and iris. It is impossible to borrow, steal, or forget a biometric, and it is very difficult, if not impossible, to forge one. 
+
+2.12.1	Biometric Authentication  
+To put it simply, biometric authentication is the process of confirming a user's identity using specific bodily measures or characteristics (Jahne, 2019). Every individual may be reliably identified by their inherent physical or behavioral characteristics, according to the fundamental tenet of biometric authentication. Physiological or behavioral characteristics are the basis for the two main categories of biometric IDs (Gefen, Rose, Warkentin and Pavlou, 2015). Physiological identifiers, such as fingerprints, finger geometry (the size and location of fingers), facial recognition, iris recognition, vein recognition, retina scanning, DNA matching, and voice recognition, are related to the characteristics of the individual undergoing authentication. 
+
+2.12.2	Computerized Biometric Systems  
+Automated systems for identifying an individual based on a physiological or behavioral trait are called computerized biometrics systems. Fingerprint, face, iris, voice, retina, hand geometry, and signature are among the traits that are measured. Many widely used solutions for highly secure verification and personal identity now rely on biometric technologies. The necessity for highly secure verification and personal identification technologies is becoming more and more evident due to the sharp rise in fraudulent transactions and security breaches. Biometric solutions can guarantee the privacy of customized data and the confidentiality of financial transactions (Kohno, Stubblefield, Rubin and Wallach, 2018). 
+  
+2.12.3	Fingerprint Recognition   
+The patterns seen at the tips of fingers are examined by fingerprint identification software (Mudholkar, Shende and Sarode, 2012; Matyáš and Ríha, 2011; Krishneswari and Arumugam, 2020). Different methods are usually used for fingerprint verification, authentication, and recognition. While some employ methods akin to the conventional police methodology of matching minutiae, others employ straight pattern matching devices, while yet others employ somewhat more unique methods like ultrasonics and moiréfringe patterns. Furthermore, certain methods of identification and verification are able to recognize when a real finger is presented, while others are not. More fingerprint devices than those utilizing any other biometric characteristic are on the market. 
+Since fingerprint scanners are becoming more and more affordable, using them for user authentication is becoming more and more common. This verification method works effectively for internal systems where users receive sufficient explanations and training, and where the system is operated in a controlled setting. Since fingerprint verification is the only biometric feature that most workstations have for granting access to the application area, its use has grown extremely widespread. The compact size, simplicity of integration of fingerprint authentication devices, and relatively low cost are thought to be the main reasons for this (Divyank, Aaditya, & Saurabh, 2018)
+
+
+
+2.12.4	Iris Recognition 
+Iris recognition has received a lot of attention lately because of its distinctive characteristics, which include furrows, rings, freckles, ridges, and intricate patterns. The automated systems for iris recognition-based personal identification authentication are thought to be the most reliable of all biometric techniques; we estimate that there is a very little probability of finding two individuals with identical iris patterns. Iris recognition technology is becoming an essential biometric solution for identifying a person and granting them networked access to computer applications because of this. The iris is a tiny, spherical internal organ that is firmly positioned inside the eye. The automated method makes use of a series of cameras to identify the face and iris on its own, greatly improving user friendliness. The iris recognition system then selects the picture with the best iris focus and clarity after the camera has located the eye. Next, the image is examined to determine the pupil's center, the pupillary boundary, and the outside edge of the iris where it meets the white sclera of the eye. This leads to the circular iris's exact placement. The regions of the iris image that are appropriate for feature extraction and analysis are then found by the iris recognition system. This entails eliminating any deep shadows and regions that are hidden behind the eyelids (Jahne, 2017).
+
+Iris recognition systems examine each individual's iris's unique pattern. The majority of iris recognition software available for purchase uses patented methods created by Ahonen T. and Pietikäinen M. (2020). The algorithms determine the iris and pupil's outer bounds. This area is converted into bit patterns, which are then utilized to compare a template and an image that a user submits for identification or verification statistically.
+
+Additionally, by running an iris localization technique and selecting four regions of interest, the impact of the obscured portion was reduced. The retrieved feature set underwent transformation and normalization in order to mitigate the effects of anomalous values inside the feature vector. Next, using a two-phase technique that combined wrapper-based selection with a filtering phase, notable features targeted at iris recognition were selected. Finally, support vector machines (SVM) were used to characterize the chosen feature set. 
+
+2.12.5	Facial recognition 
+Facial recognition is a significant area of study that crosses many different disciplines. This is because face recognition is a basic human behavior that is necessary for successful interpersonal interactions and communications, in addition to having many useful applications like bankcard identification, access control, searching for mug shots, security monitoring, and surveillance systems. Face recognition systems have been around for decades, but there are still a lot of ongoing studies being done on the subject. There are three sections to the topic. Oladele M.O., Afolabi O.A., and Omidiora E.O. (2016);   
+1.	Detection  
+2.	Recognition  
+3.	Detection & Recognition 
+ 
+1. 	Face detection 
+The initial stage of a face recognition system is face detection. The location of the face region as a whole and the location of the face region with its features (eyes, mouth, eyebrow, nose, etc.) can be the output of the detection. Since most detection algorithms in the literature combine different face-detecting techniques to improve accuracy, it is challenging to categorize them rigidly. 
+Generally speaking, Evangelia K. et al. (2017) divide detection techniques into two categories: knowledge-based methods and image-based methods. 
+
+Knowledge-based approaches make use of data on skin tone, facial features, or template matching. The eyes, lips, nose, and other facial features are utilized to identify human faces using facial features. The properties of skin color remain constant despite variations in occlusion and position. It is distinct from other colors. Skin tone is represented in statistical models as well as color spaces such as RGB (Red-Green-Blue), YCbCr (Luminance-Blue Difference Chroma-Red Difference Chroma), HSV (Hue-Saturation-Value), and YUV (Luminance-Blue Luminance Difference-Red Luminance Difference). Because faces differ from other things in specific ways, it is possible to create a template that will allow for the scanning and detection of faces. Human faces contain valuable information about their facial features, which can be used to create standard images. Numerous face-feature-based detection algorithms have been published in the literature, according to Evangelia K. et al (2017).
+
+2.13 	Feature Extraction Algorithms
+In this work, the Gabor Wavelet Transform and local binary pattern algorithms are taken into consideration for feature extraction.
+
+
+2.13.1 	Local Binary Pattern (LBP)
+LBP has the advantage of having a readily characterized local texture. The ability of the LBP operator to withstand variations in illumination is its most crucial feature. It is also easy to employ computationally in real-time applications. Three primary challenges must be addressed by LBP operator designers. The initial challenge is describing various local texture patterns and then extracting these local patterns. 
+The second problem is how to choose the essential subset of these local patterns to represent textures, since not all local patterns are equally important for texture analysis. The final problem is how to create a useful texture descriptor using these chosen local patterns. The original LBP method is a texture analysis algorithm with strong discriminating that is relevant only in grayscale. LBP is more effective for texture analysis because it offers a comprehensive description of a texture patch that includes both statistical and structural details. 
+The local image texture's spatial organization is described by the grayscale texture operator, or LBP. A pattern number is calculated for a given central pixel in the image by comparing its value to the values of its surrounding pixels. Given a circle of radius R, the neighborhood set P, and the difference between the central pixel "gc" and its neighborhood {g0, g1,…,gp-1}, the value of LBP operator can be obtained as (Dhinesh et al., 2016):
+    LBP P,R  = 				(2.1)
+     s = 		    					(2.2)
+By thresholding the local region and neighborhood of each pixel with the center value and treating the result as a binary number, the original LBP labels the pixels in a picture. Pixels larger than the central pixel are mapped to 1, unless otherwise indicated by equation 2.1. The computation of LBPP, R is provided by equations (2.1) and (2.2). 
+
+A histogram is constructed and utilized as a texture descriptor to represent the entire texture image once the LBP pattern of each pixel (i, j) has been determined. The LBP histogram can be used to statistically characterize image properties since it provides information on how local micro-patterns, such as edges, spots, and flat areas, are distributed throughout the image.
+
+2.13.2 	Gabor Wavelet Transform
+A set of orthogonal-like Gaussian wrapped basis functions is used in the Gabor wavelet transform. Gabor wavelets simultaneously analyze the input image in the spatial and frequency domains. In computer vision and image analysis, gabor wavelets are frequently utilized (Diyyank et al., 2018). For a number of reasons, the gabor wavelet transform appears to be the best foundation for extracting local features (Gadekar, 2011).
+
+2.13.3	Feature Extraction in Subspaces
+Face images expressed as high-dimensional arrays of pixels frequently belong to a manifold that is inherently low-dimensional. Feature vectors are used to depict the faces. This feature vector is easily created in the image space by recording the pixel values of the facial image in a fixed (usually raster) order. Consequently, a feature vector in the mxn-dimensional space can be obtained for an image of m by n dimensions.
+
+This magnitude of a vector, even for small images, is significant, and recognition faces several possible drawbacks (the curse of dimensionality), including high processing costs. Furthermore, a large portion of the face's surface is smooth with a regular texture, meaning that per-pixel sampling is actually unduly dense. Furthermore, the face's look is uniform in its general configuration and is not dispersed randomly throughout the visual space. Overall, a high dimensional feature vector not only has drawbacks when it comes to recognition, but also carries a lot of redundant information because it doesn't improve the capacity to distinguish between faces (Geethamani et al., 2017).
+
+2.14	Hybrid Approaches
+Creating a local appearance-based feature space with the right image filters is another way to deal with the non-linearity of faces in the image space and lessen the impact of different modifications on face distributions. This type of algorithm can be thought of as combining local appearance feature extraction with geometric feature detection to improve recognition stability under perspective, illumination, and expression changes.
+
+The most popular technique using this strategy is called Elastic Graph Bunch Matching (EGBM), which was created by Gefen et al. (2015) as an addition to their first graph matching system, in which faces are represented as graphs with nodes. The system initially discovers landmark points on the photos that match to facial features such as eyes, nose among others. It then describes the landmark's features using Gabor wavelet convolutions at these positions. The recovered Gabor jet characterizing the feature is then saved at the node, and a face graph is produced by positioning each node at the landmark points. According to Gualberto (2017), the resemblance between two photographs depends on the matching face graphs.
+    
+2.15 	Related Works 
+Fingerprint technology has been studied in great detail for many years. Much work has been put into finding a solution under different lighting, position, and form scenarios. Jahne (2017) was the first to mimic the appearance of fingerprint images by exaggerating age through cartooning. To build a new pattern, the test pattern is blended with the mean patterns of different ages. The mean and test patterns are combined to create the synthesized pattern's form. Nevertheless, the cartoon method only increased the detection rate when there was a negligible form difference between the probe and the closest pattern in the gallery. The majority of the time, the method is intricate and needs a sizable dataset to function well.
+
+Gualberto (2017) modeled fingerprint verification as a two-class classification. The authors used a Bayesian framework for the intra-personal and extra-personal pattern categorization. Additionally, a 3D pattern modeling technique was developed that automatically generates some missing images across different age groups. Using PCA coefficients, it learned shaped patterns in separated 3D space and texture from a 2D database. 
+
+Kohno, Stubblefield, Rubin and Wallach (2018) looked into how aging affects the face. After rearranging a number of fingerprint portions, wrinkles were eliminated and certain ratios between them were calculated using snakelet. According to the study, a person's skull changes significantly as he develops from a child to an adult, with wrinkles being the most obvious change.
+
+CHAPTER THREE
+METHODOLOGY
+3.1	Research Approach
+A hybridised Local Binary Pattern and Gabor Wavelet Transform were used to create the LBP-GWT feature extraction technique, an improved feature extraction methodology for the fingerprint/facial recognition system. Particle Swarm Optimisation (PSO), an efficient feature selection technique suitable for fingerprint and facial patterns (Shinde and Gunjal, 2021), was used to address the problem of dimensionality in the pool of features created by LBP-GWT and create the optimal feature subset for detection. A Support Vector Machine was used for the final categorization (SVM). PSO is used to optimise the feature subset selection and classification parameters of the SVM classifier. It greatly reduces the dimensionality of the feature vector by eliminating unnecessary and unimportant features from the dataset. The Framework of Online Voting and Result Transmission System is shown in figure 3.1
+
+Fig. 3.1: The Framework of Online Voting and Result Transmission System
+
+3.2	Description of System Framework
+3.2.1 	Image Acquisition  
+The set of images from various persons was utilized in this study to assess how well the created LBP-GWT feature extraction method performed. The age range of the photos in this dataset makes it difficult to work with (Jaison, Ganesh, Gokulprashanth, Udhayakumar, Ramanathan and Chellappa, 2018).
+
+3.2.2 	Pre-Processing of the Images 
+Image preparation lessens the amount of labour required for dimensionality reduction by removing information that would have otherwise been extracted as features (Oladele, Omidiora, and Afolabi, 2016). At this point, the images' geometric size and contrast were adjusted to match the presentations in Appendices C and D. In other words, to prevent visual distortion, every image was shrunk to the same size.
+
+The framework of the Biometric Identification System (BIS) is clearly referred in a figure 3.2 given below. It consists of three components which are shown with the help of a flowchart to identify facial image (Kohno et al. 2018) 
+                                                        
+                                           Fig. 3.2: Flowchart to identify image 
+ 
+Each of the component mentioned in the flowchart are described as follows:
+
+  
+3.2.3	Image Generation
+Figure 3.3 shows the basic components comprising a typical general-purpose system used for digital image processing. 
+                                   
+                                               Fig. 3.3: Generation of an Image 
+ 
+ 
+The image sensor obtains digital images in relation to the problem domain. The first is a physical instrument that can detect the energy that an object emits (Maltoni et al. 2013). The second, known as a digitizer, is a tool that turns the physical sensing device's output into digits. The digitizer and other basic operations' hardware make up specialised image processing gear. The computer, which might be a PC or a supercomputer, is an image processing system. Image processing software is made up of specialised modules that carry out particular functions. Applications involving image processing require mass storage capacity (Jahne 2017). If the image is not compressed, a 1024 by 1024 pixel image with an 8-bit intensity per pixel will take up one megabyte (MB) of storage space. TV monitors in colour are the most common image displays in use. The outputs of the image and graphics display cards, which are a crucial component of the computer system, power monitors (Diyyank, 2018)  
+
+3.2.4	Image Enhancement
+Image enhancement approaches are basically categorized into two broad categories, which are discussed here 
+
+I.Spatial Domain Methods  
+Spatial domain refers to the aggregate of pixels composing an image. Spatial domain methods are procedures that operate directly on these pixels. It can be denoted by the expression: g(x, y) = T [f (x, y)] Where f (x, y) is the input image, g (x, y) is the processed image and T is an operator of f, defined over some neighborhood of (x, y). 
+                             
+                           Fig. 3.4: A 3* 3 neighborhood about a point (x,y) in an image 
+
+II.Frequency Domain  
+The Fourier transform of a discrete function of one variable, f(x), x=0, 1, 2….M-1, is given by the equation: 
+ 	 	 	 	 	 	 	3.1
+  	 	 	 	 	3.2 
+The 1/M multiplier in front of the Fourier transform is placed in front of inverse instead. In order to compute f(u), we start by substituting u=0 in the exponential term and then summing for all values of x. We repeat this process for all M values of u in order to obtain the complete Fourier Transform. 
+
+3.2.5 	 Matching of Images  
+Methods of recognition that rely on matching use prototype pattern vectors to represent each class. The class to which it belongs and is closest in terms of a preset measure is given an unknown pattern. The simplest method is the minimum-distance classifier, which computes the distance between each prototype vector and the unknown, as its name suggests.
+
+I.Minimum Distance Classifier 
+ Suppose that we define the prototype of each pattern class to be the mean vector of the patterns of that class: 
+  	 	 	 	 	 	 	 	3.3 
+ 
+Here, W is the number of pattern classes. One way to determine the class membership of an unknown pattern vector x is to assign it to the class of its closest prototype. Using the Euclidean distance to determine closeness reduces the problem to computing the distance measures: 
+ 	 	 	 	 	 	 	3.4 
+
+3.3	Registration Module 
+The voter is the one using this module; to access it, they must first complete the registration form with all necessary information. The following areas must be filled in: user name, local government to be registered, occupation, state of origin, first and middle names, surnames, sex, date of birth, phone numbers, and local government (CHAR), all of which are necessary (CHAR). Verify your email address (VARCHAR), username (CHAR), address (CHAR), and upload photo (CHAR) (jpg, gif, bitmap, with a 5MB limit). If the validations are valid, then only the data is registered. Voter identification numbers (VINs) are provided on voter cards upon registration; these numbers can be printed down and utilized in the case that a password is forgotten.
+
+3.4	Ballot Design Module 
+Administrators have access to this method, which lets them construct ballots by inserting candidate names for different categories (electoral positions). The administrator can also update or remove information for any of the various election categories, which will affect the candidate's profile and information. Once the configuration has been adjusted as needed, the administrator can release the ballot for voting.
+
+
+3.5	Database Administrator Module 
+In addition to viewing and editing registered voter data, administrators can do name or VIN searches to find and locate specific registered voters. In addition, the administrator can review voting data, including the total number of voters, all error logs, and real-time results. However, voters can also check real-time results while casting their ballots, minimizing the possibility of fraud.
+
+3.6	Voting Module 
+Voting is done using this module, which is intended for voters. Following registration, each voter receives a password in their mail. Voters must correctly input their login and password on the voting interface in order to be directed to the voting area during the voting procedure. Additionally, a voter will not be allowed to vote on this website again after casting a ballot in every category, including local council and governor elections.
+
+3.7	Live Result Module
+As soon as a vote is cast and the vote totals show up at the top of INEC's website, the voter can view the results of the various categories in real time thanks to this module.
+
+3.8 	Analysis of the Proposed System
+There are two active actors in the electronic voting system proposed here. One is the voter, while the other is the administrator.
+The administrator has complete control over voter information, including candidate information. The voter registration is the administrator's primary task. Administrators are allowed to examine candidate and voter information, but they are not allowed to change it without the voter's or candidate's thumbprint. All reports, including candidate results, region results, and even political party results, can be viewed by an administrator. He is also in charge of the final product's publication. Only the voter is accountable for casting his or her vote. If the voter's information changes, it is the voter's responsibility to notify the authorities so that the officials can update the information and take the voter's fingerprints.
+
+3.9 	Flowchart
+                            
+    Fig. 3.5: The flowchart of the proposed system
+    
+CHAPTER FOUR
+RESULTS AND IMPLEMENTATION
+
+4.1	Implementation
+Everything that happens when the old system is replaced with the new one is referred to as "implementation". The previous system, which was reliant on human processes, functioned very differently from the newly implemented system. To build a trustworthy system that satisfies business needs, appropriate system installation is necessary. An incorrect installation could compromise the efficacy of the automated system.
+
+4.2	Choice of Programming Language
+The design is implemented using VB.NET. It is a member of the.NET programming language family. Thanks to the.NET environment, today's architects, analysts, and developers can focus more of their time and efforts on solving the business difficulties of their clients rather than fighting the constraints of the technology. After this decision is made, the other elements are added to the newly formed system to strengthen it. The following considerations influenced my decision to learn a programming language:
+
+i. Flexibility - Visual Basic9.net allows for easy code modification and debugging.
+ii. User-Friendliness — Enables simple interaction between people and computers; even a novice can utilize it.
+iii. Ease of database connection — Web pages can be readily linked to databases using MS SQL and ASP.NET.
+iv. Compatibility and Convertibility - This refers to the system's ability to work with different operating systems. The new style may easily be adapted to work on web pages created in a variety of languages.
+v. Security — Provide a security mechanism that prevents unauthorized individuals from tampering with the records.
+    vi. Interactive Querying - The ability to retrieve data using interactive querying.
+
+4.3    Hardware Requirement
+ The following are the minimum hardware requirement needed for the system to function perfectly:
+i.Physical memory size (Random access memory) of at least 256MB
+ii. Microprocessor of at least 800MHZ speed
+iii. Free hard disk space of 200MB
+iv.A Visual Graphic Adapter card that support 1280 X 800 screen resolution
+v.A display monitor
+vi.A good mouse / keyboard
+
+4.4        Software Requirement
+Software is a group of instructions that provide computers the ability to do certain tasks. It is computer software that performs a certain job or function. The user has the option to purchase this programme already developed or to write it himself to meet his demands. There are two types of software: system software and application software. System software is a programme that is meant to run a computer's operating system; application software, on the other hand, is a programme that controls the task that a user wants performed. The following software needs to be installed in order for this system design to function correctly and effectively:
+
+4.4.1   Microsoft SQL Server
+Relational databases are used by this database management system. Large volumes of data are expertly managed and organized by this programme, which also makes the data easily accessible.
+ 
+4.4.2 Microsoft VISUAL STUDIO.Net
+With Visual Studio.NET, developers can effortlessly use a range of designers from within the environment, in addition to underlying server functionalities like event monitoring and message queuing. Designers are essential to Visual Studio.NET because they help developers with the intricate construction of specific components. XML Data Designer, Web Services Designer, Windows Forms Designer, and Web Forms Designer are a few of the designers that facilitate access to produced code based on class frameworks. The developer has access to the created code and can modify or build upon it. This is a great tool for creating webpages that is totally object-oriented. It promises readability and debugging simplicity. Others include:
+
+i.Microsoft XP Operation System and
+ii.Macromedia Fireworks.
+
+4.5	Testing
+Subsequently, the prototype underwent testing to ensure that it adhered to the guidelines and core principles of an expert system. To obtain a confirmed result, the target user—a verified individual—conducted the testing. Any mistakes discovered were corrected in any phase prior to proceeding to the design and implementation phase. Testing considered the system's interface in addition to the code structure. This ensures that the system is simple to use and comprehend.
+
+4.6	Simulation Results
+
+
+Fig 4.1: Screen Splash (Title Page)
+
+
+
+
+
+Fig 4.3: Admin Login Page
+
+
+
+
+Fig 4.4: Add User Page
+
+
+
+Fig 4.5: Biometrics (Fingerprint) Page
+
+
+
+
+Fig 4.6: Biometrics (Fingerprint) Verification Page
+
+
+Fig 4.7: User Registration Success Page
+
+
+
+
+Fig 4.8: Home Page
+
+
+Fig 4.9: Presidential Registration Page
+
+
+
+
+Fig 4.10: Governorship Registration Page
+
+Fig 4.11: Presidential Candidate List Page
+
+
+
+
+
+
+
+
+
+Fig 4.12: Governorship Candidate List Page
+
+
+Fig 4.13: Candidates’ Record Update Page
+
+
+Figure 4.14: Voters’ Record Update Page
+
+
+Fig 4.15: Voters’ Accreditation Page 
+
+Fig 4.16: Voting Success Page
+
+
+Fig 4.17: Presidential Election Result
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DATABASE
+
+Table 4.1: Users’ Registration Table
+
+
+
+
+Table 4.2: Admin Table
+
+	
+
+
+
+
+
+
+Figure 4.20: Voting Result Analysis of the Top 3 Presidential Candidates
+
+
+4.7	Documentation
+A detailed report containing the whole process of the system development, as well as the elements involved, was prepared at the conclusion of the development of the Electronic voting system. To guarantee that the system is operating as intended and to recover quickly from any faults that may arise, documentation should be created. This will make it easier to make any adjustments or corrections to the system, as well as serve as a reference for future development. The documentation provides all of the project's details, and it complies with both user and development needs. The documentation includes, among other things, instructions on how to use the system as well as the programming source code.
+
+
+4.8	Security Consideration
+Security is a method of securing or protecting data against disasters, system failures, and unauthorized users who may cause software damage. The software is protected by the security technique "PASSWORD." If the password is correct, authorized users can access the software; if it is incorrect, unauthorized users are restricted.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CHAPTER FIVE
+SUMMARY AND CONCLUSION
+5.1	Summary
+Updates to election technology are invariably challenging projects requiring much thought and preparation. As it impacts the casting and tallying of ballots, the electronic voting system, sometimes referred to as e-voting, is probably the most complicated change. E-voting significantly reduces direct human control and influence in this process. This creates a number of new concerns and offers a chance to fix certain long-standing election difficulties. Because of this, e-voting is more controversial and meets with greater criticism than any other information technology (IT) instrument used in elections.
+
+5.2	Conclusion
+Election administrators can easily handle electronic voting since it expedites the process of releasing election results compared to manual voting methods. Despite the many benefits that computerised voting systems offer over manual voting procedures, a few challenges must be solved before they can reach their full potential. First and foremost, there is a significant upfront implementation cost, just like with any computerised system. (This is usually expensive for developing nations like Ghana.) Not to be overlooked is the matter of voter education. The electorate must be fully educated about the use of electronic voting before they can submit their voter identity numbers and passwords!).
+
+5.3	Contributions to Academic Knowledge 
+The proposed system uses a novel hybridized model which integrates the strengths of two algorithms, Local Binary Pattern (LBP) and Gabor Wavelet Transform (GWT) for a secured voting and result transmission as a better alternative to the less efficient existing Principal Component Analysis (PCA) and Linear Discriminant Analysis (LDA) feature extraction techniques.  
+Local Binary Pattern (LBP) has the advantage of having a readily characterized local texture. The ability of the LBP operator to withstand variations in illumination is its most crucial feature. It is also easy to employ computationally in real-time applications. The original LBP method is a texture analysis algorithm with strong discriminating that is relevant only in grayscale. LBP is more effective for texture analysis because it offers a comprehensive description of a texture patch that includes both statistical and structural details.
+The Gabor Wavelet Transform (GWT) simultaneously analyzes the input image in the spatial and frequency domains. In computer vision and image analysis, gabor wavelets are frequently utilized. For a number of reasons, the Gabor Wavelet Transform appears to be the best foundation for extracting local features
+
+
+
+
+
+
+
+
+
+
+REFERENCES
+AbdulRahim, A. K. Folorunso O. & Sharma S. K. (2019). An Improved Dynavote E-Voting
+Protocol Implementation?, International Journal of EAdoption, 3(3) 44-61. 2019.
+
+Ahonen T. and Pietikäinen M. (2020): “Soft histograms for local binary patterns”, 
+	Finnish Signal
+
+Aranuwa, F. O. & Oriola O., Improved Electoral Fraud Prevention Mechanism for
+Efficient and Credible Elections in Nigeria?, IEEE African Journal of Computing & ICT, Vol 5. No. 6., 68-75. 2019. 
+
+Atul, M. Divyansh, Y. Ankit, C. Deepak, P. & Shubham, G. (2019) “A secured electronic voting 
+machine using biometric,” International Journal of Electronics, Electrical and Computational System, 2018, vol. 7(4), pp. 105–108. 
+
+Awad, M.L. and L. Ernst, 2011. (2021). Internet voting in the USA: Analysis and commentary.
+Transforming Government: People, Process Policy, 5(1) Cranor, L., 2021. 
+Electronic Voting Hot List.
+ 
+Divyank, M. Aaditya S. & Saurabh, G. “Android voting system using facial recognition,” 
+International Journal of Advanced Research in Computer and Communication Engineering, 2018, vol. 7(3), pp. 288–291. 
+
+Dhinesh, K. M. Santhosh, A. Aranganadhan N. S. & Praveenkumar, D. “Embedded
+system based voting machine system using wireless technology,” International Journal of Innovative Research in Electrical, Electronics, Instrumentation and Control Engineering, 2016, vol. 4(2), pp. 127–130. 
+
+Evangelia K., G. Stefanos and C. Kalloniatis, 2017. Protecting privacy in system design:
+The electronic voting case. Transforming Government: People, Process Policy, 1(4): pp. 307-332.
+
+Folorunso, O. Ogunseye, O. S Okesola J.O, & Olaniyan, O.M. Visualizing E-Voting
+Results?, Journal of Theoretical and Applied Information Technology, 2020. available at: www.jatit.org
+    
+Gadekar, R.R. T. Kiran and A.P. Hwa, 2011. Websites for E-Electioneering in
+    Maharashtra and Gujarat, India. Int. Res., 21(4).
+    
+Geethamani, R. Nithya, V. Nivetha, B. Pratheebamary R. & Rajakumari, A. “Biometric
+based electronic voting system using aadhar,” International Journal of Innovative Research in Science, Engineering and Technology, 2017, vol. 6(14), pp. 75–80. 
+    
+Gefen, D., G.M., Rose, M. Warkentin and P.A. Pavlou, 2015. Cultural diversity and trust
+in IT adoption: A comparison of potential e-voters in the USA and South Africa. J . Global Inf. Manage., 13(1): pp. 54-78.
+
+Gualberto Aguilar, Gabriel Sanchez & Mariko Nakano, “Fingerprint    Recognition”, 
+IEEE, Second International Conference on Internet Monitoring & Protection, 2017. 
+
+Jaison, I. P. Kishoritha, K. R. Ganesh, B. Gokulprashanth P. & Udhayakumar, G.
+ “Electronic voting machine with facial recognition and fingerprint sensors,” International Journal of Advance Research and Development, 2018, vol. 3(3), pp. 165–170. 
+
+Jahne, B. Digital Image Processing: Concepts, Algorithms, and Scientific Applications, 
+	Springer-Verlag, NY [2017].
+
+Jega, A. M., Improving Elections in Nigeria: Lessons from 2019 and Looking to 2020,
+Africa Programme Meeting Summary, pp. 1-12. 2012. available at: www.chathamhouse.org.  
+
+Kohno, T., A. Stubblefield, A.D. Rubin and D.S. Wallach, 2018. An Analysis of an
+    Electronic Voting System. McGraw Hill, New York.
+
+Mary, H. H. Owais, G. M. O. A. Sukruthi, D. Venu, K. A. & Mahendra, C. N. 
+“Fingerprint and rfid based electronic voting system linked with aadhaar for rigging free elections,” International Journal of Advanced Research in Electrical, Electronics and Instrumentation Engineering, 2016, vol. 5(3), pp. 1686–1693. 
+
+Murali, R. P. Polaiah B. & Madhu, N. “Aadhar based electronic voting machine using
+arduino,” International Journal of Computer Applications, 2016, vol. 145(12), pp. 39–42. 
+
+Ogunseye, O.S. Folorunso, O. Okesola J.O. & Woodward, J.R. The EVAS model:
+solving e-voting problems in Nigeria?, Oriental Journal of Computer Science & Technology Vol. 3(2), 219-226. 2020. 
+
+Okediran, O. O. Olabiyisi, S. O. Omidiora E. O. & Ganiyu, R. A. (2021). A Survey of Remote Internet Voting Vulnerabilities?, World of Computer Science and Information Technology Journal (WCSIT) ISSN: 2221-0741 Vol. 1(7) 297-301. 2011
+
+Shinde M. & Gunjal, M. "Smart voting system using UIDAI,” National
+Conference on Networks, Intelligence and Computing Systems, 2021, pp. 105–110. 
+
+Yekini N. A.,, Oyeyinka, I. K. Oludipe, O. O. & Lawal, O. N. Computer-Based
+Automated Voting Machine (AVM) for Elections in Nigeria?, IJCSNS International Journal of Computer Science and Network Security, VOL.12 No.5, 57-62. 2020. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+APPENDIX
+(SOURCE CODE) 
+
+Dim rvs As New Adodb.Recordset
+Dim Counc As New Adodb.Recordset
+Dim Chair As New Adodb.Recordset
+
+Dim rstRecordset As Adodb.Recordset
+'Dim strStream As ADODB.Stream
+Dim Fname As String
+Option Explicit
+
+
+Private Sub cmbChair_Change()
+
+lblChair = cmbChair
+If Not LoadPictureFromDB(rstRecordset) Then
+ 'MsgBox "Invalid Data Or No Picture In DB"
+End If
+With Me
+    .cmbChair_id.ListIndex = .cmbChair.ListIndex
+    .lblChairName.Caption = .cmbChair.Text
+End With
+
+
+End Sub
+
+Private Sub cmbChair_Click()
+cmbChair_Change
+Call Connect
+Dim k2 As New Adodb.Recordset
+k2.Open "select * from CandidateTable", con1, 3, 2
+k2.MoveFirst
+   k2.Find ("Names ='" & lblChair & "'")
+   If k2.EOF Then
+        'MsgBox "No Request with such ID found!. Please enter the correct Request ID.", vbOKOnly, "Approval"
+   Else
+    txtImg1 = k2!Pix
+    imgChair.Picture = LoadPicture(txtImg1.Text)
+End If
+End Sub
+
+
+
+Private Sub cmbCounc_Change()
+lblCounc = cmbCounc
+If Not LoadPictureFromDB(rstRecordset) Then
+    'MsgBox "Invalid Data Or No Picture In DB"
+End If
+
+With Me
+    '.cbovpres_id.ListIndex = .cbo_vpres.ListIndex
+    .cmbCounc_id.ListIndex = .cmbCounc.ListIndex
+    .lblCouncName.Caption = .cmbCounc.Text
+End With
+End Sub
+
+Private Sub cmbCounc_Click()
+cmbCounc_Change
+Call Connect
+Dim r2 As New Adodb.Recordset
+r2.Open "select * from CandidateTable", con1, 3, 2
+r2.MoveFirst
+   r2.Find ("Names ='" & lblCounc & "'")
+   If r2.EOF Then
+        'MsgBox "No Request with such ID found!. Please enter the correct Request ID.", vbOKOnly, "Approval"
+   Else
+    txtImg2 = r2!Pix
+    imgCounc.Picture = LoadPicture(txtImg2.Text)
+End If
+
+End Sub
+
+Private Sub cmdCam_Click()
+' Start WebCam Capture
+    
+   If Me.List1.ListCount = 0 Then Exit Sub
+    If List1.ListIndex = -1 Then Exit Sub
+    
+    modWebCam.OpenPreviewWindow List1.ListIndex, Me.Picture1
+    
+    
+fraCam.Visible = False
+End Sub
+
+Private Sub cmdVote_Click()
+Dim getVoterID, getFname, getAge, getGender, getWard, getAccredit, getAccreditID, getVote, getImg, getPhone As String
+Dim PixId As Integer
+
+Randomize
+
+PixId = Int(Rnd * 12345) + Int(Rnd * 4444)
+' lblSaleId.Caption = PixId
+  
+
+If Dir(App.Path & "\myPic", vbDirectory) = "" Then MkDir (App.Path & "\myPic")
+    Set Me.imgPix.Picture = hDCToPicture(GetDC(modWebCam.hHwnd), 0, 0, 63, 55)
+    
+   txtImg = App.Path & "\myPic\" & Format(Date, "dd_MM_yyyy") & PixId & ".jpg"
+
+
+If cmbChair.Text = "--select here--" Or cmbCounc.Text = "--select here--" Or cmbChair.Text = "" Or cmbCounc.Text = "" Then
+MsgBox "Field(s)empty! please ensure all field are filled. ", vbOKOnly + vbInformation, "Vote"
+Else
+Call Connect
+Dim r1 As New Adodb.Recordset
+Dim r2 As New Adodb.Recordset
+Dim r3 As New Adodb.Recordset
+Dim r4 As New Adodb.Recordset
+Dim r5 As New Adodb.Recordset
+Dim r6 As New Adodb.Recordset
+
+'Call voter's table
+    r2.Open "select * from VoterTable", con1, 3, 2
+   r2.MoveFirst
+   r2.Find ("ID ='" & lblVoterId & "'")
+   If r2.EOF Then
+        'MsgBox "No user with such User Id!. Please enter your correct User Id.", vbOKOnly, "View"
+        'txtSearch.SetFocus
+       ' txtSearch.Text = ""
+   Else
+    getVoterID = r2!ID
+    getFname = r2!Names
+    getAge = r2!Age
+    getGender = r2!Gender
+    getWard = r2!Ward
+    getAccredit = r2!Accredit
+    getAccreditID = r2!AccreditID
+    getVote = r2!Vote
+    getImg = r2!Pix
+    getPhone = r2!Phone
+    
+    
+    End If
+
+'Update Chariman vote
+r1.Open "select * from ResultTable where ID='" & cmbChair_id.Text & "'", con1, 3, 2
+
+    With r1
+    
+    .Fields("ID") = cmbChair_id.Text
+    .Fields("Names") = lblChairName.Caption
+    .Fields("Position") = "President"
+    .Fields("VoteCount") = .Fields("VoteCount") + 1
+    .Fields("Ward") = lblWard1.Caption
+    
+    .Update
+    
+    frmResult.Refresh
+    'frmvoters_list.lvVoters.Refresh
+End With
+
+'Save in Voter Picture Table
+r5.Open "select * from VoterPixTable ", con1, 3, 2
+
+    With r5
+    
+   ' .Fields("ID") = cmbChair_id.Text
+   ' .Fields("Vname") = getFname
+   ' .Fields("Vpix") = txtImg
+   ' .Fields("VoteCount") = .Fields("VoteCount") + 1
+   ' .Fields("Ward") = lblWard1.Caption
+   
+   .AddNew
+    r5!ID = cmbChair_id.Text
+    r5!Vname = getFname
+    r5!vpix = txtImg
+    r5!VoterID = "CH" & getVoterID
+    r5.Update
+   
+   SavePicture imgPix.Picture, App.Path & "\myPic\" & Format(Date, "dd_MM_yyyy") & PixId & ".jpg"
+    
+    '.Update
+    
+    'frmResult.Refresh
+    'frmvoters_list.lvVoters.Refresh
+End With
+
+'Update Councilor vote
+r3.Open "select * from ResultTable where ID='" & cmbCounc_id.Text & "'", con1, 3, 2
+
+    With r3
+    
+    .Fields("ID") = cmbCounc_id.Text
+    .Fields("Names") = lblCouncName.Caption
+    .Fields("Position") = "Governor"
+    .Fields("VoteCount") = .Fields("VoteCount") + 1
+    .Fields("Ward") = lblWard.Caption
+    
+    .Update
+    
+    frmResult.Refresh
+    'frmvoters_list.lvVoters.Refresh
+End With
+
+'Save in Voter Picture Table for cpuncilor
+r6.Open "select * from VoterPixTable ", con1, 3, 2
+
+    With r6
+    
+   ' .Fields("ID") = cmbChair_id.Text
+   ' .Fields("Vname") = getFname
+   ' .Fields("Vpix") = txtImg
+   ' .Fields("VoteCount") = .Fields("VoteCount") + 1
+   ' .Fields("Ward") = lblWard1.Caption
+   
+   .AddNew
+    r6!ID = cmbCounc_id.Text
+    r6!Vname = getFname
+    r6!vpix = txtImg
+    r6!VoterID = "CO" & getVoterID
+    r6.Update
+   
+   SavePicture imgPix.Picture, App.Path & "\myPic\" & Format(Date, "dd_MM_yyyy") & PixId & ".jpg"
+    
+    '.Update
+    
+    'frmResult.Refresh
+    'frmvoters_list.lvVoters.Refresh
+End With
+
+'Update Voter's record
+r4.Open "select * from VoterTable where ID='" & lblVoterId & "'", con1, 3, 2
+
+    With r4
+    
+    .Fields("ID") = getVoterID
+    .Fields("Names") = getFname
+    .Fields("Age") = getAge
+    .Fields("Gender") = getGender
+    .Fields("Ward") = getWard
+    .Fields("Accredit") = getAccredit
+    .Fields("AccreditID") = getAccreditID
+    .Fields("Vote") = "Yes"
+    .Fields("Pix") = getImg
+    .Fields("Phone") = getPhone
+    
+    .Update
+    
+    frmResult.Refresh
+    'frmvoters_list.lvVoters.Refresh
+End With
+
+
+    
+MsgBox "You have successfully cast your vote", vbOKOnly + vbInformation, "Voted"
+Unload Me
+frmLogin.Show
+End If
+End Sub
+
+Private Sub Form_Load()
+'DB
+cand
+RandomNumbers (Num1)
+'lblUserId = Format(Now(), "YY") + Letters & Numbers
+
+modWebCam.LoadDeviceList Me.List1
+
+  
+End Sub
+Private Sub cand()
+Call Connect
+Set rvs = New Adodb.Recordset
+'rvs.Open "Select*from CandidateTable where Position='" & lblChairman.Caption & "'", con1, adOpenStatic, adLockOptimistic
+'rvs.Open "Select*from CandidateTable where PositionID=1", con1, 3, 3
+rvs.Open "Select*from CandidateTable where Ward='" & lblWard1.Caption & "'", con1, 3, 3
+'Dim Chair As New ADODB.Recordset
+'Set Chair = New Adodb.Recordset
+'Chair.Open "Select*from CandidateTable where Position =" & lblChairman.Caption & "'", con1, 3, 3
+'Chair.Open "Select*from CandidateTable where Position='" & lblChairman.Caption & "'", con1, adOpenStatic, adLockOptimistic
+
+    With rvs
+        .Filter = 0
+        While Not .EOF
+            Me.cmbChair.AddItem .Fields("Names")
+            Me.cmbChair_id.AddItem .Fields("ID")
+            .MoveNext
+        Wend
+    End With
+rvs.Close
+
+Counc.Open "Select*from CandidateTable where Ward='" & frmLogin.Label3 & "'", con1, 3, 3
+
+    With Counc
+        .Filter = 0
+        While Not .EOF
+            Me.cmbCounc.AddItem .Fields("Names")
+            Me.cmbCounc_id.AddItem .Fields("ID")
+            .MoveNext
+        Wend
+    End With
+Counc.Close
+
+End Sub
+Private Function LoadPictureFromDB(rs As Adodb.Recordset)
+
+start:
+      On Error GoTo procNoPicture
+'    Set cnnConnection = New ADODB.Connection
+    Set rstRecordset = New Adodb.Recordset
+'    cnnConnection.Open "Provider=Microsoft.Jet.OLEDB.4.0;JET OLEDB:Database Password=;" _
+   & "Persist Security Info =True;Data Source=" & App.Path & "\Automated_VS.mdb"
+'-----------------
+    rstRecordset.Open "Select * from CandidateTable", con1, adOpenDynamic, adLockOptimistic
+    'If Recordset is Empty, Then Exit
+    If rs Is Nothing Then
+        GoTo procNoPicture
+    End If
+    Do Until rstRecordset.EOF
+    'Set strStream = New ADODB.Stream
+    'strStream.Type = adTypeBinary
+    'strStream.Open
+    'strStream.Write rs.Fields("Photo").Value
+    'strStream.SaveToFile "C:\Temp.bmp", adSaveCreateOverWrite
+    
+    If Me.cmbChair.Text = rstRecordset.Fields("Names") Then
+        If imgChair.Picture = LoadPicture("") Then
+        Call Connect
+Dim k2 As New Adodb.Recordset
+k2.Open "select * from CandidateTable", con1, 3, 2
+k2.MoveFirst
+   k2.Find ("Name ='" & lblChair & "'")
+   If k2.EOF Then
+        'MsgBox "No Request with such ID found!. Please enter the correct Request ID.", vbOKOnly, "Approval"
+        
+   Else
+    txtImg1 = k2!Pix
+    imgChair.Picture = LoadPicture(txtImg1.Text)
+End If
+   
+            'imgPres.Picture = LoadPicture("Text1")
+       ' Else
+            'imgPres.Picture = LoadPicture("Text1")
+        'End If
+    End If
+    End If
+    
+    
+    If Me.cmbCounc.Text = rstRecordset.Fields("Name") Then
+        If imgCounc.Picture = LoadPicture("") Then
+        Call Connect
+    Dim r2 As New Adodb.Recordset
+    r2.Open "select * from CandidateTable", con1, 3, 2
+    r2.MoveFirst
+   r2.Find ("Name ='" & lblCounc & "'")
+   If r2.EOF Then
+        'MsgBox "No Request with such ID found!. Please enter the correct Request ID.", vbOKOnly, "Approval"
+   Else
+    txtImg2 = r2!Photo
+    imgCounc.Picture = LoadPicture(txtImg2.Text)
+End If
+
+           ' imgVPres.Picture = LoadPicture("C:\Temp.bmp")
+        'Else
+            'imgVPres.Picture = LoadPicture("C:\Temp.bmp")
+        End If
+    End If
+    
+   'Missing code start here
+   
+   
+   
+   'Missing code ends here
+ 
+    
+    Kill ("C:\Temp.bmp")
+    LoadPictureFromDB = True
+    rstRecordset.MoveNext
+    Loop
+  If Dir$("C:\Temp.bmp", vbNormal) <> "" Then Kill ("C:\Temp.bmp")
+
+procExitFunction:
+    Exit Function
+procNoPicture:
+    LoadPictureFromDB = False
+    GoTo procExitFunction
+End Function
+
+Private Sub cmdClose_Click()
+Unload Me
+End Sub
+
+Private Sub cmdFirst_Click()
+If adCandidateList.Recordset.BOF Then
+MsgBox "That is the First record", vbOKOnly + vbInformation, "BOF"
+Exit Sub
+Else
+adCandidateList.Recordset.MoveFirst
+End If
+End Sub
+
+Private Sub cmdLast_Click()
+If adCandidateList.Recordset.EOF Then
+MsgBox "That is the last record", vbOKOnly + vbInformation, "EOF"
+Exit Sub
+Else
+adCandidateList.Recordset.MoveLast
+End If
+End Sub
+
+Private Sub cmdNext_Click()
+If adCandidateList.Recordset.EOF Then
+MsgBox "That is the last record", vbOKOnly + vbInformation, "EOF"
+Exit Sub
+Else
+adCandidateList.Recordset.MoveNext
+End If
+End Sub
+
+Private Sub cmdPrevious_Click()
+If adCandidateList.Recordset.BOF Then
+MsgBox "That is the First record", vbOKOnly + vbInformation, "BOF"
+Exit Sub
+Else
+adCandidateList.Recordset.MovePrevious
+End If
+End Sub
+
+Private Sub cmdSearch_Click()
+Call Connect
+  Dim r1 As New Adodb.Recordset
+r1.Open "select * from CandidateTable", con1, 3, 2
+  r1.MoveFirst
+   r1.Find ("ID ='" & txtSearch.Text & "'")
+If r1.EOF Then
+        MsgBox "No Candidate with such ID!. Please enter your correct Candidate's ID.", vbOKOnly, "View"
+   Else
+    lblCandID = r1!ID
+    lblFname = r1!Names
+    lblAge = r1!Age
+    lblGender = r1!Gender
+    lblWard = r1!Ward
+    lblPosition = r1!Position
+    'lblAccreditID = r1!AccreditID
+    'lblVote = r1!Vote
+    txtImg = r1!Pix
+    
+    txtSearch.Text = ""
+End If
+End Sub
+
+Private Sub Form_Activate()
+Call Connect1
+    strSQL = "Select * From CandidateTable"
+    Call cmdsql(strSQL)
+    Set dgCand.DataSource = r1
+    dgCand.Refresh
+End Sub
+
+Private Sub txtImg_Change()
+imgPix.Picture = LoadPicture(txtImg.Text)
+End Sub
+
