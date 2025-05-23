@@ -1,0 +1,768 @@
+DESIGN AND IMPLEMENTATION OF A COMPUTERIZED LIBRARY 
+STOCK CONTROL SYSTEM USING BIOMETRIC AUTHENTICATION                       
+ 
+BY  
+
+OPARA CHUKWUKA MICHAEL
+MATRIC NO: IP/23/ND/CS/0019
+
+BEING A PROJECT SUBMITTED TO THE DEPARTMENT OF COMPUTER SCIENCE, INSPIRE POLYTECHNIC, EGBEDA, LAGOS
+
+IN PARTIAL FULFILLMENT OF THE REQUIREMENTS FOR THE AWARD OF NATIONAL DIPLOMA (ND) IN COMPUTER SCIENCE
+
+
+
+MAY, 2025
+CERTIFICATION
+
+This is to certify that this report, “Design and Implementation of a Computerized Library Stock Control System Using Biometric Authentication” was carried out by Opara Chukwuka Michael with matric number IP/23/ND/CS/0019 in the department of Computer Science under my supervision.
+
+
+
+…………………………………….					………………….....                                            
+          Mrs. Ogunlana Deborah						Date   
+            Project Supervisor                                                                                                           
+
+
+
+………………………………………				………………….....
+              Dr. Oloyede, A.O				                                      Date
+         	HOD, Computer Science						
+
+
+
+………………………………………..				………………….....    
+          Dr. Oloyede, A.O					              	Date
+          Director of Studies
+
+
+
+
+
+
+
+
+
+DEDICATION
+Dedicated this project to Almighty GOD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACKNOWLEDGEMENT
+
+My sincere appreciation goes to Almighty God for his unending mercy upon me throughout the duration of my course of study. An earnest appreciation to my supervisor and wonderful family and friends who worked so hard to see that I attain perfection with this project work. 
+May God bless you all.
+ 
+ 
+ 
+ 
+
+ 
+
+
+
+
+
+
+
+              TABLE OF CONTENTS 
+
+Title page										I
+Certification										ii
+Dedication										iii	
+Acknowledgement									iv
+Table of Contents									v
+Abstract										ix
+
+CHAPTER ONE:	INTRODUCTION						 
+1.1	Background of Study								1  
+1.2	Statement of Problem								2 
+1.3	Aim and Objectives of Study							3
+1.4	Significance of Study								4
+1.5	Scope of Study								5
+1.6	Definition of Terms								6
+ 
+CHAPTER TWO:	LITERATURE REVIEW					 
+2.1	Overview of a Library Management System 					7 
+2.1.1 Characteristics of Library Management System				9
+2.1.2 Importance of Library Management System					11 
+    2.2 Brief History of Library Management System					12
+	2.2.1 Digitization of Libraries in Modern Era					13 
+2.3	Biometrics Overview								16
+   2.3.1	Biometrics Authentication							16 
+ 2.3.2	Computerized Biometric Systems						17 
+2.3.3	Automated Authentication and Identification					17
+2.3.4 Fingerprint Recognition							18
+2.3.5 Fingerprint Based Registration System					19
+2.3.6 Merits of Robust Fingerprint Based Registration System			19
+2.4 Related Works									21
+ 
+CHAPTER THREE:	 METHODOLOGY						 
+   3.1	Research Approach								27
+ 
+3.2	Object Oriented Design							28
+  3.3	Infrastructural Model and Architecture					29  
+  3.4	Algorithm for the System							31 
+     3.5	System Flowchart	 							34 
+ 3.6	System Design								35  
+3.6.1	The Design Requirement Details 					35 
+ 3.6.2	The Program Design Specification					35 
+ 3.7	Entity – Relation Model						36 
+ 3.8	The Database Schema							39 
+ 3.9	The Database Table Diagram						39
+ 
+CHAPTER FOUR:  SYSTEM IMPLEMENTATION AND RESULT
+4.1	System Implementation							41 
+4.2	Software and Hardware Requirement						41 
+4.2.1 Supported Digital Persona Hardware Products				33
+4.2.2 Fingerprint Template Compatibility						42 
+ 4.3	Installing the Software							42 
+  4.3.1 Connecting the Fingerprint Reader						43 
+ 4.4	The Application								43 
+4.4.1	Splash screen								43
+4.4.2	Fingerprint enrolment/verification					43  
+   4.4.3	Front Page								48 
+4.4.4	Book Search								49
+4.4.5	User’s Registration							50 
+4.5	User’s Guide									52 
+4.6	System Documentation							53 
+  4.6.1	Types of Documentation						53
+ 
+CHAPTER FIVE: SUMMARY, CONCLUSION AND RECOMMENDATIONS 
+  5.1	Summary									54
+ 5.2 	Conclusion									54
+ 5.3 	Recommendation								55
+References										56
+Appendix (Source Code)								57 
+
+
+
+
+
+ABSTRACT
+The term "biometric identification" describes a technology that may be used to identify people by scanning geographic data from various sources. Biometric technology aids libraries in maintaining the security and safety of its priceless holdings, facilities, and personnel. The librarian's responsibility is to maintain the library's structures, stacks, and shelves free and open, without misplacing materials that need to be made available or placing patrons in needlessly dangerous situations due to the nefarious, greedy, or mindless actions of others. This study examines a novel biometric recognition-based patron authentication method for an automated, contemporary library. The person manning the circulation desk or the library's entry must verify or ascertain the identification of the person making the service request. Currently, identity cards—which can be photo-, smart card-, or RFID-based—are used by practically all libraries for this reason. An individual's identification can be verified or established using the suggested authentication technique based on "what one is, or how one behaves," as opposed to "what one observes" (such as an ID card) or "what one remembers" (such as a password). A secure authentication system's goal is to guarantee that no one else other than legitimate users is able to access the services being provide
+CHAPTER ONE
+1.1	Background of Study 
+It goes without saying that technology has remained a good influence on our way of life. Numerous tasks that were formerly completed by hand are gradually being completed easily, comfortably, and conveniently by machines. The surge of technology innovation has benefited many industries, including education, agriculture, industry, business, communication, and transportation. Library system administration is not an exception. 
+A library is a place of information where people can keep and share information for use in their ongoing human endeavors, such as research projects. The use, management, and control of libraries have expanded rapidly since the invention of technology. But before the creation of the contemporary library system, book records were kept in straightforward but inflexible methods. Books were placed on shelves in a methodical manner, with a unique number allocated to each book that matched a separate shelf label. These labeled shelves are then arranged in a specific way to facilitate information services retrieval and storage. While libraries vary in size and classification, some of the significant transactions that occur inside a typical library system include charging (checking out books), discharging (bringing books back), acquisition, circulation, cataloguing, and so on. Their transactional services are still largely the same. The various functions inside the library are typically inflexible, awkward, laborious, and restricted to the structure's confines.
+It appears that significant advancements in the administration, accessibility, and control of library materials have occurred recently. The computer revolution brought with it the computerized library administration system of today. Modern information centers are progressively replacing traditional library systems. This has given us the freedom to visit libraries whenever and whenever we choose, without having to leave the comforts of home. Library stocks can be managed and controlled more effectively, efficiently, and labor-saving with the use of computerized software. In place of more conventional paper-based (ID card) or password-based verification, biometric authentication is increasingly the technique of choice for rapid, dependable, and efficient identification. Several biometric features are being investigated to establish unique identification and verification, including facial recognition, iris recognition, fingerprints, hand geometry, retinal scans, and voice analysis. The management and control of computerized library stocks through biometric authentication (finger print) will be the main emphasis of this project.  
+1.2 	Statement of Problem 	 
+The limitations faced by staff members in charge of managing and controlling library stocks using the current system led to the development of the computerized system for stock control in libraries that uses biometric authentication.  
+The following highlights the most common issues:  
+I.Time wastage
+The identifying process in the past was laborious and slow. Therefore, to achieve identity on-the-go, ease, and accountability, a biometric authentication is required.
+
+  
+II.Unfriendly library usage
+Without a computerized system in place, theft, book mutilation with a pen or pencil, and ripping out interesting text from reference material become commonplace anti-library use behaviors. This ultimately results in harm and information material loss.
+III.Delayed response in search record 
+When a computerized system is not used, it becomes almost impossible to search for book availability while on the road due to the library's vast volume of books.  
+
+IV.Space constraint 
+Large volumes of books and other information items require storage space, which may make it difficult for patrons to navigate around the library and reach its shelves. Introducing a computerized system will alter the storyline in this instance.    
+V. 	Centralized and singular access  
+A centralized library's book resources are only available to one user at a time. The next person who requires the same resource is excluded as a result. Putting in place a computerized system guarantees that numerous users can access the same database of information.  
+1.3 	Aim and Objectives of Study
+The aim of the study is to design and implement a computerized library stock control system using biometric authentication for secured and easy management of books in a library.                       
+ The objectives are to:
+(i) investigate the current systems of library management to identify problems affecting them.
+(ii) design and implement a secured fingerprint-based library management system that will enable easy storage, timely retrieval and security of books in the library.
+(iii) implement the developed fingerprint-based library management system
+(iv) evaluate the developed secured automated system against the currents manual systems using accuracy and safety as evaluation metric
+
+1.4 	Significance of the Study 
+This system has a tremendously large influence on the ease, convenience, and responsibility of uniquely verifying library patrons. Multiple simultaneous accesses to database materials enhance the service provided to users under this method. Because it is automated, there is less paperwork and a need for less space. The majority of processes in the library are automated, which encourages employees who manage stocks to work effectively. The beautiful user interface provides a welcoming atmosphere that makes users want to stay.  Though there are many advantages to this approach, select handfuls are emphasized here.  This study stands to benefit the following: 
+1.Students: The goal of the study is to increase students' efficiency when using the library. By being promptly informed about what is accessible in the library's resources and database, they receive value for their time. Information can be retrieved more quickly and precisely. Students are given instant access to the library's resources and are quickly confirmed through the use of their fingerprints. By using this method, problems with the current system, such as "forget password" or "ID card," are resolved.  
+2.Librarian: Resources and materials in libraries are easier to handle and more effectively controlled. Easy acquisition, recording, cataloging, charging, and discharging, to name a few, would be made possible by the system. They are more adept at stopping anti-library behaviors that deny library patrons access to necessary materials. Furthermore, this approach improves inventory management and the process of taking stock. Furthermore, the biometric authentication expedites the process of identification. making the task easier and less laborious. 
+3.Lecturers: For professors, having access to a computerized, effective library system is still very beneficial. By using this solution, instructors will be guaranteed access to educational resources that will enhance their readiness to engage with students. From the convenience of their offices, they can use the library at any time.  
+4.The University: Using this technique lowers the overhead expenses associated with running the library. The money spent on hiring employees, filing cabinets, shelving, stationery, and other things could be better used to meet more urgent needs. So improving the economy of creating and distributing many copies of books, categorizing files, etc., and saving her money.  
+1.5	Scope of the Study
+  The following features are covered by this application scope:    
+i.It can keep track of books in the library.
+ii.It can obtain information on a particular book based on its category.
+iii.It generates reports on books in the library for ease of control and monitoring.
+			
+  1.6	Definition of Terms
+AUTOMATION: It is the process of creating a system that can operate alone without much assistance from humans.
+BIOMETRIC: Biometric is referred to the measurement and statistical analysis of people distinct physical and behavioral characteristics
+DATABASE: This is collection of interrelated records
+DESIGN: It is a detail plan or arrangement to achieve a particular purpose. 
+LIBRARY SYSTEM: It is an application or tool designed by researchers to manage library operations. It's a mouse-operated application that was made with a visual programming language. It is event driven, and the user sees things in their visual representations.
+RECORD: A group of connected data points that are managed as a single entity
+ SYSTEM: It is a collection of interconnected elements to investigate. It might be a machine, a program, or a process.
+
+CHAPTER TWO
+LITERATURE REVIEW 
+2.1 	Overview of a Library Management System
+Frequently referred to as the intellectual hub of an institution, libraries continue to be essential to the expansion and advancement of any organization and its esteemed patrons, who fall into three categories: educators, students, and library administrators. An enterprise resource planning system for a library that tracks the materials possessed, orders placed, bills paid, and users who have borrowed is called an integrated library system, sometimes referred to as a library management system (Adamson et al., 2021). 
+For the purpose of keeping an eye on and managing library transactions, there is software called the Library Management System (Ashutosh and Ashish, 2021). The Library Management System provides assistance for the general library requirements, including acquisitions, cataloging, circulation, and other departments. 
+There were various ways to maintain records in libraries before the invention of computers in the contemporary era. The library maintains records on shelves, with each shelf labeled in either numerical or alphabetical order. The available book categories are arranged in different positions on the shelves and are also noted on the library manuscript. When a book needs to be referenced, the manuscript is consulted in order to determine the position of the requested book. Since the birth of the computer, numerous researchers have investigated automated library management systems using a variety of techniques. 
+The KOHA library management system is the first one to be examined. Thousands of libraries throughout the world have embraced KOHA functionality since its initial implementation in 1999, each of them has added features and functions to further expand the system's capabilities. Following the introduction of version 3.0 in 2005 and the incorporation of the robust Zebra indexing engine, KOHA emerged as a workable and expandable option suitable for libraries of all sizes. On this basis, LibLime KOHA is constructed. LibLime KOHA is the most feature-rich open-source integrated library system available on the market right now thanks to its sophisticated feature set. This Library Management System's main drawback is that it is web-based, which means it is not secure because hackers might hack the database and access or change the user's information. [www.koha.org]. 
+The Capital's library software is an additional Library Management System that expands the amount of assistance that is accessible to staff and patrons in any contemporary library service, offers an effective and creative approach that saves library time and enhances patron satisfaction. 
+Typically, a library management system consists of two graphical user interfaces (one for staff and one for users), software to communicate with the relational database, and software. The majority of integrated library systems divide software tasks into independent programs known as modules, each of which is connected via a single interface. Module examples could be:
+ i. 	Acquisitions (ordering, receiving, and invoicing materials)
+ ii. 	Cataloguing (classifying and indexing materials)
+ iii. Circulation (lending materials to patrons and receiving them back)
+ iv. 	Serials (tracking magazine and newspaper holdings) 
+v. 	The OPAC (public interface for users) 
+Typically, a library management system consists of two graphical user interfaces (one for staff and one for users), software to communicate with the relational database, and software. The majority of library management systems divide software functions into independent programs known as modules, each of which is connected via a single interface. Before libraries were computerized, all tasks were done by hand, separately from one another. Using ordering slips, selectors placed material orders; manually cataloging and indexing items using the card cataloguing system—which kept all bibliographic information on a single index card—users signed books out by hand, writing their names on cue cards that were then stored at the circulation desk. The University of Texas implemented early mechanization in 1936 when it started employing a punch card system to control library circulation. Although the punch card system made loan monitoring more effective, it did not alter any other library task and did not bring library services closer to integration.
+2.1.1	Characteristics of a Library Management System 
+i.Management: The use of barcodes to manage books and member records.
+ii.Acquisitions: Using the library management software, acquisitions can create, cancel, remind, receive, and issue purchase orders. They can also be promptly viewed in reports. Purchase order numbers, invoice numbers, and supplier names can be used to search for data. 
+
+iii.Circulation: Manual or barcode scanner book returns and the full administration of multiple item issues are made possible by Library Management Software. 
+iv.Barcode: Using bar codes to manage libraries makes daily work easier for large libraries, where there are dozens or even millions of transactions per year. Furthermore, the software functions flawlessly even in the absence of bar codes. This software comes with a built-in procedure for creating and printing bar codes.  
+v.OPAC: Software for managing libraries Book authors, titles, accession numbers, publications, and languages may all be easily searched by admins and members. Admins can also filter data based on categories.  
+vi.User-suggested item feature: The program handles user suggestions and requests for new item purchases, which lessens the administrator's workload. 
+
+vii.Email Alert: From within the software, the administrator can send emails to members, vendors, and everyone else.
+  
+viii.Multiple Library Setup: Software for managing libraries can be set up in many locations.
+ix. 	Export All Report to Excel and Word: The administrator can export all the information shown in the reports to an Excel or Word document. 
+ix.Manages free and donated goods and keeps track of donors: Library management software maintains track of items that are donated or made available for free.
+x.Provide Multi User environment: Multi-user environments are provided by library management software. Several users can log in to the library management software simultaneously.
+2.1.2 	Importance of Library Management System
+		The prominent importance of a library management system is outlined below: 
+ i.Better customer service by having easier access to reliable information  
+ ii.Increased productivity and job satisfaction among staff members as it eliminates duplication of effort
+ iii.More economical and safer means of storing and keeping of information 
+iv.Easier access to information like management reports and stock etc. as well as accurate and faster results from statistical analyses. 
+v.Reduces errors and eliminating of ennui of long and repetitive manual processing
+vi.Greater accountability and transparency in operations 
+vii.Improved efficiency and effectiveness in administration and management as it has unprecedented access to real- time information. 
+viii.More reliable security for sensitive and confidential information. 
+ix.Appropriate knowledge –based action and intervention can now take place in a timelier manner. 
+2.2 	Brief History of Library Management System 
+A library management system is a system for a library resource planning, used to access the documents held, orders, payment or lending all made by the clients. Sometime, a phrase like library integrated system is employed, especially in the UK. Cynthia Lopta defines the integrated system as an automated system in which all the functional modules share the same bibliographic database. 
+Integration as a concept is most usually found in biblioteconomy. It became a landmark over 20 years ago, and it has grown into an almost synonym for integrated system. Sometimes, integrated refers to a system in which the library functions are processed in a main bibliographic file. 
+By the mid to late 2000s, library management system vendors not only the number of services offered but also their prices leading to some dissatisfaction among many smaller libraries. At the same time open source Integrated Library System was in its early stages of testing. 
+Some libraries began to such open source integrated library system as KOHA and Evergreen. Most reasons noted from these were to avoid vendor lock in, license fees and participate in software development. The much needed freedom from vendors also allowed libraries to prioritize need according to urgency, as opposed to what their vendor can offer. 
+Recently, libraries which have moved to open source integrated library system have found that vendors are now more likely to provide quality service in order to continue a partnership since they are no longer having the power of owing the Integrated Library System software and tying down libraries to strict contracts. This has been the case with the SC LENDS consortium. Following the success of Evergreen for the Georgia PINES library consortium, the South Carolina States Library along with some local public libraries formed the SC LENDS consortium in order to share resources and to take advantage of the open source nature of the Evergreen Integrated Library System to meet their specific needs. 
+By October 2011, just two years after SC LENDS began operations; thirteen public library systems across 15 counties had already joined the consortium in addition to the south Caroline State Library. Librarytechnology.org does an annual survey of over 1,500 libraries and noted in 2008, 2 % of those who surveyed use the Integrated Library System, in 2009 the number increased to 8% and in 2010(most recent year available) 12% of the libraries polled had adopted open source Library Management System. 
+Library system offers many flexible and convenient features, allowing librarians and library users to maximize time and efficiency. Library system gives all the detailed information about students, staffs and books; it will track the books available in the library and the books that have been issued to the library users (students). It shows popular books among the students. It will provide book lost in the library. It keeps records of the supplier and the book binders.
+2.2.1	Digitization of Libraries in Modern Era 
+Libraries have started digitizing their holdings in the modern era to stop complete degradation and decay. Through digitization, the library's resources are electronically available, providing a wider range of access to its collections. The selection of materials for digitization is based on what each library needs, with the exception of some widely accepted guidelines that are typically followed. Newspapers, maps, coins, antiquities, handicrafts, music, children's writing, documented records, and images with global and social significance are among the materials that libraries usually digitize. Advances in information and communication technology have made it possible for data specialists to choose, organize, and retrieve real data for customers in a practical and efficient manner. It also makes the library's resources electronically available, allowing patrons to use the digital resources at any time—even when the library is technically closed—from the comfort of their homes or places of employment. Similar content is freely accessible to many visitors at the same time. The primary drivers behind digitization are the desire to maintain historical materials, enhance the information retrieval process, and enhance user satisfaction. The tangible records of logical research and explorations had to deal with a fundamental problem for a considerable amount of time: they were either lost or damaged. However, because of digital libraries, it is possible to guarantee and compile online copies of research and studies to create a virtual data legacy for future generations. The government has decided to digitize public libraries so that people may simply access rare volumes by downloading a single app to their smartphones. Given the benefits of digitization, this procedure ought to be implemented in all libraries across the nation.  Digitization relies on careful auditing, reviewing, and organizing in order to provide electronic resources that are useful and committed to the primary sources and that support the development of new kinds of study. The fundamental elements involved in digitizing libraries are shown in Fig. 2.1
+
+    
+    Fig.2.1 Aspects of Digital Library (Researchgate.net, 2020)  
+
+ 	 
+These days, a lot of colleges are working to fully digitize their libraries. Teachers and staff as well as the children gain from this. Allowing access to these resources can demonstrate their importance and assist them become known to all faculty and students in various institutions across the world. Additionally, it is beneficial to make the materials available digitally to prevent improper handling of books. The digitalization of priceless and significant assortments not only enhances the institution's prestige but also benefits the students' academic work there by preserving the older, valuable resources for a longer period of time.
+ 2.3	Biometrics Overview
+The Greek words bio, which means life, and metric, which means measurement, are the roots of the word biometrics. The study of an individual's distinct physical and behavioral traits via measurement and statistical analysis is known as biometrics. Rouse (2017) states that the technology is typically utilized for access control, identity verification, and monitoring person identification. Traditionally, passwords and ID cards have been used to limit access to systems that are under protection; however, these methods are unreliable and easily compromised. Biometric systems have been built using a variety of features, including voice, hand geometry, handwriting, facial attributes, fingerprints, retinas, and iris (Sanderson, Aliye, and Paliwal, 2021). Biometrics is not lendable, stolen, or forgettable, and they are difficult, if not impossible, to fake (Mazhar, Ahamed & Rasedujjaman, 2020)
+2.3.1	Biometric Authentication  
+The process of verifying an individual's identity through distinct physical characteristics or measurements is known as biometric authentication (Desai, Gore, Jankar, & Patil, 2018). The fundamental idea behind biometric authentication is that every person may be uniquely identifiable by their innate physical or behavioral traits. The two primary types of biometric identification are based on physiological or behavioral characteristics. Physiological identifiers that are related to the makeup of the user being validated include fingerprints, finger geometry (the size and positioning of fingers), facial recognition, iris recognition, vein recognition, retina scanning, DNA matching, and voice recognition.
+
+2.3.2	Computerized Biometric Systems  
+Advanced technologies known as computerized biometrics systems use physiological or behavioral traits to identify individuals. Measuring characteristics include fingerprint, face, iris, voice, retina, hand geometry, and signature. A vast array of extremely secure verification and personal identity systems now rely heavily on biometrics. The exponential increase in security breaches and fraudulent transactions is making it increasingly clear that highly secure verification and personal identity solutions are urgently needed. The privacy of personal data and the secrecy of financial transactions can both be protected by biometric technologies (Desai, Gore, Jankar, & Patil, 2018).
+2.3.3	Automated Authentication and Identification  
+Adopting a Robust Fingerprint Based Registration System in law enforcement facilitates individual identification considerably (Jain et al., 2019). To find a culprit and stop the crime while upholding law and order, the police can use a number of tactics. A person's electronic identity can now be determined almost entirely through electronic communication (Krishnamurthi et al., 2020).
+Among the various electronic identification techniques are phone and mobile numbers, passport numbers, bank account numbers, driver's license numbers, national identity card numbers, and digital signatures. Since these data sources offer comprehensive details about every person, security agencies can quickly identify a person in order to safeguard the safety of society.
+2.3.4	Fingerprint Recognition   
+The patterns on the tip of a finger are studied by Mudholkar, Shende, and Sarode (2021), Matyá and Ha (2021), and Krishneswari and Arumugam (2020) (Biometric data Recognition). Various techniques are frequently employed for fingerprint identification, authentication, and verification. Some employ simple pattern matching devices; others use somewhat more advanced techniques like moiré fringe patterns and ultrasonics; still others use procedures akin to the traditional police method of comparing minutiae. Moreover, certain verification and authentication systems can tell when a real finger is presented, while others cannot. More gadgets with fingerprint recognition than any other biometric feature are on the market. Fingerprint scanners are becoming more widely used for user authentication as the device gets cheaper. This method of verification works best with internal systems where users will be adequately instructed; and given time to adjust to the system in a controlled setting. Since most workstations only offer fingerprint verification as a biometric option for application access, fingerprint verification has grown incredibly popular. This is assumed to be due to its small size, low cost, and simplicity of integration with fingerprint authentication devices. (Van der Putte and Keuning, 2020; Chaos Computer Club, 2018)
+
+
+Figure 2.2: Fingerprint types (Lazaroff, 2014)
+2.3.5	Fingerprint Based Registration System  
+We now have a deeper grasp of the workings of the cosmos thanks to technological advancements, which has sparked the creation of several more sophisticated systems and technologies. Conversely, every technological breakthrough entails the risk of misuse and unidentified risks for its consumers. In the modern world, theft of confidential personal information and data is a serious concern. Users take all necessary precautions to safeguard their data and sensitive information as digital data usage increases. One common security measure employed by users is the use of highly encrypted passwords and identity cards (Kumari, Chaudhry, Wu, Li, Farash and Khan, 2015; Sadqi, Asimi and Asimi, 2014; Yang, Ma and Jiang, 2012; Ferguson, Schneier and Kohno, 2012; Chiasson, Forget, Biddle and van Oorschot, 2018; Mannan and van Oorschot, 2018).
+2.3.6	Merits of Robust Fingerprint Based Registration System
+The uniqueness that comes with uniqueness identification is one of the most significant benefits of using biometric technologies, and it has contributed to the adoption of biometric security technologies in the daily lives of many security-conscious individuals. It is practically hard for two people to have the same biometric system identity because biometric technology is so distinctive when it comes to identifying (Tistarelli, 2019). Additionally, users are less likely to share their login credentials with others—a practice that is widely known to be linked to security breaches—because biometric identity is specific to each individual's actual body.
+Because of this, it becomes extremely difficult to make duplicate copies of a biometric feature that is necessary to access other users' data and rights. This makes getting unauthorized access through biometric impersonation very challenging (Tistarelli, 2019). Because biometric factor authentication requires the presence of the user, most authenticating systems are also resistant to social engineering attacks. Additionally, by preventing fraudulent employees from claiming that someone else used their login credentials to view the system while they were away, these systems can also stop dishonest employees from denying responsibility for their actions.
+Furthermore, because of its simplicity of use and impenetrability, the biometric technology-based identifying function for individuals is highly well-liked by its users. Most biometric security systems are inexpensive to buy and easy to set up, despite the fact that some of them are sophisticated and costly (Tistarelli, 2019). Furthermore, employing a robust fingerprint-based registration system can improve data integrity, help reduce redundancies and inconsistencies, guarantee user-defined rules to ensure data integrity, facilitate data recovery, authorize data access, have an intelligent backup that runs automatically, and enable data sharing across multiple applications.
+2.4 	Related Works
+Neelakadan, Duraisekar, Balasubramani, and Srinivasa, (2010) in their study developed a system using KOHA Open source software to develop an updated database of books and other resources of the school of Chemistry Library, Bharathidasan University to implement automated system using KOHA library integrated Open source software to carry out the charging and discharging functions of the circulation section more effectively which provide various search options to know the availability of books in the library to generate the list of books due by a particular member and also the overdue charges. KOHA is being said to be an integrated software system with all the required models for small to very large libraries (Neelakandan et al., 2010). 
+The outcome of the system they developed has: Chemistry library collections that are in single database, it gives the full control over the library collections and operations, faculty members search and research scholars can check the required books by OPAC modules, research scholars and faculty members can check the status of their borrowed books, they can get the complete details about the books for their further reading and research, data entry of the books can be done through the downloading of bibliographic details from the library of congress and other catalogues and the library system developed can share their data with various library and other department in the libraries. 
+The limitations of this research were based on: 
+i.Lack of Infrastructure facility
+ii.Lack of Environment support
+iii.Lack of Financial Resources 
+Koy yeeh keat, (2011) in his research developed a library management system which could be mainly used by member and staff of the library. The system allows members search for books and reserve books through website so that they can save their time and cost to travel from one place to another to use the library as well as know what the book entails in the library. In the system developed, staffs can also be able to add news and also view reports with several criteria as well as add, edit and delete news. The system developed was aimed at allowing users to reserve books via online, to convenient user borrowing books via online, implementing email technologies to the website, implementing SMS technologies to the system, designing a friendly graphical interface which would suit the users. 
+In the designing of the system, various modules were considered which are the: 
+ i. 	Authorization and authentication module
+ ii. 	Member/staff module
+ iii. 	Search module
+ iv. 	Books maintenance module 
+ v. 	News maintenance module
+ vi. 	Email module
+ vii. 	Report modules
+ viii. 	Publisher maintenance module
+ ix. 	Employee maintenance module etc. 
+The software used in the research entails the use of Microsoft products like the Microsoft visual studio 2008 for the website development and ASP.NET with C# as the programming language used having the Microsoft SQL server 2008 as the database. 
+Mainly the software and hardware requirement used in his research were: 
+ i. 	Operating system: windows 7 professional 
+ ii. 	Database: MYSQL server 2008 
+iii. 	Development tools and programming language: Microsoft visual studio 2008 and VB.NET
+ iv. 	Processor: Intel core i2 duo CPU T7250 @ 2.00 GHz 
+v. 	Ram: 2 GB 
+The methodology used in the research was the waterfall model which entails the system planning, requirement analysis, system design, programming, system testing and the evaluation. 
+Ashutosh Tripathi, and Ashish Srivastaval, (2021) developed a system which is a library management software for monitoring controlling the transactions in a library. In their study they came up with a Library Management System which was developed in java and mainly focuses on basic operations in a library like adding new member, new books, and updating new information, searching books and members and facility to borrow and return books. 
+The system these two developed was an automated Library Management System. In which through the software user can add members, add books, search members, search books, update information, edit information, borrow and return books in quick time. The system they developed has the following advantages. 
+User friendly interface, Fast access to database, less error, More Storage Capacity, Search facility, Look and Feel Environment 
+All the manual difficulties in managing the Library were rectified by implementing computerization. The software which was designed can help users maintain and organize library making the software very easy to use for both beginners and advanced users. 
+The system requirement for the research entails how the library management system that was designed can be used in windows 98 Windows2000, Windows XP and Windows NT, supported for other platforms such as Applet Macintosh and UNIX. The system was made to run on Windows 98 or Windows NT4.0 operating system and met the following hardware requirements. 
+i.For Windows 95 based computers, a 486 / 66 MHz or higher processor with 8MB 
+ii.For Windows 98 based computers, a 500/88MHz or higher processor with 32 Mb of RAM 
+iii.For Windows NT based computers, a 488 / 66 MHz or higher processor with 16 
+MB of RAM 
+iv.For Windows 200 based computers, a 700/850 MHz or higher processor with 512 MB of RAM 
+At the end of his research the combination of all the web pages he designed resulted in a web application named Library Management System, which works as online library. Several user-friendly coding was also adopted. 
+Prabhakar kumar, Rahul Kumar,Rajat Singh and Vikram Singh, (2014)developed a library management system which aims in developing a computerized system to maintain all the daily work of library. By the virtue of their research work, the system developed entails many features which are generally not available in normal library management systems like facility of user login and a facility of teacher’s login. The system developed also has a facility of admin login through which the admin can monitor the whole system etc. The objectives of the system developed were aimed at: 
+ i.Improvement in control and performance. 
+ ii.Save cost. 
+ iii.Save time. 
+iv.Option of online Notice board where Librarian will be able to provide a detailed description of workshops going in the college as well as in nearby colleges etc. 
+The software and hardware requirement in the designing of the system were: 
+ i. 	Operating system- Windows 7 
+ ii. 	Database - MYSQL-MYSQL 
+iii.Development tools and Programming language- HTML was used to write the whole code and develop webpages with CSS, java script for styling work and PHP for sever side scripting. 
+iv.Intel core i5 2nd generation is used as a processor 
+v.Ram 1 GB 
+Sarawut Markchit, (2015) developed a system to identify the problem and obtain necessary requirements data from the librarians, analyse the obtain data, design and develop the system and conduct an assessment or survey from the users of library resources service through websites and mobile systems with web services with regards overall performance of Suratthani Rajabhat University Central Library. 
+Sarawut Markchit system was able to acquire material as quickly as possible, maintain a high level of accuracy in all work procedures, and keep work processes simple, in order to achieve the lowest possible unit cost and develop close, friendly working relationships with other library units and vendors. 
+In his methodology he was able to make use qualitative methods using structured interviews. 
+Information were being gathered by the virtue of this. 
+The system was developed using some instruments used for the development which were visual studio .NET (ASP.NET) for web-based application, HTML5 for mobile application, web-service for data communication with the component and connected to staff system of this University, Microsoft SQL server for database management and longest matching algorithm for data retrieval. 
+
+CHAPTER THREE
+METHODOLOGY 
+3.1 	Research Approach
+Figure 3.1 depicts the proposed system's framework. The two main phases in the creation of a biometric system are enrollment and identification. Upon enrollment, a fingerprint scanner or reader is used to obtain a student's biometrics. In order to identify a student, their fingerprint is taken once again using the local binary pattern feature extraction technique. The characteristics extracted from the fingerprint are then compared to templates stored in the database. The student can then use the system to clock in and out if their fingerprints match. The student cannot register if the fingerprint does not match any template in the fingerprint database. This is the stage of verification, attendance registration, and de-registration.
+
+Fig 3.1: The Framework of proposed system
+
+The fingerprint scanner/reader that takes fingerprint images and the central server that has the database of fingerprint templates—which is supposed to be managed by administrators—are among the hardware classes utilized in the system. Three workstations are connected to the server. Two distinct computer stations, each handling the task of emulating the application function and conducting the comparison process, are used to record each employee's attendance.
+Through its USB interface, the fingerprint scanner is linked to the computer systems. The front end (application program), back end (database), and server operating system (Microsoft Server 2008) make up the software. The following software tools and technologies are employed: The Microsoft Visual Studio framework includes the Microsoft VB.Net programming language. For the BFASSM, the framework provides a suitable user interface. The advantages of the Microsoft VB.Net program include its remarkable database connectivity, speed, scalability, and ease of programming. Furthermore, VB.Net has a sizable user base that offers online support and operates on both Windows and UNIX operating systems. Software modeling was done using Microsoft Visio and Macromedia Fireworks.
+3.2	Object Oriented Design 
+Although, this system is developed using Object Oriented Design (OOD) techniques, it will be useful to identify the overall requirements in functional terms, mainly because, as pointed out by Rickman (2005), one of the weaknesses of OOD is that OOD methods only build functional models within the objects.  From the structural design perspective, it is difficult to get a system wide view of the data.  This can lead to requirements being missed because the system to be built must be understood in terms of requirements (Dale, 2005).  Ultimately, this research work uses a process of requirements engineering (RE), to complement OOD modeling using the Unified Modeling Language (UML).  
+3.3	 Infrastructural Model and Architecture
+I.Overall System Architecture
+The hardware phase integrated into proposed automated system involves two technologies, namely: Biometric Fingerprint Scanner (Scans the fingerprints of    users) and Barcode Scanner (Front End), Barcode Verifier and Barcode Printer (used during the installation phase. The software phase is divided into two sub-phases: 
+a.Front End (application which interfaces the users would interact with back end.
+b.Back End (database where the information is stored. In designing the front-and back-end of the system, some development tools required are:
+(i) Microsoft Visual Studio (.Net Framework): The programming language used is C#, which is structured, imperative, object-oriented, and declarative
+(ii) Microsoft SQL Server 2005: It is a fast, stable and true multi-user, multi-threaded SQL database server; SQL (structured query language).The main goals of Microsoft SQL are speed, robustness, and ease of use. It defines an xml data type that could be used either as a data type in database columns or as literals in queries.
+The system architecture in Fig. 3.1 shows how the system operates and functions. It consists of a centralized database server that stores all the information about books, library users and their properties and processes. The barcodes of the books are stored via a barcode scanner in the server as strings, while the fingerprint templates of the library users are stored via a fingerprint scanner in the server as byte. The fingerprint scanner is used to register both the university staffs and students to allow them access the library during entry. Efficiency and effectiveness is improved after this     synchronized technology.
+II. Requirement Specification
+From the architecture, two main components are required for the development and implementation of the architecture:
+(a)User Terminal: The readers’ desk management application resides on a terminal device which is a computer or laptop with intranet access
+(b)Application Server: The application server ensures that the assumptions stated in the readers desk system management requirement above are met, authorizes and authenticate library users.
+(c)Analysis of Model: The structure of the proposed system can be analyzed using the Use-Case diagram, Class diagrams and the behavioral/ sequence diagram.
+The use case scenario of the proposed system is shown in Fig. 3, showing the interactions of the library administrator, student, university staff and Circulation Desk staff on each tier of the model.
+In Fig. 3, there are four main actors: librarian, students, university staff and circulation desk staff. The registered student or university staff sign-in into the library via a biometric finger print authentication and then manually search books. At the circulation desk, with the use of a bar coding system, tracking of books on shelves and a self-maintained record of all books in the library are achieved. Also, the library administrator/circulation desk staff can register books, students, charge-in, charge-out books, etc. All information here is stored in the centralized server and can be used for future reference in addition to the report accessible to the library administrator.
+
+3.4	Algorithm for the System 
+?Algorithm for Administrator 
+Step 1. Start 
+Step 2. Enter username, password / (Finger print authentication) 
+Step 3. Processed 
+Step 3a. if entry is wrong, return to step 2 
+Step 3b. if entry is correct, login successful 
+Step 4. Go to main page 
+Step 4a. Can add student 
+Step 4b. Can give out books 
+Step 4c. Can add new books 
+Step 4d. Can check students detail 
+Step 4e. Can edit student 
+Step 4g. Can change views 
+Step 4h. Can generate report 
+Step 5. log out 
+Step 5a. if no, go back to step 4. 
+Step 5b. if yes, log out successful. 
+Step 6. Stop
+?Algorithm for student 
+Step 1. Start 
+Step 2. Enter username, password / (Finger print authentication) 
+Step 3. Processed 
+Step 3a. if entry is wrong, return to step 2 
+Step 3b. if entry is correct, login successful 
+Step 4. Go to main page 
+Step 4a. Can Register 
+Step 4b. Can request for books 
+Step 4c. Can search for books 
+Step 4d. Can check his/her profile 
+Step 4e. Can edit profile 
+Step 5. log out Step 5a. if no, go back to step 4. 
+Step 5b. if yes, log out successful. 
+Step 6. Stop 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+3.5 System Flowchart
+  
+Fig 3.2: System Flowchart
+
+3.6  	System Design 
+In this phase, the physical system is designed with the help of the logical design prepared by system analysts. The analysts and designers work together and use certain tools and software to create the overall system design, including the input, output, and processes, user interface design, data design. 
+This Design also helps in identifying the software and hardware requirements of the system 
+3.6.1 The Design Requirement Details 
+i.Visual Basic (VB) is a widely used high level programming language developed by Microsoft and based on earlier BASIC implementations such as 
+QBasic/QuickBasic. Aside this, it is easier to use and understand and does not run on the internet unlike the .NET programming language.  
+This will be used to develop the user interface which will also serve as the frontend for both the employees and the administrator but the administrator will have more authorization than the employees. 
+ii. My SQL 2005 that allows a user to create, manage and operates on a database.  
+This will serve as the backend for the administrators.  
+3.6.2 The Program Design Specification 
+i.Input requirements: The system will accept log in details of the administrator and authorized users, the details of students, categories of books, books authors and more. 
+ii.Processes of data: This involves the steps or procedures required to produce the output. The procedures are defined in a way that accuracy and security will be achieved. The new system after inputting all the data will then process them to get the indispensable output. 
+iii.Output requirements:  Output is defined as the results of processing of inputs. The system will generate a crystal report and Bonus. 
+iv.Control: Only the line managers (authorized users) and administrator (manager) with username and password will have access to the system. 
+3.7	Entity Relationship Model 
+The Entity Relationship Model, also called an entity-relationship diagram, is a graphical representation of entities and their relationship to each other, typically used in computing in regard to the organization of data within databases or information system. 
+ 
+
+
+
+ 
+ 
+ 
+ Fig 3.3: Entity Relationship Model
+
+3.8 The Database Schema 
+The relational database schema of the computerized management system consists of tables, fields, relationship, views, indexes, etc. the schema of the computerized system will store data in its directory. The schema is in text database language form. It is a graphical depiction of the database structure. 
+3.9  	The Database Table Diagram 
+This is a structure that shows how the tables are organized in the database, which is shown below: 
+
+Fig. 3.4: Design view of some of the tables
+ 
+Fig. 3.5: The Data View of the Table 
+
+
+
+
+
+CHAPTER FOUR 
+SYSTEM IMPLEMENTATION AND RESULT 
+4.1  	System Implementation
+VB.Net was used to implement on this work, this is because it is most suitable due to the fact that it is more flexible and more efficient than most programming languages.
+4.2	Software and Hardware Requirement 
+1.Software Requirement 
+i.Microsoft .NET Framework (version 2 and later), which is required for .NET projects to run and is obtainable from Microsoft 
+ii.Report Viewer For Visual Basic Studio
+iii.MY SQL 2005
+2.Hardware Requirement 
+i.400MHZ Processor
+ii. 1GB RAM
+iii.40GB Hard disk
+iv.Monitor
+v.Keyboard
+vi.Digital Persona fingerprint device 
+.
+4.2.1  	Supported Digital Persona Hardware Products 
+The One Touch for Windows SDK: .NET Edition supports the following Digital Persona hardware products: 
+• Digital Persona U.are.U 4000B/4500 or later fingerprint readers and modules
+Digital Persona U.are.U Fingerprint Keyboard 
+ 
+4.2.2 Fingerprint Template Compatibility 
+Fingerprint templates produced by all editions of the One Touch for Windows SDK are also compatible with the following Digital Persona SDKs: 
+•Gold SDK 
+•Gold CE SDK 
+•One Touch for Linux SDK, all distributions 
+4.3  	Installing the Software 
+Before you can use this application, you must install the One Touch for Windows SDK: 
+.NET Edition, which includes the runtime environment (RTE). 
+To install the One Touch for Windows SDK: .NET Edition 
+1.In the SDK folder in the software package, open the Setup.exe file, and then click Next. 
+2.Follow the installation instructions as they appear. 
+3.Restart your computer. 
+4.3.1. Connecting the Fingerprint Reader 
+Connect the fingerprint reader into the USB connector on the system where you installed the SDK. 
+4.4 	The Application 
+  4.4.1 Splash Screen 
+
+Fig. 4.1: The Splash Screen
+Start the application. The splash screen will load first before the authentication page.
+
+4.4.2 Fingerprint Enrolment / Verification 
+This page has two main important buttons, Enroll Fingerprint and verifies Fingerprints. 
+ 
+Fig. 4.2: Fingerprint Enrolment Page
+The enroll button will pop-up fingerprint enrolment page. Users must enroll his fingerprint before he can be verify to have access to the Library management system application. 
+Below are the screenshots; 
+ 
+
+Fig. 4.3a: Fingerprint Page
+There is a highlighted green on the fingers enroll. 
+The Verification button will trigger verification page. Only the finger that has been enrolled can be given an authorization. 
+ 
+Fig. 4.3b: Fingerprint Page
+User can skip the fingerprint process and make use of username & password to have access to the application. 
+ 
+Fig. 4.4a: Login Page
+
+ 
+ 
+Fig. 4.4b: Login Page
+ 
+For sample purpose, select Admin at the combo box, and then input admin as the username and 12345 for the password. 
+4.4.3 Front Page 
+ 
+Fig. 4.5: Front Page
+After a successful validation/ login, user is presented with the page above. 
+The front page contains the whole menu and sub-menu of what the application can perform, such as; 
+•Add new user 
+•Add new book 
+•Add new student 
+•Add new staff 
+•Add course 
+•Add department 
+•Record book issuing 
+•Record book return 
+•View all book records  
+•View student list 
+•Some useful system tools 
+•Book search 
+•Suppliers details and new suppliers 
+•Export records to excel and many more. 
+4.4.4 Book Search  
+ 
+Fig. 4.6: Book Search Page
+Here user can search for book either by Title, by author, by access number, by subject, by department, and by reference. 
+All record fetch by this search can also be exported into excel formal. 
+4.4.5 User Registration 
+ 
+Fig. 4.7: User Registration Page
+
+This page allow us to add new user or an admin 
+In same way we can add new student, new staff, courses and department, book suppliers and new books. Check the screenshots below; 
+ 
+Fig. 4.8: Student Registration Page
+
+ 
+Fig. 4.9: Book Registration Page
+
+ 
+Fig. 4.10: Book Return Page
+4.5 User’s Guide  
+A user guide is essentially a book-length document containing instructions on installing, using, or troubleshooting a hardware or software product. 
+A user guide or user's guide, also commonly known as a manual, is a technical communication document intended to give assistance to people using a particular system. It is usually written by a technical writer, although user guides are written by programmers, product or project managers, or other technical staff, particularly in smaller companies. 
+4.6 System Documentation 
+This is the collection of documents that describes the requirements, capabilities, limitations, design, operation, and maintenance of a system, such as a communications, computing, or information processing system. 
+4.6.1	Types of Documentation 
+I.System documentation (maintenance programmers) 
+Records detail information about a system's design specifications, functionality (external), and internal workings (internal), e.g., DFDs, ERDs, Structured English, Structure Chart, Pseudocode. 
+II.User documentation (end-users) 
+Records information about an application system, how it works, and how to use it, e.g., user manual, procedure manual 
+
+
+
+
+
+CHAPTER FIVE
+SUMMARY, CONCLUSION AND RECOMMENDATION 
+5.1 	Summary 
+The Biometric System may easily be applicable to Library System Management in three ways: 
+a) it maintains library patron records very quickly, accurately, orderly; 
+b) it acts as a helpful management Tool for the librarian and other managerial staff of the library; and 
+c) it may continue for years together without any further adding cost after its installation. 
+A number of biometric characteristics exist and are in use in various applications. Each biometric has its strengths and weaknesses, and the choice depends on the application. No single biometric is expected to effectively meet the requirements of all the applications
+5.2 	Conclusion 
+In conclusion, from proper analysis and assessment of the designed system it can be safely concluded that the system is an efficient, usable and reliable Library Management System. It is working properly and adequately meets the minimum expectations that were for it initially. The new system is expected to give benefits to the users and staff in terms of efficiency in the usage of library system. 
+Reliable personal recognition is a critical task in many cases. Biometrics refers to automatic recognition of an individual based on his behavioral and/or physiological characteristics. The conventional password-based and ID card-based methods do not really provide positive personal recognition because they rely on surrogate representations of the person’s identity. It is, thus, obvious that any system assuring reliable personal recognition must necessarily involve a biometric component. Biometric based systems also have some limitations that can be overcome with the evolution of biometric technology and a careful system design, it is important to understand that foolproof personal recognition systems simply do not exist and perhaps, never will. Security is a risk management strategy that identifies controls, eliminates, or minimizes uncertain events that may adversely affect system resources and information assets. The security level of a system depends on the requirements of an application and cost-benefit analysis. It is certain that biometric-based recognition will have a profound influence on the way we conduct our daily business. And thus, a modern automated library can also use these biometric based patron authentication systems. 
+5.3 	Recommendation 
+This Library management system was built just as a final year project work, and because of the limited time frame, a bonus system could not be implemented into the system. This bonus system should include single database for both the fingerprint template and the main Library application records. Therefore, we recommend that anyone who takes up this project should implement this feature in the system. 
+
+
+
+REFERENCES
+1.Jain, A.K, Flynn P, & Ross A. (2019) “Handbook of Biometrics”, Springer, 2019. 
+2.Jain, A.K, Ross, A.& Prabhakar S. (2020) “An introduction to biometric recognition”, IEEE Transactions on Circuits and Systems for Video Technology, Vol. 14, No. 1, pp.4-20, 2020. 
+3.Hong, L., Jain, A. K., & Pankanti, S. (2019) “Can Multibiometrics Improve Performance?”, Proc. AutoID’99, pp. 59-64, Summit(NJ), USA, Oct 1999. 
+4.Hong, L. & Jain, A. K. “Integrating Faces and Fingerprints for Personal 
+Identification”, IEEE Trans.on Pattern Analysis and Machine Intelligence, Vol. 20, No. 
+12, pp.1295-1307, Dec 2018 
+5.Adamson and Veronica. (2021). JISC & SCONUL Library Management Systems Study Sheffield, UK: Sero Consulting. p. 51. Retrieved on 06 August 2021. 
+6.Ademodi, D.T., & Adepoju, E. O. (2019). Computer skill among Librarians in 
+Academic Libraries on Ondo and Ekiti States, Nigeria. Library Philosophy & Practice. 
+7.Adomi, E. E., & Anie, S. O. (2021). An Assessment of Computer Literacy Skills of Professionals in Nigerian University libraries. Library Hi Tech News, Vol.23 (2) pp.10-
+8.Mazhar, F. Ahamed, O. and Rasedujjaman, M., (2020): “Biometric smart attendance kit with fingerprint scanner by using microcontroller,” in 2020 International Conference on Electrical & Electronic Engineering (ICEEE), pp. 13–16, Rajshahi, Bangladesh, November 2020.
+
+9.Jain, A. K. and akumar, K. N and Ross, A., (2019): “50 years of biometric research: accomplishments, challenges, and opportunities,” Pattern Recognition Letters, vol.79, pp. 80–105, 2016.
+
+10.Krishnamurthi, K. Mary, S. I. Sumalatha, B. N. and Pereira, A., (2020):
+“Fingerprint Based Attendance System,” International Journal of Advanced Research in Computer and Communication Engineering, vol. 4, no. 3, 2015. doi: 10.17148/IJARCCE.2015.43149
+http://www.ibia.org (accessed on 05th April 2019). 
+http://www.rfid-library.com/ (accessed on 12th April 2019). 
+
+
+
+
+
+
+
+
+
+
+
+
+
+APPENDIX
+(Source Code)
+PublicClassMainForm 
+Private Data AsAppData 
+Private Enroller AsEnrollmentForm 
+Private Verifier AsVerificationForm 
+PublicWithEvents AppData AsAppData 
+ 
+SubNew() 
+        InitializeComponent() 
+ 
+        Data = NewAppData() 
+AddHandler Data.OnChange, AddressOf OnDataChange 
+        Enroller = NewEnrollmentForm(Data) 
+        Verifier = NewVerificationForm(Data) 
+        ExchangeData(False) 
+EndSub 
+ 
+PrivateSub OnDataChange() 
+        ExchangeData(False) 
+EndSub 
+ 
+PrivateSub QuitButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) 
+        Close() 
+EndSub 
+ 
+PrivateSub ExchangeData(ByVal read AsBoolean) 
+If (read) Then 
+If (Mask.Text.Length > 0) Then 
+                Data.EnrolledFingersMask = Mask.Value 
+Else 
+                Data.EnrolledFingersMask = 0 
+EndIf 
+ 
+If (MaxFingers.Text.Length > 0) Then 
+                Data.MaxEnrollFingerCount = MaxFingers.Value 
+Else 
+                Data.MaxEnrollFingerCount = 0 
+EndIf 
+ 
+            Data.IsEventHandlerSucceeds = IsSuccess.Checked 
+            Data.Update() 
+Else 
+            Mask.Value = Data.EnrolledFingersMask 
+            MaxFingers.Value = Data.MaxEnrollFingerCount 
+            IsSuccess.Checked = Data.IsEventHandlerSucceeds 
+            IsFailure.Checked = Not IsSuccess.Checked 
+            IsFeatureSetMatched.Checked = Data.IsFeatureSetMatched 
+            FalseAcceptRate.Text = Data.FalseAcceptRate.ToString() 
+'VerifyButton.Enabled = Data.EnrolledFingersMask > 0 
+EndIf 
+EndSub 
+ 
+PrivateSub EnrollButton_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles EnrollButton.Click 
+        ExchangeData(True) 
+        Enroller.ShowDialog() 
+EndSub 
+ 
+PrivateSub VerifyButton_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles VerifyButton.Click 
+        ExchangeData(True) 
+        Verifier.ShowDialog() 
+EndSub 
+ 
+PrivateSub Label1_Click(sender AsObject, e AsEventArgs) Handles Label1.Click 
+Frmlogin.Show() 
+ 
+EndSub 
+ 
+EndClass 
+ 
+PublicClassVerificationForm 
+ 
+Public Data AsAppData 
+ 
+SubNew(ByVal data AsAppData) 
+        InitializeComponent() 
+Me.Data = data 
+EndSub 
+ 
+Sub OnComplete(ByVal Control AsObject, ByVal FeatureSet As DPFP.FeatureSet, ByRef 
+EventHandlerStatus As DPFP.Gui.EventHandlerStatus) Handles 
+VerificationControl.OnComplete 
+Dim ver AsNew DPFP.Verification.Verification() 
+Dim res AsNew DPFP.Verification.Verification.Result() 
+ 
+ForEach template As DPFP.TemplateIn Data.Templates    ' Compare feature set with all stored templates: 
+IfNot template IsNothingThen'   Get template from storage. 
+                ver.Verify(FeatureSet, template, res)           '   Compare feature set with particular template. 
+                Data.IsFeatureSetMatched = res.Verified         '   Check the result of the comparison 
+                Data.FalseAcceptRate = res.FARAchieved          '   Determine the current False Accept Rate 
+ 
+If res.Verified Then 
+'what should hapen will be place here 
+Frmlogin.Show() 
+Me.Close() 
+                    EventHandlerStatus = DPFP.Gui.EventHandlerStatus.Success 
+Exit For' success 
+EndIf 
+EndIf 
+Next 
+IfNot res.Verified Then EventHandlerStatus = DPFP.Gui.EventHandlerStatus.Failure         Data.Update() 
+EndSub 
+EndClass 
+ 
+PublicClassEnrollmentForm 
+Public a AsString 
+Public Data AsAppData 
+ 
+SubNew(ByVal data AsAppData) 
+        InitializeComponent() 
+Me.Data = data 
+        ExchangeData(False) 
+AddHandler Data.OnChange, AddressOf OnDataChange 
+EndSub 
+ 
+PrivateSub OnDataChange() 
+        ExchangeData(False) 
+EndSub 
+ 
+PublicSub ExchangeData(ByVal read AsBoolean) 
+If (read) Then 
+            Data.EnrolledFingersMask = EnrollmentControl.EnrolledFingerMask 
+            Data.MaxEnrollFingerCount = EnrollmentControl.MaxEnrollFingerCount 
+            Data.Update() 
+Else 
+            EnrollmentControl.EnrolledFingerMask = Data.EnrolledFingersMask 
+            EnrollmentControl.MaxEnrollFingerCount = Data.MaxEnrollFingerCount 
+EndIf 
+EndSub 
+ 
+Sub EnrollmentControl_OnEnroll(ByVal Control AsObject, ByVal Finger AsInteger, ByVal 
+Template As DPFP.Template, ByRef EventHandlerStatus As DPFP.Gui.EventHandlerStatus) 
+Handles EnrollmentControl.OnEnroll 
+If (Data.IsEventHandlerSucceeds) Then 
+            Data.Templates(Finger - 1) = Template 
+            ExchangeData(True) 
+            ListEvents.Items.Insert(0, String.Format("OnEnroll: finger {0}", Finger)) 
+            MainForm.Label2.Text = a 
+ 
+Else 
+            EventHandlerStatus = DPFP.Gui.EventHandlerStatus.Failure 
+EndIf 
+EndSub 
+ 
